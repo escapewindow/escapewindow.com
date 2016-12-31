@@ -1,0 +1,347 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module log</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>log</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/mozharness/base/log.py">/home/aki/wrk/git-mozharness-ro/mozharness/base/log.py</a></font></td></tr></table>
+    <p><tt>Generic&nbsp;logging,&nbsp;the&nbsp;way&nbsp;I&nbsp;remember&nbsp;it&nbsp;from&nbsp;scripts&nbsp;gone&nbsp;by.<br>
+&nbsp;<br>
+TODO:<br>
+-&nbsp;network&nbsp;logging&nbsp;support.<br>
+-&nbsp;log&nbsp;rotation&nbsp;config</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="logging.html">logging</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="traceback.html">traceback</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="log.html#BaseLogger">BaseLogger</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="log.html#MultiFileLogger">MultiFileLogger</a>
+</font></dt><dt><font face="helvetica, arial"><a href="log.html#SimpleFileLogger">SimpleFileLogger</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="log.html#LogMixin">LogMixin</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="log.html#OutputParser">OutputParser</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BaseLogger">class <strong>BaseLogger</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Create&nbsp;a&nbsp;base&nbsp;logging&nbsp;class.<br>
+TODO:&nbsp;status?&nbsp;There&nbsp;may&nbsp;be&nbsp;a&nbsp;status&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;or&nbsp;status&nbsp;capability&nbsp;in<br>
+either&nbsp;logging&nbsp;or&nbsp;config&nbsp;that&nbsp;allows&nbsp;you&nbsp;to&nbsp;count&nbsp;the&nbsp;number&nbsp;of<br>
+error,critical,fatal&nbsp;messages&nbsp;for&nbsp;us&nbsp;to&nbsp;count&nbsp;up&nbsp;at&nbsp;the&nbsp;end&nbsp;(aiming<br>
+for&nbsp;0).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="BaseLogger-__del__"><strong>__del__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseLogger-__init__"><strong>__init__</strong></a>(self, log_level<font color="#909090">='info'</font>, log_format<font color="#909090">='%(message)s'</font>, log_date_format<font color="#909090">='%H:%M:%S'</font>, log_name<font color="#909090">='test'</font>, log_to_console<font color="#909090">=True</font>, log_dir<font color="#909090">='.'</font>, log_to_raw<font color="#909090">=False</font>, logger_name<font color="#909090">=''</font>, append_to_log<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="BaseLogger-add_console_handler"><strong>add_console_handler</strong></a>(self, log_level<font color="#909090">=None</font>, log_format<font color="#909090">=None</font>, date_format<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="BaseLogger-add_file_handler"><strong>add_file_handler</strong></a>(self, log_path, log_level<font color="#909090">=None</font>, log_format<font color="#909090">=None</font>, date_format<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="BaseLogger-create_log_dir"><strong>create_log_dir</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseLogger-get_log_formatter"><strong>get_log_formatter</strong></a>(self, log_format<font color="#909090">=None</font>, date_format<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="BaseLogger-get_logger_level"><strong>get_logger_level</strong></a>(self, level<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="BaseLogger-init_message"><strong>init_message</strong></a>(self, name<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="BaseLogger-log_message"><strong>log_message</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>, post_fatal_callback<font color="#909090">=None</font>)</dt><dd><tt>Generic&nbsp;log&nbsp;method.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There&nbsp;should&nbsp;be&nbsp;more&nbsp;options&nbsp;here&nbsp;--&nbsp;do&nbsp;or&nbsp;don't&nbsp;split&nbsp;by&nbsp;line,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;os.linesep&nbsp;instead&nbsp;of&nbsp;assuming&nbsp;<br>
+,&nbsp;be&nbsp;able&nbsp;to&nbsp;pass&nbsp;in&nbsp;log&nbsp;level<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;name&nbsp;or&nbsp;number.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adding&nbsp;the&nbsp;IGNORE&nbsp;special&nbsp;level&nbsp;for&nbsp;runCommand.</tt></dd></dl>
+
+<dl><dt><a name="BaseLogger-new_logger"><strong>new_logger</strong></a>(self, logger_name)</dt><dd><tt>Create&nbsp;a&nbsp;new&nbsp;logger.<br>
+By&nbsp;default&nbsp;there&nbsp;are&nbsp;no&nbsp;handlers.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>LEVELS</strong> = {'critical': 50, 'debug': 10, 'error': 40, 'fatal': 60, 'info': 20, 'warning': 30}</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="LogMixin">class <strong>LogMixin</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;is&nbsp;a&nbsp;mixin&nbsp;for&nbsp;any&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;to&nbsp;access&nbsp;similar&nbsp;logging<br>
+functionality&nbsp;--&nbsp;more&nbsp;so,&nbsp;of&nbsp;course,&nbsp;for&nbsp;those&nbsp;objects&nbsp;with<br>
+self.<strong>config</strong>&nbsp;and&nbsp;self.<strong>log_obj</strong>,&nbsp;of&nbsp;course.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="LogMixin-critical"><strong>critical</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="LogMixin-debug"><strong>debug</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="LogMixin-error"><strong>error</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="LogMixin-exception"><strong>exception</strong></a>(self, message<font color="#909090">=None</font>, level<font color="#909090">='error'</font>)</dt><dd><tt>#&nbsp;Copying&nbsp;Bear's&nbsp;dumpException():<br>
+#&nbsp;https://hg.mozilla.org/build/tools/annotate/1485f23c38e0/sut_tools/sut_lib.py#l23</tt></dd></dl>
+
+<dl><dt><a name="LogMixin-fatal"><strong>fatal</strong></a>(self, message, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="LogMixin-info"><strong>info</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="LogMixin-log"><strong>log</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="LogMixin-warning"><strong>warning</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="LogMixin-worst_level"><strong>worst_level</strong></a>(self, target_level, existing_level, levels<font color="#909090">=None</font>)</dt><dd><tt>returns&nbsp;either&nbsp;existing_level&nbsp;or&nbsp;target&nbsp;level.<br>
+This&nbsp;depends&nbsp;on&nbsp;which&nbsp;is&nbsp;closest&nbsp;to&nbsp;levels[0]<br>
+By&nbsp;default,&nbsp;levels&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;log&nbsp;levels</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MultiFileLogger">class <strong>MultiFileLogger</strong></a>(<a href="log.html#BaseLogger">BaseLogger</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Create&nbsp;a&nbsp;log&nbsp;per&nbsp;log&nbsp;level&nbsp;in&nbsp;log_dir.&nbsp;&nbsp;Possibly&nbsp;also&nbsp;output&nbsp;to<br>
+the&nbsp;terminal&nbsp;and&nbsp;a&nbsp;raw&nbsp;log&nbsp;(no&nbsp;prepending&nbsp;of&nbsp;level&nbsp;or&nbsp;date)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="log.html#MultiFileLogger">MultiFileLogger</a></dd>
+<dd><a href="log.html#BaseLogger">BaseLogger</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MultiFileLogger-__init__"><strong>__init__</strong></a>(self, logger_name<font color="#909090">='Multi'</font>, log_format<font color="#909090">='%(asctime)s %(levelname)8s - %(message)s'</font>, log_dir<font color="#909090">='logs'</font>, log_to_raw<font color="#909090">=True</font>, **kwargs)</dt></dl>
+
+<dl><dt><a name="MultiFileLogger-new_logger"><strong>new_logger</strong></a>(self, logger_name)</dt></dl>
+
+<hr>
+Methods inherited from <a href="log.html#BaseLogger">BaseLogger</a>:<br>
+<dl><dt><a name="MultiFileLogger-__del__"><strong>__del__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MultiFileLogger-add_console_handler"><strong>add_console_handler</strong></a>(self, log_level<font color="#909090">=None</font>, log_format<font color="#909090">=None</font>, date_format<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="MultiFileLogger-add_file_handler"><strong>add_file_handler</strong></a>(self, log_path, log_level<font color="#909090">=None</font>, log_format<font color="#909090">=None</font>, date_format<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="MultiFileLogger-create_log_dir"><strong>create_log_dir</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MultiFileLogger-get_log_formatter"><strong>get_log_formatter</strong></a>(self, log_format<font color="#909090">=None</font>, date_format<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="MultiFileLogger-get_logger_level"><strong>get_logger_level</strong></a>(self, level<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="MultiFileLogger-init_message"><strong>init_message</strong></a>(self, name<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="MultiFileLogger-log_message"><strong>log_message</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>, post_fatal_callback<font color="#909090">=None</font>)</dt><dd><tt>Generic&nbsp;log&nbsp;method.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There&nbsp;should&nbsp;be&nbsp;more&nbsp;options&nbsp;here&nbsp;--&nbsp;do&nbsp;or&nbsp;don't&nbsp;split&nbsp;by&nbsp;line,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;os.linesep&nbsp;instead&nbsp;of&nbsp;assuming&nbsp;<br>
+,&nbsp;be&nbsp;able&nbsp;to&nbsp;pass&nbsp;in&nbsp;log&nbsp;level<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;name&nbsp;or&nbsp;number.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adding&nbsp;the&nbsp;IGNORE&nbsp;special&nbsp;level&nbsp;for&nbsp;runCommand.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="log.html#BaseLogger">BaseLogger</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="log.html#BaseLogger">BaseLogger</a>:<br>
+<dl><dt><strong>LEVELS</strong> = {'critical': 50, 'debug': 10, 'error': 40, 'fatal': 60, 'info': 20, 'warning': 30}</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="OutputParser">class <strong>OutputParser</strong></a>(<a href="log.html#LogMixin">LogMixin</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Helper&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;to&nbsp;parse&nbsp;command&nbsp;output.<br>
+&nbsp;<br>
+This&nbsp;will&nbsp;buffer&nbsp;output&nbsp;if&nbsp;needed,&nbsp;so&nbsp;we&nbsp;can&nbsp;go&nbsp;back&nbsp;and&nbsp;mark<br>
+[(linenum&nbsp;-&nbsp;10):linenum+10]&nbsp;as&nbsp;errors&nbsp;if&nbsp;need&nbsp;be,&nbsp;without&nbsp;having&nbsp;to<br>
+get&nbsp;all&nbsp;the&nbsp;output&nbsp;first.<br>
+&nbsp;<br>
+linenum+10&nbsp;will&nbsp;be&nbsp;easy;&nbsp;we&nbsp;can&nbsp;set&nbsp;self.<strong>num_post_context_lines</strong>&nbsp;to&nbsp;10,<br>
+and&nbsp;self.<strong>num_post_context_lines</strong>--&nbsp;as&nbsp;we&nbsp;mark&nbsp;each&nbsp;line&nbsp;to&nbsp;at&nbsp;least&nbsp;error<br>
+level&nbsp;X.<br>
+&nbsp;<br>
+linenum-10&nbsp;will&nbsp;be&nbsp;trickier.&nbsp;We'll&nbsp;not&nbsp;only&nbsp;need&nbsp;to&nbsp;save&nbsp;the&nbsp;line<br>
+itself,&nbsp;but&nbsp;also&nbsp;the&nbsp;level&nbsp;that&nbsp;we've&nbsp;set&nbsp;for&nbsp;that&nbsp;line&nbsp;previously,<br>
+whether&nbsp;by&nbsp;matching&nbsp;on&nbsp;that&nbsp;line,&nbsp;or&nbsp;by&nbsp;a&nbsp;previous&nbsp;line's&nbsp;context.<br>
+We&nbsp;should&nbsp;only&nbsp;log&nbsp;that&nbsp;line&nbsp;if&nbsp;all&nbsp;output&nbsp;has&nbsp;ended&nbsp;(finish()&nbsp;?);<br>
+otherwise&nbsp;store&nbsp;a&nbsp;list&nbsp;of&nbsp;dictionaries&nbsp;in&nbsp;self.<strong>context_buffer</strong>&nbsp;that&nbsp;is<br>
+buffered&nbsp;up&nbsp;to&nbsp;self.<strong>num_pre_context_lines</strong>&nbsp;(set&nbsp;to&nbsp;the&nbsp;largest<br>
+pre-context-line&nbsp;setting&nbsp;in&nbsp;error_list.)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="log.html#OutputParser">OutputParser</a></dd>
+<dd><a href="log.html#LogMixin">LogMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="OutputParser-__init__"><strong>__init__</strong></a>(self, config<font color="#909090">=None</font>, log_obj<font color="#909090">=None</font>, error_list<font color="#909090">=None</font>, log_output<font color="#909090">=True</font>)</dt></dl>
+
+<dl><dt><a name="OutputParser-add_lines"><strong>add_lines</strong></a>(self, output)</dt></dl>
+
+<dl><dt><a name="OutputParser-parse_single_line"><strong>parse_single_line</strong></a>(self, line)</dt></dl>
+
+<hr>
+Methods inherited from <a href="log.html#LogMixin">LogMixin</a>:<br>
+<dl><dt><a name="OutputParser-critical"><strong>critical</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="OutputParser-debug"><strong>debug</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="OutputParser-error"><strong>error</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="OutputParser-exception"><strong>exception</strong></a>(self, message<font color="#909090">=None</font>, level<font color="#909090">='error'</font>)</dt><dd><tt>#&nbsp;Copying&nbsp;Bear's&nbsp;dumpException():<br>
+#&nbsp;https://hg.mozilla.org/build/tools/annotate/1485f23c38e0/sut_tools/sut_lib.py#l23</tt></dd></dl>
+
+<dl><dt><a name="OutputParser-fatal"><strong>fatal</strong></a>(self, message, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="OutputParser-info"><strong>info</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="OutputParser-log"><strong>log</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="OutputParser-warning"><strong>warning</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="OutputParser-worst_level"><strong>worst_level</strong></a>(self, target_level, existing_level, levels<font color="#909090">=None</font>)</dt><dd><tt>returns&nbsp;either&nbsp;existing_level&nbsp;or&nbsp;target&nbsp;level.<br>
+This&nbsp;depends&nbsp;on&nbsp;which&nbsp;is&nbsp;closest&nbsp;to&nbsp;levels[0]<br>
+By&nbsp;default,&nbsp;levels&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;log&nbsp;levels</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="log.html#LogMixin">LogMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SimpleFileLogger">class <strong>SimpleFileLogger</strong></a>(<a href="log.html#BaseLogger">BaseLogger</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Create&nbsp;one&nbsp;logFile.&nbsp;&nbsp;Possibly&nbsp;also&nbsp;output&nbsp;to<br>
+the&nbsp;terminal&nbsp;and&nbsp;a&nbsp;raw&nbsp;log&nbsp;(no&nbsp;prepending&nbsp;of&nbsp;level&nbsp;or&nbsp;date)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="log.html#SimpleFileLogger">SimpleFileLogger</a></dd>
+<dd><a href="log.html#BaseLogger">BaseLogger</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SimpleFileLogger-__init__"><strong>__init__</strong></a>(self, log_format<font color="#909090">='%(asctime)s %(levelname)8s - %(message)s'</font>, logger_name<font color="#909090">='Simple'</font>, log_dir<font color="#909090">='logs'</font>, **kwargs)</dt></dl>
+
+<dl><dt><a name="SimpleFileLogger-new_logger"><strong>new_logger</strong></a>(self, logger_name)</dt></dl>
+
+<hr>
+Methods inherited from <a href="log.html#BaseLogger">BaseLogger</a>:<br>
+<dl><dt><a name="SimpleFileLogger-__del__"><strong>__del__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SimpleFileLogger-add_console_handler"><strong>add_console_handler</strong></a>(self, log_level<font color="#909090">=None</font>, log_format<font color="#909090">=None</font>, date_format<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="SimpleFileLogger-add_file_handler"><strong>add_file_handler</strong></a>(self, log_path, log_level<font color="#909090">=None</font>, log_format<font color="#909090">=None</font>, date_format<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="SimpleFileLogger-create_log_dir"><strong>create_log_dir</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SimpleFileLogger-get_log_formatter"><strong>get_log_formatter</strong></a>(self, log_format<font color="#909090">=None</font>, date_format<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="SimpleFileLogger-get_logger_level"><strong>get_logger_level</strong></a>(self, level<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="SimpleFileLogger-init_message"><strong>init_message</strong></a>(self, name<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="SimpleFileLogger-log_message"><strong>log_message</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>, post_fatal_callback<font color="#909090">=None</font>)</dt><dd><tt>Generic&nbsp;log&nbsp;method.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;There&nbsp;should&nbsp;be&nbsp;more&nbsp;options&nbsp;here&nbsp;--&nbsp;do&nbsp;or&nbsp;don't&nbsp;split&nbsp;by&nbsp;line,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;os.linesep&nbsp;instead&nbsp;of&nbsp;assuming&nbsp;<br>
+,&nbsp;be&nbsp;able&nbsp;to&nbsp;pass&nbsp;in&nbsp;log&nbsp;level<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;name&nbsp;or&nbsp;number.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adding&nbsp;the&nbsp;IGNORE&nbsp;special&nbsp;level&nbsp;for&nbsp;runCommand.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="log.html#BaseLogger">BaseLogger</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="log.html#BaseLogger">BaseLogger</a>:<br>
+<dl><dt><strong>LEVELS</strong> = {'critical': 50, 'debug': 10, 'error': 40, 'fatal': 60, 'info': 20, 'warning': 30}</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>CRITICAL</strong> = 'critical'<br>
+<strong>DEBUG</strong> = 'debug'<br>
+<strong>ERROR</strong> = 'error'<br>
+<strong>FATAL</strong> = 'fatal'<br>
+<strong>FATAL_LEVEL</strong> = 60<br>
+<strong>IGNORE</strong> = 'ignore'<br>
+<strong>INFO</strong> = 'info'<br>
+<strong>WARNING</strong> = 'warning'</td></tr></table>
+</body></html>

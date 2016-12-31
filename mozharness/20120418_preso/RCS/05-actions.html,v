@@ -1,0 +1,129 @@
+head	1.2;
+access;
+symbols;
+locks
+	asasaki:1.2; strict;
+comment	@# @;
+
+
+1.2
+date	2012.04.16.22.58.24;	author asasaki;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2012.04.14.02.19.49;	author asasaki;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@<html><head>
+<link rel="stylesheet" href="mh.css" type="text/css"/>
+</head><body>
+
+<ul>
+<h3>Actions</h3>
+
+<ul><blockquote><pre>
+(bb08)deathduck:~/src/talosrunner/hg-mozharness [18:56:22] (default)
+1082$ scripts/configtest.py --list-actions
+Actions available: list-config-files, test-json-configs, test-python-configs
+Default actions: test-json-configs, test-python-configs
+</pre></blockquote></ul>
+<p>
+Terms:
+</p><ul><table border="1" cellpadding="5" cellspacing="0"><tr><td valign="top">
+action
+</td><td>
+A logical section/step of the script.  Ideally these are standalone.<br />
+E.g. clobber, pull, build, package, upload, notify
+</td></tr><tr><td valign="top">
+all_actions
+</td><td>
+The full list of actions known to the script.
+</td></tr><tr><td valign="top">
+default_actions
+</td><td>
+The list of actions run by default.
+</td></tr><tr><td valign="top">
+self.actions
+</td><td>
+The list of actions for this specific script run.
+</td></tr></table></ul>
+<br />
+<div style="padding: 1em; border: thin solid #990000;">
+<p>
+Actions allow people with different workflows to share the same script.
+  <ul><li class="monospace">
+E.g. a Firefox developer might only pull&amp;build by default, and would never want to upload or notify.
+  </li><li class="monospace">
+Someone running tests can run the test suite over and over without clobbering, downloading, installing, configuring, etc.
+  </li></ul>
+</div><br />
+<div style="padding: 1em; border: thin solid #009900;">
+<p>
+Actions allow mozharness developers to save time while writing+testing.
+</p>
+<ul><li class="monospace">
+E.g., while writing the packaging steps, only run --package, don't re-clobber, re-pull, or re-build until necessary.
+</li></ul>
+</div><br />
+
+<p>
+<a href="06-developing.html">developing --&gt;</a><br />
+</p>
+
+</body></html>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d8 1
+a8 2
+<ul>
+<blockquote><pre>
+d13 2
+a14 1
+</pre></blockquote><li>
+d16 1
+a16 1
+</li><table border="0" cellpadding="5"><tr><td valign="top">
+d33 4
+a36 1
+</td></tr></table><li>
+d38 1
+a38 1
+  <ul><li>
+d40 1
+a40 1
+  </li><li>
+d43 3
+a45 1
+</li><li>
+d47 3
+a49 10
+  <ul><li>
+E.g., While writing the packaging steps, only run --package, don't re-clobber, re-pull, or re-build until necessary.
+  </li></ul>
+</li><li>
+Actions allow maintainers to recover from errors more quickly.
+  <ul><li>
+E.g., a build dies on upload() due to external reasons (network, disk space, etc.).  After the external issue is resolved, the maintainer could re-run the script with only --upload and --notify.
+  </li><li>
+E.g., a test suite runs and saves its results to disk, but has issues reporting its information to graphs (or some external site).  The maintainer could re-run with only that action.
+  </li></ul>
+d51 1
+@

@@ -1,0 +1,46 @@
+<html><head>
+<link rel="stylesheet" href="mh.css" type="text/css"/>
+</head><body>
+
+<ul>
+<h3>More thoughts on the device pool</h3>
+
+<p>
+We need:
+</p>
+
+<ul><li>
+a working mozharness device talos script, period.
+</li><li>
+ability to control multiple processes from a single mozharness script
+</li><li>
+ability to log multiple processes in mozharness separately
+</li><li>
+ability to request jobs -- buildbot schedules one test suite per job atm.  We want multiple test suites per job, but flexible.
+</li><li>
+ability to throttle jobs when the device pool is busy.  perhaps the scheduling should happen through the library?
+</li><li>
+ability to report multiple statuses per buildbot job
+</li><li>
+device library with device information, history, status
+</li><li>
+(Callek) set of checks to verify a device
+</li><li>
+a dashboard/query to visualize which tegras need rescuing, for buildduty to rescue
+</li></ul>
+<p>
+If we reuse jhammel's comparison tool from jetperf.py, could we run on non-minis?
+  <ul><li class="monospace">
+Run perf test on unknown build.
+  </li><li class="monospace">
+Run perf test on known build.
+  </li><li class="monospace">
+Compare.
+  </li></ul>
+</p>
+
+<p>
+<a href="10-links.html">links --&gt;</a><br />
+</p>
+
+</body></html>

@@ -1,0 +1,69 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module repo_manifest</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>repo_manifest</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/repo_manifest.py">/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/repo_manifest.py</a></font></td></tr></table>
+    <p><tt>Module&nbsp;for&nbsp;handling&nbsp;repo&nbsp;style&nbsp;XML&nbsp;manifests</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="xml.html">xml</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-add_project"><strong>add_project</strong></a>(manifest, name, path, remote<font color="#909090">=None</font>, revision<font color="#909090">=None</font>)</dt><dd><tt>Adds&nbsp;a&nbsp;project&nbsp;to&nbsp;the&nbsp;manifest&nbsp;in&nbsp;place</tt></dd></dl>
+ <dl><dt><a name="-cleanup"><strong>cleanup</strong></a>(manifest, depth<font color="#909090">=0</font>)</dt><dd><tt>Remove&nbsp;any&nbsp;empty&nbsp;text&nbsp;nodes</tt></dd></dl>
+ <dl><dt><a name="-get_default"><strong>get_default</strong></a>(manifest)</dt></dl>
+ <dl><dt><a name="-get_project"><strong>get_project</strong></a>(manifest, name<font color="#909090">=None</font>, path<font color="#909090">=None</font>)</dt><dd><tt>Gets&nbsp;a&nbsp;project&nbsp;node&nbsp;from&nbsp;the&nbsp;manifest.<br>
+One&nbsp;of&nbsp;name&nbsp;or&nbsp;path&nbsp;must&nbsp;be&nbsp;set.&nbsp;If&nbsp;path&nbsp;is&nbsp;specified,&nbsp;then&nbsp;the&nbsp;project<br>
+with&nbsp;the&nbsp;given&nbsp;path&nbsp;is&nbsp;returned,&nbsp;otherwise&nbsp;the&nbsp;project&nbsp;with&nbsp;the&nbsp;given&nbsp;name<br>
+is&nbsp;returned.</tt></dd></dl>
+ <dl><dt><a name="-get_project_remote_url"><strong>get_project_remote_url</strong></a>(manifest, project)</dt><dd><tt>Gets&nbsp;the&nbsp;remote&nbsp;URL&nbsp;for&nbsp;the&nbsp;given&nbsp;project&nbsp;node.&nbsp;Will&nbsp;return&nbsp;the&nbsp;default<br>
+remote&nbsp;if&nbsp;the&nbsp;project&nbsp;doesn't&nbsp;explicitly&nbsp;specify&nbsp;one.</tt></dd></dl>
+ <dl><dt><a name="-get_project_revision"><strong>get_project_revision</strong></a>(manifest, project)</dt><dd><tt>Gets&nbsp;the&nbsp;revision&nbsp;for&nbsp;the&nbsp;given&nbsp;project&nbsp;node.&nbsp;Will&nbsp;return&nbsp;the&nbsp;default<br>
+revision&nbsp;if&nbsp;the&nbsp;project&nbsp;doesn't&nbsp;explicitly&nbsp;specify&nbsp;one.</tt></dd></dl>
+ <dl><dt><a name="-get_remote"><strong>get_remote</strong></a>(manifest, name)</dt></dl>
+ <dl><dt><a name="-is_commitid"><strong>is_commitid</strong></a>(revision)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;revision&nbsp;looks&nbsp;like&nbsp;a&nbsp;commit&nbsp;id<br>
+i.e.&nbsp;40&nbsp;character&nbsp;string&nbsp;made&nbsp;up&nbsp;of&nbsp;0-9a-f</tt></dd></dl>
+ <dl><dt><a name="-load_manifest"><strong>load_manifest</strong></a>(filename)</dt><dd><tt>Loads&nbsp;manifest&nbsp;from&nbsp;`filename`&nbsp;and&nbsp;returns&nbsp;a&nbsp;single&nbsp;flattened&nbsp;manifest<br>
+Processes&nbsp;any&nbsp;&lt;include&nbsp;name="..."&nbsp;/&gt;&nbsp;nodes&nbsp;recursively<br>
+Removes&nbsp;projects&nbsp;referenced&nbsp;by&nbsp;&lt;remove-project&nbsp;name="..."&nbsp;/&gt;&nbsp;nodes<br>
+Abort&nbsp;on&nbsp;unsupported&nbsp;manifest&nbsp;tags<br>
+Returns&nbsp;the&nbsp;root&nbsp;node&nbsp;of&nbsp;the&nbsp;resulting&nbsp;DOM</tt></dd></dl>
+ <dl><dt><a name="-map_remote"><strong>map_remote</strong></a>(r, mappings)</dt><dd><tt>Helper&nbsp;function&nbsp;for&nbsp;mapping&nbsp;git&nbsp;remotes</tt></dd></dl>
+ <dl><dt><a name="-remove_group"><strong>remove_group</strong></a>(manifest, group)</dt><dd><tt>Removes&nbsp;all&nbsp;projects&nbsp;with&nbsp;groups=`group`</tt></dd></dl>
+ <dl><dt><a name="-remove_project"><strong>remove_project</strong></a>(manifest, name<font color="#909090">=None</font>, path<font color="#909090">=None</font>)</dt><dd><tt>Removes&nbsp;a&nbsp;project&nbsp;from&nbsp;manifest.<br>
+One&nbsp;of&nbsp;name&nbsp;or&nbsp;path&nbsp;must&nbsp;be&nbsp;set.&nbsp;If&nbsp;path&nbsp;is&nbsp;specified,&nbsp;then&nbsp;the&nbsp;project<br>
+with&nbsp;the&nbsp;given&nbsp;path&nbsp;is&nbsp;removed,&nbsp;otherwise&nbsp;the&nbsp;project&nbsp;with&nbsp;the&nbsp;given&nbsp;name<br>
+is&nbsp;removed.</tt></dd></dl>
+ <dl><dt><a name="-rewrite_remotes"><strong>rewrite_remotes</strong></a>(manifest, mapping_func, force_all<font color="#909090">=True</font>)</dt><dd><tt>Rewrite&nbsp;manifest&nbsp;remotes&nbsp;in&nbsp;place<br>
+Returns&nbsp;the&nbsp;same&nbsp;manifest,&nbsp;with&nbsp;the&nbsp;remotes&nbsp;transformed&nbsp;by&nbsp;mapping_func<br>
+mapping_func&nbsp;should&nbsp;return&nbsp;a&nbsp;modified&nbsp;remote&nbsp;node,&nbsp;or&nbsp;None&nbsp;if&nbsp;no&nbsp;changes<br>
+are&nbsp;required<br>
+If&nbsp;force_all&nbsp;is&nbsp;True,&nbsp;then&nbsp;it&nbsp;is&nbsp;an&nbsp;error&nbsp;for&nbsp;mapping_func&nbsp;to&nbsp;return&nbsp;None;<br>
+a&nbsp;ValueError&nbsp;is&nbsp;raised&nbsp;in&nbsp;this&nbsp;case</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>COMMIT_PATTERN</strong> = &lt;_sre.SRE_Pattern object at 0xb7e63650&gt;</td></tr></table>
+</body></html>

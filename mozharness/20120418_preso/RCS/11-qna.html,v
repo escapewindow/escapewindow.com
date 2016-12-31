@@ -1,0 +1,32 @@
+head	1.1;
+access;
+symbols;
+locks
+	asasaki:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2012.04.16.23.30.14;	author asasaki;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<html><head>
+<link rel="stylesheet" href="mh.css" type="text/css"/>
+</head><body>
+
+<ul>
+<h3>Q&amp;A</h3>
+
+</body></html>
+@

@@ -1,0 +1,331 @@
+head	1.12;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.12
+date	2015.02.17.04.41.31;	author aki;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2012.03.23.21.22.47;	author aki;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2012.02.04.02.59.21;	author aki;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2011.09.30.18.11.50;	author aki;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2011.09.30.00.06.55;	author aki;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2011.09.29.22.19.00;	author aki;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2011.09.29.21.55.55;	author aki;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2011.09.29.21.29.22;	author aki;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2011.09.28.01.45.27;	author aki;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2011.09.28.01.44.46;	author aki;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2011.09.28.01.38.04;	author aki;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2011.09.28.01.34.56;	author aki;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.12
+log
+@*** empty log message ***
+@
+text
+@#!/bin/sh -x
+
+BRANCHES="master"
+BASEDIR="/var/www/sites/www.escapewindow.com/mozharness"
+HTML_FILE=index.html
+MOZHARNESS_DIRS="mozharness scripts"
+
+BASE_TMPL='<html>
+<head>
+<title>Mozharness</title>
+<link rel="stylesheet" href="/mozharness/mozharness.css" type="text/css"/>
+</head>
+<body>
+<b><font face="courier">
+<a href="http://escapewindow.dreamwidth.org/223757.html">about mozharness</a><br />
+<a href="http://escapewindow.dreamwidth.org/tag/mozharness">all mozharness blog posts</a><br />
+<br /><br />
+repos<br />
+=====<br />
+<a href="http://hg.mozilla.org/build/mozharness">production repo (hg.m.o)</a><br />
+<a href="https://github.com/mozilla/build-mozharness">github mirror</a><br />
+<br /><br />
+bug queries<br />
+===========<br />
+<a href="http://mzl.la/1yYZva4">open mozharness bugs</a><br />
+<br /><br />
+docs<br />
+====<br />
+CONTENT_GOES_HERE
+</font></b>
+</body>
+</html>'
+
+BRANCH_TMPL='<html>
+<head>
+<title>Mozharness BRANCH docs</title>
+<link rel="stylesheet" href="/mozharness/mozharness.css" type="text/css"/>
+</head>
+<body>
+<b><font face="courier">
+mozharness docs, BRANCH branch<br />
+<br />
+CONTENT_GOES_HERE
+<br /><br />
+<a href="..">back</a><br />
+</font></b>
+</body>
+</html>'
+
+base_index_string=""
+for branch in $BRANCHES; do
+    branch_index_string=""
+    base_index_string="${base_index_string}<a href='$branch'>$branch/</a><br />"
+    rm -rf $BASEDIR/${branch}_new
+    mkdir -p $BASEDIR/${branch}_new
+    pushd ~/wrk/git-mozharness-ro
+    git checkout $branch
+    git pull
+    FILES=`find $MOZHARNESS_DIRS -name \*.py | grep -v __init__| sort`
+    for file in $FILES; do
+        html_file=`echo "$file.html" | sed -e 's,/,.,g' | sed -e 's/\.py//'`
+        new_file=`/home/aki/virtualenv/mh/bin/python /usr/local/bin/pydoc -w $file | sed -e "s/wrote //"`
+        mv $new_file $BASEDIR/${branch}_new/$html_file
+        branch_index_string="$branch_index_string<a href='$html_file'>$file</a><br />"
+    done
+    echo $BRANCH_TMPL | sed -e "s,BRANCH,$branch,g" | sed -e "s,CONTENT_GOES_HERE,$branch_index_string," > $BASEDIR/${branch}_new/$HTML_FILE
+    rm -rf $BASEDIR/$branch
+    mv $BASEDIR/${branch}_new $BASEDIR/$branch
+    popd
+done
+echo $BASE_TMPL | sed -e "s,CONTENT_GOES_HERE,$base_index_string," > $HTML_FILE
+@
+
+
+1.11
+log
+@changed bug search
+@
+text
+@d3 1
+a3 1
+BRANCHES="master talosrunner"
+d21 1
+a21 1
+<a href="https://github.com/escapewindow/mozharness">development repo (github)</a><br />
+d25 1
+a25 1
+<a href="https://bugzilla.mozilla.org/buglist.cgi?list_id=1393304&resolution=---&resolution=DUPLICATE&status_whiteboard_type=allwordssubstr&query_format=advanced&status_whiteboard=mozharness&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED">open mozharness bugs</a><br />
+@
+
+
+1.10
+log
+@*** empty log message ***
+@
+text
+@d25 1
+a25 1
+<a href="https://bugzilla.mozilla.org/buglist.cgi?list_id=1393304&resolution=---&resolution=DUPLICATE&status_whiteboard_type=allwordssubstr&query_format=advanced&status_whiteboard=[mozharness]&bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Release%20Engineering&product=mozilla.org">open mozharness bugs</a><br />
+@
+
+
+1.9
+log
+@no more 0.4
+@
+text
+@d16 1
+@
+
+
+1.8
+log
+@*** empty log message ***
+@
+text
+@d3 1
+a3 1
+BRANCHES="master 0.4 talosrunner"
+d10 1
+a10 1
+<title>Mozharness docs</title>
+@
+
+
+1.7
+log
+@*** empty log message ***
+@
+text
+@d57 1
+d60 1
+a60 1
+        html_file=`echo "$file.html" | sed -e 's,/,.,g'`
+@
+
+
+1.6
+log
+@*** empty log message ***
+@
+text
+@d17 9
+@
+
+
+1.5
+log
+@fix simplejson
+@
+text
+@d1 1
+a1 1
+#!/bin/sh
+d6 1
+d8 1
+a8 1
+TMPL='<html>
+d11 1
+a11 1
+<link rel="stylesheet" href="mozharness.css" type="text/css"/>
+d15 2
+d18 1
+a18 1
+====<br /><br />
+d20 12
+d33 3
+a35 1
+<a href="http://escapewindow.dreamwidth.org/223757.html">about mozharness</a><br />
+d40 1
+a40 1
+index_html_string=""
+d42 4
+a45 1
+    index_html_string="${index_html_string}<a href='$branch'>$branch/</a><br />"
+d48 1
+a48 1
+    FILES=`find . -name \*.py`
+d50 4
+a53 2
+        mkdir -p `dirname $BASEDIR/${branch}_new/$file`
+        /home/aki/virtualenv/mh/bin/python /usr/local/bin/pydoc $file > $BASEDIR/${branch}_new/$file
+d55 1
+d60 1
+a60 1
+echo $TMPL | sed -e "s,CONTENT_GOES_HERE,$index_html_string," > $HTML_FILE
+@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@d1 1
+a1 1
+#!/bin/sh -x
+d10 1
+a10 6
+<style>
+body
+{
+    padding: 5em;
+}
+</style>
+d31 1
+a31 1
+        pydoc $file > $BASEDIR/${branch}_new/$file
+@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@d33 3
+a35 3
+	FILES=`find . -name \*.py`
+	for file in $FILES; do
+		mkdir -p `dirname $BASEDIR/${branch}_new/$file`
+d40 1
+a40 1
+	popd
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d42 1
+a42 1
+echo $TMPLE | sed -e "s,CONTENT_GOES_HERE,$index_html_string," > $HTML_FILE
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d5 1
+d35 2
+a36 2
+		mkdir -p `dirname $BASEDIR/$branch/$file`
+        pydoc $file > $BASEDIR/$branch/$file
+d38 2
+d42 1
+a42 2
+echo $index_html_string
+echo $TMPL | sed -e "s,CONTENT_GOES_HERE,$index_html_string," > foo.html
+@

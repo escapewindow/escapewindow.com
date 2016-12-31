@@ -1,0 +1,166 @@
+head	1.7;
+access;
+symbols;
+locks
+	asasaki:1.7; strict;
+comment	@# @;
+
+
+1.7
+date	2012.04.19.01.29.21;	author asasaki;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2012.04.17.01.40.47;	author asasaki;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2012.04.17.00.27.07;	author asasaki;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2012.04.16.23.30.14;	author asasaki;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2012.04.16.23.15.41;	author asasaki;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2012.04.16.22.38.43;	author asasaki;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2012.04.16.21.03.32;	author asasaki;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.7
+log
+@*** empty log message ***
+@
+text
+@<html><head>
+<link rel="stylesheet" href="mh.css" type="text/css"/>
+</head><body>
+
+<ul>
+<h3>A brief overview of the Tegras now</h3>
+
+<center><a href="1.jpg"><img src="1t.jpg"/></a></center>
+
+<ul><li>
+Buildbot slave is tied (hardcoded) to a single Tegra.
+</li><li>
+Buildbot master assigns jobs immediately to any free buildslave, without knowing about Tegra status.
+</li><li>
+Clientproxy, external scripts, and buildbot factory try to prevent broken Tegras from staying in production by creating flag files and killing buildbot.<br />
+Killing buildbot doesn't seem to work properly atm.
+</li><li>
+Clientproxy and external scripts attempt to prevent hung Tegras by rebooting unresponsive Tegras, clearing flag files, and putting Tegras back to work.<br />This happens outside the buildbot process, in parallel, and can break running processes or bring broken Tegras back online.
+</li><li>
+This is all happening via multiple processes, multiple scripts, which don't know about each other, or provide easily parsable or searchable history.
+</li><li>
+Any sort of timing mismatch will result in a lot of tree breakage.
+</li><li>
+Foopies hardly ever reboot, so we have to look for errant processes or files lying around from previous jobs.
+</li><li>
+There is a lot of room for improvement within this model, but I believe this model has inherent design flaws.
+</li></ul>
+
+<p>
+<a href="08-devicepool2.html">device pool future --&gt;</a><br />
+</p>
+
+</body></html>
+@
+
+
+1.6
+log
+@*** empty log message ***
+@
+text
+@d15 1
+a15 1
+Clientproxy / buildbot factory tries to prevent broken Tegras from staying in production by creating flag files and killing buildbot.<br />
+d18 1
+a18 1
+Clientproxy attempts to prevent hung Tegras by rebooting unresponsive Tegras, clearing flag files, and putting Tegras back to work.<br />This happens outside the buildbot process, in parallel, and can break running processes or bring broken Tegras back online.
+d20 1
+a20 1
+This is all happening via multiple processes, multiple scripts, which don't know about each other.
+@
+
+
+1.5
+log
+@*** empty log message ***
+@
+text
+@d24 2
+@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@d8 19
+@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@d6 1
+a6 1
+<h3>A brief overview of the device pool</h3>
+d9 1
+a9 9
+Currently:
+</p><ul>
+</ul>
+
+<p>
+</p>
+
+<p>
+<a href="08-links.html">links --&gt;</a><br />
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d17 1
+a17 1
+<a href="08-links.html">links</a><br />
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d9 9
+a17 1
+<a href="08-qna.html">q&amp;a --&gt;</a><br />
+@

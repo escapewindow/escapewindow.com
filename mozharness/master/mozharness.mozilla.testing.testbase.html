@@ -1,0 +1,283 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module testbase</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>testbase</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/testing/testbase.py">/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/testing/testbase.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;*****&nbsp;BEGIN&nbsp;LICENSE&nbsp;BLOCK&nbsp;*****<br>
+#&nbsp;This&nbsp;Source&nbsp;Code&nbsp;Form&nbsp;is&nbsp;subject&nbsp;to&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;Mozilla&nbsp;Public<br>
+#&nbsp;License,&nbsp;v.&nbsp;2.0.&nbsp;If&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;MPL&nbsp;was&nbsp;not&nbsp;distributed&nbsp;with&nbsp;this&nbsp;file,<br>
+#&nbsp;You&nbsp;can&nbsp;obtain&nbsp;one&nbsp;at&nbsp;<a href="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</a>.<br>
+#&nbsp;*****&nbsp;END&nbsp;LICENSE&nbsp;BLOCK&nbsp;*****</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="copy.html">copy</a><br>
+<a href="getpass.html">getpass</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="platform.html">platform</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+<a href="urllib2.html">urllib2</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="mozharness.base.python.html#ResourceMonitoringMixin">mozharness.base.python.ResourceMonitoringMixin</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="testbase.html#TestingMixin">TestingMixin</a>(<a href="mozharness.base.python.html#VirtualenvMixin">mozharness.base.python.VirtualenvMixin</a>, <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>, <a href="mozharness.base.python.html#ResourceMonitoringMixin">mozharness.base.python.ResourceMonitoringMixin</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="mozharness.base.python.html#VirtualenvMixin">mozharness.base.python.VirtualenvMixin</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="testbase.html#TestingMixin">TestingMixin</a>(<a href="mozharness.base.python.html#VirtualenvMixin">mozharness.base.python.VirtualenvMixin</a>, <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>, <a href="mozharness.base.python.html#ResourceMonitoringMixin">mozharness.base.python.ResourceMonitoringMixin</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="testbase.html#TestingMixin">TestingMixin</a>(<a href="mozharness.base.python.html#VirtualenvMixin">mozharness.base.python.VirtualenvMixin</a>, <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>, <a href="mozharness.base.python.html#ResourceMonitoringMixin">mozharness.base.python.ResourceMonitoringMixin</a>)
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="TestingMixin">class <strong>TestingMixin</strong></a>(<a href="mozharness.base.python.html#VirtualenvMixin">mozharness.base.python.VirtualenvMixin</a>, <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>, <a href="mozharness.base.python.html#ResourceMonitoringMixin">mozharness.base.python.ResourceMonitoringMixin</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>The&nbsp;steps&nbsp;to&nbsp;identify&nbsp;+&nbsp;download&nbsp;the&nbsp;proper&nbsp;bits&nbsp;for&nbsp;[browser]&nbsp;unit<br>
+tests&nbsp;and&nbsp;Talos.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="testbase.html#TestingMixin">TestingMixin</a></dd>
+<dd><a href="mozharness.base.python.html#VirtualenvMixin">mozharness.base.python.VirtualenvMixin</a></dd>
+<dd><a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a></dd>
+<dd><a href="mozharness.base.python.html#ResourceMonitoringMixin">mozharness.base.python.ResourceMonitoringMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="TestingMixin-download_and_extract"><strong>download_and_extract</strong></a>(self, target_unzip_dirs<font color="#909090">=None</font>)</dt><dd><tt>download&nbsp;and&nbsp;extract&nbsp;test&nbsp;zip&nbsp;/&nbsp;download&nbsp;installer</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-download_file"><strong>download_file</strong></a>(self, *args, **kwargs)</dt><dd><tt>This&nbsp;function&nbsp;helps&nbsp;not&nbsp;to&nbsp;use&nbsp;download&nbsp;of&nbsp;proxied&nbsp;files<br>
+since&nbsp;it&nbsp;does&nbsp;not&nbsp;support&nbsp;authenticated&nbsp;downloads.<br>
+This&nbsp;could&nbsp;be&nbsp;re-factored&nbsp;and&nbsp;fixed&nbsp;in&nbsp;bug&nbsp;1087664.</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-download_proxied_file"><strong>download_proxied_file</strong></a>(self, url, file_name<font color="#909090">=None</font>, parent_dir<font color="#909090">=None</font>, create_parent_dir<font color="#909090">=True</font>, error_level<font color="#909090">='fatal'</font>, exit_code<font color="#909090">=3</font>)</dt></dl>
+
+<dl><dt><a name="TestingMixin-get_test_output_parser"><strong>get_test_output_parser</strong></a>(self, suite_category, strict<font color="#909090">=False</font>, fallback_parser_class<font color="#909090">=&lt;class 'mozharness.mozilla.testing.unittest.DesktopUnittestOutputParser'&gt;</font>, **kwargs)</dt><dd><tt>Derive&nbsp;and&nbsp;return&nbsp;an&nbsp;appropriate&nbsp;output&nbsp;parser,&nbsp;either&nbsp;the&nbsp;structured<br>
+output&nbsp;parser&nbsp;or&nbsp;a&nbsp;fallback&nbsp;based&nbsp;on&nbsp;the&nbsp;type&nbsp;of&nbsp;logging&nbsp;in&nbsp;use&nbsp;as&nbsp;determined&nbsp;by<br>
+configuration.</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-install"><strong>install</strong></a>(self)</dt><dd><tt>Dependent&nbsp;on&nbsp;mozinstall</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-install_minidump_stackwalk"><strong>install_minidump_stackwalk</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TestingMixin-postflight_read_buildbot_config"><strong>postflight_read_buildbot_config</strong></a>(self)</dt><dd><tt>Determine&nbsp;which&nbsp;files&nbsp;to&nbsp;download&nbsp;from&nbsp;the&nbsp;buildprops.json&nbsp;file<br>
+created&nbsp;via&nbsp;the&nbsp;buildbot&nbsp;ScriptFactory.</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-postflight_run_tests"><strong>postflight_run_tests</strong></a>(self)</dt><dd><tt>preflight&nbsp;commands&nbsp;for&nbsp;all&nbsp;tests</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-preflight_download_and_extract"><strong>preflight_download_and_extract</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TestingMixin-preflight_install"><strong>preflight_install</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TestingMixin-preflight_run_tests"><strong>preflight_run_tests</strong></a>(self)</dt><dd><tt>preflight&nbsp;commands&nbsp;for&nbsp;all&nbsp;tests</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-query_jsshell_url"><strong>query_jsshell_url</strong></a>(self)</dt><dd><tt>Attempt&nbsp;to&nbsp;determine&nbsp;the&nbsp;url&nbsp;of&nbsp;the&nbsp;js&nbsp;shell&nbsp;package&nbsp;given<br>
+the&nbsp;installer&nbsp;url.</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-query_minidump_stackwalk"><strong>query_minidump_stackwalk</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TestingMixin-query_symbols_url"><strong>query_symbols_url</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TestingMixin-query_value"><strong>query_value</strong></a>(self, key)</dt><dd><tt>This&nbsp;function&nbsp;allows&nbsp;us&nbsp;to&nbsp;check&nbsp;for&nbsp;a&nbsp;value<br>
+in&nbsp;the&nbsp;self.<strong>tree_config</strong>&nbsp;first&nbsp;and&nbsp;then&nbsp;on&nbsp;self.<strong>config</strong></tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-structured_output"><strong>structured_output</strong></a>(self, suite_category)</dt><dd><tt>Defines&nbsp;whether&nbsp;structured&nbsp;logging&nbsp;is&nbsp;in&nbsp;use&nbsp;in&nbsp;this&nbsp;configuration.&nbsp;This<br>
+may&nbsp;need&nbsp;to&nbsp;be&nbsp;replaced&nbsp;with&nbsp;data&nbsp;from&nbsp;a&nbsp;different&nbsp;config&nbsp;at&nbsp;the&nbsp;resolution<br>
+of&nbsp;bug&nbsp;1070041&nbsp;and&nbsp;related&nbsp;bugs.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>binary_path</strong> = None</dl>
+
+<dl><dt><strong>default_tools_repo</strong> = 'https://hg.mozilla.org/build/tools'</dl>
+
+<dl><dt><strong>installer_path</strong> = None</dl>
+
+<dl><dt><strong>installer_url</strong> = None</dl>
+
+<dl><dt><strong>jsshell_url</strong> = None</dl>
+
+<dl><dt><strong>minidump_stackwalk_path</strong> = None</dl>
+
+<dl><dt><strong>proxxy</strong> = None</dl>
+
+<dl><dt><strong>symbols_path</strong> = None</dl>
+
+<dl><dt><strong>symbols_url</strong> = None</dl>
+
+<dl><dt><strong>test_url</strong> = None</dl>
+
+<dl><dt><strong>test_zip_path</strong> = None</dl>
+
+<dl><dt><strong>tree_config</strong> = {}</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.python.html#VirtualenvMixin">mozharness.base.python.VirtualenvMixin</a>:<br>
+<dl><dt><a name="TestingMixin-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="TestingMixin-activate_virtualenv"><strong>activate_virtualenv</strong></a>(self)</dt><dd><tt>Import&nbsp;the&nbsp;virtualenv's&nbsp;packages&nbsp;into&nbsp;this&nbsp;Python&nbsp;interpreter.</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-create_virtualenv"><strong>create_virtualenv</strong></a>(self, modules<font color="#909090">=()</font>, requirements<font color="#909090">=()</font>)</dt><dd><tt>Create&nbsp;a&nbsp;python&nbsp;virtualenv.<br>
+&nbsp;<br>
+The&nbsp;virtualenv&nbsp;exe&nbsp;can&nbsp;be&nbsp;defined&nbsp;in&nbsp;c['virtualenv']&nbsp;or<br>
+c['exes']['virtualenv'],&nbsp;as&nbsp;a&nbsp;string&nbsp;(path)&nbsp;or&nbsp;list&nbsp;(path&nbsp;+<br>
+arguments).<br>
+&nbsp;<br>
+c['virtualenv_python_dll']&nbsp;is&nbsp;an&nbsp;optional&nbsp;config&nbsp;item&nbsp;that&nbsp;works<br>
+around&nbsp;an&nbsp;old&nbsp;windows&nbsp;virtualenv&nbsp;bug.<br>
+&nbsp;<br>
+virtualenv_modules&nbsp;can&nbsp;be&nbsp;a&nbsp;list&nbsp;of&nbsp;module&nbsp;names&nbsp;to&nbsp;install,&nbsp;e.g.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;virtualenv_modules&nbsp;=&nbsp;['module1',&nbsp;'module2']<br>
+&nbsp;<br>
+or&nbsp;it&nbsp;can&nbsp;be&nbsp;a&nbsp;heterogeneous&nbsp;list&nbsp;of&nbsp;modules&nbsp;names&nbsp;and&nbsp;dicts&nbsp;that<br>
+define&nbsp;a&nbsp;module&nbsp;by&nbsp;its&nbsp;name,&nbsp;url-or-path,&nbsp;and&nbsp;a&nbsp;list&nbsp;of&nbsp;its&nbsp;global<br>
+options.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;virtualenv_modules&nbsp;=&nbsp;[<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'name':&nbsp;'module1',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'url':&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'global_options':&nbsp;['--opt',&nbsp;'--without-gcc']<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'name':&nbsp;'module2',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'url':&nbsp;'<a href="http://url/to/package">http://url/to/package</a>',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'global_options':&nbsp;['--use-clang']<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'name':&nbsp;'module3',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'url':&nbsp;os.path.join('path',&nbsp;'to',&nbsp;'setup_py',&nbsp;'dir')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'global_options':&nbsp;[]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'module4'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+&nbsp;<br>
+virtualenv_requirements&nbsp;is&nbsp;an&nbsp;optional&nbsp;list&nbsp;of&nbsp;pip&nbsp;requirements&nbsp;files&nbsp;to<br>
+use&nbsp;when&nbsp;invoking&nbsp;pip,&nbsp;e.g.,<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;virtualenv_requirements&nbsp;=&nbsp;[<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'/path/to/requirements1.txt',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'/path/to/requirements2.txt'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;]</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-install_module"><strong>install_module</strong></a>(self, module<font color="#909090">=None</font>, module_url<font color="#909090">=None</font>, install_method<font color="#909090">=None</font>, requirements<font color="#909090">=()</font>, optional<font color="#909090">=False</font>, global_options<font color="#909090">=[]</font>, no_deps<font color="#909090">=False</font>, editable<font color="#909090">=False</font>)</dt><dd><tt>Install&nbsp;module&nbsp;via&nbsp;pip.<br>
+&nbsp;<br>
+module_url&nbsp;can&nbsp;be&nbsp;a&nbsp;url&nbsp;to&nbsp;a&nbsp;python&nbsp;package&nbsp;tarball,&nbsp;a&nbsp;path&nbsp;to<br>
+a&nbsp;directory&nbsp;containing&nbsp;a&nbsp;setup.py&nbsp;(absolute&nbsp;or&nbsp;relative&nbsp;to&nbsp;work_dir)<br>
+or&nbsp;None,&nbsp;in&nbsp;which&nbsp;case&nbsp;it&nbsp;will&nbsp;default&nbsp;to&nbsp;the&nbsp;module&nbsp;name.<br>
+&nbsp;<br>
+requirements&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;pip&nbsp;requirements&nbsp;files.&nbsp;&nbsp;If&nbsp;specified,&nbsp;these<br>
+will&nbsp;be&nbsp;combined&nbsp;with&nbsp;the&nbsp;module_url&nbsp;(if&nbsp;any),&nbsp;like&nbsp;so:<br>
+&nbsp;<br>
+pip&nbsp;install&nbsp;-r&nbsp;requirements1.txt&nbsp;-r&nbsp;requirements2.txt&nbsp;module_url</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-is_python_package_installed"><strong>is_python_package_installed</strong></a>(self, package_name, error_level<font color="#909090">='warning'</font>)</dt><dd><tt>Return&nbsp;whether&nbsp;the&nbsp;package&nbsp;is&nbsp;installed</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-package_versions"><strong>package_versions</strong></a>(self, pip_freeze_output<font color="#909090">=None</font>, error_level<font color="#909090">='warning'</font>, log_output<font color="#909090">=False</font>)</dt><dd><tt>reads&nbsp;packages&nbsp;from&nbsp;`pip&nbsp;freeze`&nbsp;output&nbsp;and&nbsp;returns&nbsp;a&nbsp;dict&nbsp;of<br>
+{package_name:&nbsp;'version'}</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-query_python_path"><strong>query_python_path</strong></a>(self, binary<font color="#909090">='python'</font>)</dt><dd><tt>Return&nbsp;the&nbsp;path&nbsp;of&nbsp;a&nbsp;binary&nbsp;inside&nbsp;the&nbsp;virtualenv,&nbsp;if<br>
+c['virtualenv_path']&nbsp;is&nbsp;set;&nbsp;otherwise&nbsp;return&nbsp;the&nbsp;binary&nbsp;name.<br>
+Otherwise&nbsp;return&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-query_python_site_packages_path"><strong>query_python_site_packages_path</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TestingMixin-query_virtualenv_path"><strong>query_virtualenv_path</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TestingMixin-register_virtualenv_module"><strong>register_virtualenv_module</strong></a>(self, name<font color="#909090">=None</font>, url<font color="#909090">=None</font>, method<font color="#909090">=None</font>, requirements<font color="#909090">=None</font>, optional<font color="#909090">=False</font>, two_pass<font color="#909090">=False</font>, editable<font color="#909090">=False</font>)</dt><dd><tt>Register&nbsp;a&nbsp;module&nbsp;to&nbsp;be&nbsp;installed&nbsp;with&nbsp;the&nbsp;virtualenv.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;can&nbsp;be&nbsp;called&nbsp;up&nbsp;until&nbsp;<a href="#TestingMixin-create_virtualenv">create_virtualenv</a>()&nbsp;to&nbsp;register<br>
+modules&nbsp;that&nbsp;should&nbsp;be&nbsp;installed&nbsp;in&nbsp;the&nbsp;virtualenv.<br>
+&nbsp;<br>
+See&nbsp;the&nbsp;documentation&nbsp;for&nbsp;install_module&nbsp;for&nbsp;how&nbsp;the&nbsp;arguments&nbsp;are<br>
+applied.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mozharness.base.python.html#VirtualenvMixin">mozharness.base.python.VirtualenvMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mozharness.base.python.html#VirtualenvMixin">mozharness.base.python.VirtualenvMixin</a>:<br>
+<dl><dt><strong>python_paths</strong> = {}</dl>
+
+<dl><dt><strong>site_packages_path</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>:<br>
+<dl><dt><a name="TestingMixin-buildbot_status"><strong>buildbot_status</strong></a>(self, tbpl_status, level<font color="#909090">=None</font>, set_return_code<font color="#909090">=True</font>)</dt></dl>
+
+<dl><dt><a name="TestingMixin-dump_buildbot_properties"><strong>dump_buildbot_properties</strong></a>(self, prop_list<font color="#909090">=None</font>, file_name<font color="#909090">='properties'</font>, error_level<font color="#909090">='error'</font>)</dt></dl>
+
+<dl><dt><a name="TestingMixin-query_buildbot_property"><strong>query_buildbot_property</strong></a>(self, prop_name)</dt></dl>
+
+<dl><dt><a name="TestingMixin-query_is_nightly"><strong>query_is_nightly</strong></a>(self)</dt><dd><tt>returns&nbsp;whether&nbsp;or&nbsp;not&nbsp;the&nbsp;script&nbsp;should&nbsp;run&nbsp;as&nbsp;a&nbsp;nightly&nbsp;build.<br>
+&nbsp;<br>
+First&nbsp;will&nbsp;check&nbsp;for&nbsp;'nightly_build'&nbsp;in&nbsp;self.<strong>config</strong>&nbsp;and&nbsp;if&nbsp;that&nbsp;is<br>
+not&nbsp;True,&nbsp;we&nbsp;will&nbsp;also&nbsp;allow&nbsp;buildbot_config&nbsp;to&nbsp;determine<br>
+for&nbsp;us.&nbsp;Failing&nbsp;all&nbsp;of&nbsp;that,&nbsp;we&nbsp;default&nbsp;to&nbsp;False.<br>
+Note,&nbsp;dependancy&nbsp;on&nbsp;buildbot_config&nbsp;is&nbsp;being&nbsp;deprecated.<br>
+Putting&nbsp;everything&nbsp;in&nbsp;self.<strong>config</strong>&nbsp;is&nbsp;the&nbsp;preference.</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-read_buildbot_config"><strong>read_buildbot_config</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TestingMixin-sendchange"><strong>sendchange</strong></a>(self, downloadables<font color="#909090">=None</font>, branch<font color="#909090">=None</font>, username<font color="#909090">='sendchange-unittest'</font>, sendchange_props<font color="#909090">=None</font>)</dt><dd><tt>Generic&nbsp;sendchange,&nbsp;currently&nbsp;b2g-&nbsp;and&nbsp;unittest-specific.</tt></dd></dl>
+
+<dl><dt><a name="TestingMixin-set_buildbot_property"><strong>set_buildbot_property</strong></a>(self, prop_name, prop_value, write_to_file<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="TestingMixin-tryserver_email"><strong>tryserver_email</strong></a>(self)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>:<br>
+<dl><dt><strong>buildbot_config</strong> = None</dl>
+
+<dl><dt><strong>buildbot_properties</strong> = {}</dl>
+
+<dl><dt><strong>worst_buildbot_status</strong> = 'SUCCESS'</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>BaseErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}]<br>
+<strong>FATAL</strong> = 'fatal'<br>
+<strong>INSTALLER_SUFFIXES</strong> = ('.tar.bz2', '.zip', '.dmg', '.exe', '.apk', '.tar.gz')<br>
+<strong>testing_config_options</strong> = [[['--installer-url'], {'action': 'store', 'default': None, 'dest': 'installer_url', 'help': 'URL to the installer to install'}], [['--installer-path'], {'action': 'store', 'default': None, 'dest': 'installer_path', 'help': 'Path to the installer to install.  This is set automatically if run with --download-and-extract.'}], [['--binary-path'], {'action': 'store', 'default': None, 'dest': 'binary_path', 'help': 'Path to installed binary.  This is set automatically if run with --install.'}], [['--exe-suffix'], {'action': 'store', 'default': None, 'dest': 'exe_suffix', 'help': 'Executable suffix for binaries on this platform'}], [['--test-url'], {'action': 'store', 'default': None, 'dest': 'test_url', 'help': 'URL to the zip file containing the actual tests'}], [['--jsshell-url'], {'action': 'store', 'default': None, 'dest': 'jsshell_url', 'help': 'URL to the jsshell to install'}], [['--download-symbols'], {'action': 'store', 'choices': ['ondemand', 'true'], 'dest': 'download_symbols', 'help': 'Download and extract crash reporter symbols.', 'type': 'choice'}], [['--venv-path', '--virtualenv-path'], {'action': 'store', 'default': 'venv', 'dest': 'virtualenv_path', 'help': 'Specify the path to the virtualenv top level directory'}], [['--virtualenv'], {'action': 'store', 'dest': 'virtualenv', 'help': 'Specify the virtualenv executable to use'}], [['--find-links'], {'action': 'extend', 'dest': 'find_links', 'help': 'URL to look for packages at'}], [['--pip-index'], {'action': 'store_true', 'default': True, 'dest': 'pip_index', 'help': 'Use pip indexes (default)'}], [['--no-pip-index'], {'action': 'store_false', 'dest': 'pip_index', 'help': "Don't use pip indexes"}]]<br>
+<strong>virtualenv_config_options</strong> = [[['--venv-path', '--virtualenv-path'], {'action': 'store', 'default': 'venv', 'dest': 'virtualenv_path', 'help': 'Specify the path to the virtualenv top level directory'}], [['--virtualenv'], {'action': 'store', 'dest': 'virtualenv', 'help': 'Specify the virtualenv executable to use'}], [['--find-links'], {'action': 'extend', 'dest': 'find_links', 'help': 'URL to look for packages at'}], [['--pip-index'], {'action': 'store_true', 'default': True, 'dest': 'pip_index', 'help': 'Use pip indexes (default)'}], [['--no-pip-index'], {'action': 'store_false', 'dest': 'pip_index', 'help': "Don't use pip indexes"}]]</td></tr></table>
+</body></html>

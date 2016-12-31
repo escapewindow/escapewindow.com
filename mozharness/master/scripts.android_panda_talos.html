@@ -1,0 +1,642 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module android_panda_talos</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>android_panda_talos</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/scripts/android_panda_talos.py">/home/aki/wrk/git-mozharness-ro/scripts/android_panda_talos.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;*****&nbsp;BEGIN&nbsp;LICENSE&nbsp;BLOCK&nbsp;*****<br>
+#&nbsp;This&nbsp;Source&nbsp;Code&nbsp;Form&nbsp;is&nbsp;subject&nbsp;to&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;Mozilla&nbsp;Public<br>
+#&nbsp;License,&nbsp;v.&nbsp;2.0.&nbsp;If&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;MPL&nbsp;was&nbsp;not&nbsp;distributed&nbsp;with&nbsp;this&nbsp;file,<br>
+#&nbsp;You&nbsp;can&nbsp;obtain&nbsp;one&nbsp;at&nbsp;<a href="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</a>.<br>
+#&nbsp;*****&nbsp;END&nbsp;LICENSE&nbsp;BLOCK&nbsp;*****</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="copy.html">copy</a><br>
+<a href="getpass.html">getpass</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="pprint.html">pprint</a><br>
+</td><td width="25%" valign=top><a href="socket.html">socket</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="mozharness.base.vcs.vcsbase.html#MercurialScript">mozharness.base.vcs.vcsbase.MercurialScript</a>(<a href="mozharness.base.vcs.vcsbase.html#VCSScript">mozharness.base.vcs.vcsbase.VCSScript</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="android_panda_talos.html#PandaTalosTest">PandaTalosTest</a>(<a href="mozharness.mozilla.testing.testbase.html#TestingMixin">mozharness.mozilla.testing.testbase.TestingMixin</a>, <a href="mozharness.base.vcs.vcsbase.html#MercurialScript">mozharness.base.vcs.vcsbase.MercurialScript</a>, <a href="mozharness.mozilla.blob_upload.html#BlobUploadMixin">mozharness.mozilla.blob_upload.BlobUploadMixin</a>, <a href="mozharness.mozilla.testing.mozpool.html#MozpoolMixin">mozharness.mozilla.testing.mozpool.MozpoolMixin</a>, <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>, <a href="mozharness.mozilla.testing.device.html#SUTDeviceMozdeviceMixin">mozharness.mozilla.testing.device.SUTDeviceMozdeviceMixin</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="mozharness.mozilla.blob_upload.html#BlobUploadMixin">mozharness.mozilla.blob_upload.BlobUploadMixin</a>(<a href="mozharness.base.python.html#VirtualenvMixin">mozharness.base.python.VirtualenvMixin</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="android_panda_talos.html#PandaTalosTest">PandaTalosTest</a>(<a href="mozharness.mozilla.testing.testbase.html#TestingMixin">mozharness.mozilla.testing.testbase.TestingMixin</a>, <a href="mozharness.base.vcs.vcsbase.html#MercurialScript">mozharness.base.vcs.vcsbase.MercurialScript</a>, <a href="mozharness.mozilla.blob_upload.html#BlobUploadMixin">mozharness.mozilla.blob_upload.BlobUploadMixin</a>, <a href="mozharness.mozilla.testing.mozpool.html#MozpoolMixin">mozharness.mozilla.testing.mozpool.MozpoolMixin</a>, <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>, <a href="mozharness.mozilla.testing.device.html#SUTDeviceMozdeviceMixin">mozharness.mozilla.testing.device.SUTDeviceMozdeviceMixin</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="android_panda_talos.html#PandaTalosTest">PandaTalosTest</a>(<a href="mozharness.mozilla.testing.testbase.html#TestingMixin">mozharness.mozilla.testing.testbase.TestingMixin</a>, <a href="mozharness.base.vcs.vcsbase.html#MercurialScript">mozharness.base.vcs.vcsbase.MercurialScript</a>, <a href="mozharness.mozilla.blob_upload.html#BlobUploadMixin">mozharness.mozilla.blob_upload.BlobUploadMixin</a>, <a href="mozharness.mozilla.testing.mozpool.html#MozpoolMixin">mozharness.mozilla.testing.mozpool.MozpoolMixin</a>, <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>, <a href="mozharness.mozilla.testing.device.html#SUTDeviceMozdeviceMixin">mozharness.mozilla.testing.device.SUTDeviceMozdeviceMixin</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="mozharness.mozilla.testing.device.html#SUTDeviceMozdeviceMixin">mozharness.mozilla.testing.device.SUTDeviceMozdeviceMixin</a>(<a href="mozharness.mozilla.testing.device.html#SUTDeviceHandler">mozharness.mozilla.testing.device.SUTDeviceHandler</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="android_panda_talos.html#PandaTalosTest">PandaTalosTest</a>(<a href="mozharness.mozilla.testing.testbase.html#TestingMixin">mozharness.mozilla.testing.testbase.TestingMixin</a>, <a href="mozharness.base.vcs.vcsbase.html#MercurialScript">mozharness.base.vcs.vcsbase.MercurialScript</a>, <a href="mozharness.mozilla.blob_upload.html#BlobUploadMixin">mozharness.mozilla.blob_upload.BlobUploadMixin</a>, <a href="mozharness.mozilla.testing.mozpool.html#MozpoolMixin">mozharness.mozilla.testing.mozpool.MozpoolMixin</a>, <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>, <a href="mozharness.mozilla.testing.device.html#SUTDeviceMozdeviceMixin">mozharness.mozilla.testing.device.SUTDeviceMozdeviceMixin</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="mozharness.mozilla.testing.mozpool.html#MozpoolMixin">mozharness.mozilla.testing.mozpool.MozpoolMixin</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="android_panda_talos.html#PandaTalosTest">PandaTalosTest</a>(<a href="mozharness.mozilla.testing.testbase.html#TestingMixin">mozharness.mozilla.testing.testbase.TestingMixin</a>, <a href="mozharness.base.vcs.vcsbase.html#MercurialScript">mozharness.base.vcs.vcsbase.MercurialScript</a>, <a href="mozharness.mozilla.blob_upload.html#BlobUploadMixin">mozharness.mozilla.blob_upload.BlobUploadMixin</a>, <a href="mozharness.mozilla.testing.mozpool.html#MozpoolMixin">mozharness.mozilla.testing.mozpool.MozpoolMixin</a>, <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>, <a href="mozharness.mozilla.testing.device.html#SUTDeviceMozdeviceMixin">mozharness.mozilla.testing.device.SUTDeviceMozdeviceMixin</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="mozharness.mozilla.testing.testbase.html#TestingMixin">mozharness.mozilla.testing.testbase.TestingMixin</a>(<a href="mozharness.base.python.html#VirtualenvMixin">mozharness.base.python.VirtualenvMixin</a>, <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>, <a href="mozharness.base.python.html#ResourceMonitoringMixin">mozharness.base.python.ResourceMonitoringMixin</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="android_panda_talos.html#PandaTalosTest">PandaTalosTest</a>(<a href="mozharness.mozilla.testing.testbase.html#TestingMixin">mozharness.mozilla.testing.testbase.TestingMixin</a>, <a href="mozharness.base.vcs.vcsbase.html#MercurialScript">mozharness.base.vcs.vcsbase.MercurialScript</a>, <a href="mozharness.mozilla.blob_upload.html#BlobUploadMixin">mozharness.mozilla.blob_upload.BlobUploadMixin</a>, <a href="mozharness.mozilla.testing.mozpool.html#MozpoolMixin">mozharness.mozilla.testing.mozpool.MozpoolMixin</a>, <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>, <a href="mozharness.mozilla.testing.device.html#SUTDeviceMozdeviceMixin">mozharness.mozilla.testing.device.SUTDeviceMozdeviceMixin</a>)
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PandaTalosTest">class <strong>PandaTalosTest</strong></a>(<a href="mozharness.mozilla.testing.testbase.html#TestingMixin">mozharness.mozilla.testing.testbase.TestingMixin</a>, <a href="mozharness.base.vcs.vcsbase.html#MercurialScript">mozharness.base.vcs.vcsbase.MercurialScript</a>, <a href="mozharness.mozilla.blob_upload.html#BlobUploadMixin">mozharness.mozilla.blob_upload.BlobUploadMixin</a>, <a href="mozharness.mozilla.testing.mozpool.html#MozpoolMixin">mozharness.mozilla.testing.mozpool.MozpoolMixin</a>, <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>, <a href="mozharness.mozilla.testing.device.html#SUTDeviceMozdeviceMixin">mozharness.mozilla.testing.device.SUTDeviceMozdeviceMixin</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="android_panda_talos.html#PandaTalosTest">PandaTalosTest</a></dd>
+<dd><a href="mozharness.mozilla.testing.testbase.html#TestingMixin">mozharness.mozilla.testing.testbase.TestingMixin</a></dd>
+<dd><a href="mozharness.base.vcs.vcsbase.html#MercurialScript">mozharness.base.vcs.vcsbase.MercurialScript</a></dd>
+<dd><a href="mozharness.base.vcs.vcsbase.html#VCSScript">mozharness.base.vcs.vcsbase.VCSScript</a></dd>
+<dd><a href="mozharness.base.vcs.vcsbase.html#VCSMixin">mozharness.base.vcs.vcsbase.VCSMixin</a></dd>
+<dd><a href="mozharness.base.script.html#BaseScript">mozharness.base.script.BaseScript</a></dd>
+<dd><a href="mozharness.mozilla.blob_upload.html#BlobUploadMixin">mozharness.mozilla.blob_upload.BlobUploadMixin</a></dd>
+<dd><a href="mozharness.base.python.html#VirtualenvMixin">mozharness.base.python.VirtualenvMixin</a></dd>
+<dd><a href="mozharness.mozilla.testing.mozpool.html#MozpoolMixin">mozharness.mozilla.testing.mozpool.MozpoolMixin</a></dd>
+<dd><a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a></dd>
+<dd><a href="mozharness.base.python.html#ResourceMonitoringMixin">mozharness.base.python.ResourceMonitoringMixin</a></dd>
+<dd><a href="mozharness.mozilla.testing.device.html#SUTDeviceMozdeviceMixin">mozharness.mozilla.testing.device.SUTDeviceMozdeviceMixin</a></dd>
+<dd><a href="mozharness.mozilla.testing.device.html#SUTDeviceHandler">mozharness.mozilla.testing.device.SUTDeviceHandler</a></dd>
+<dd><a href="mozharness.mozilla.testing.device.html#BaseDeviceHandler">mozharness.mozilla.testing.device.BaseDeviceHandler</a></dd>
+<dd><a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a></dd>
+<dd><a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="PandaTalosTest-__init__"><strong>__init__</strong></a>(self, require_config_file<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-close_request"><strong>close_request</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-download_and_extract"><strong>download_and_extract</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-postflight_read_buildbot_config"><strong>postflight_read_buildbot_config</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-preflight_talos"><strong>preflight_talos</strong></a>(self, suite_category, suites)</dt><dd><tt>preflight&nbsp;perf&nbsp;config&nbsp;etc</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-query_abs_dirs"><strong>query_abs_dirs</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-query_talos_json_config"><strong>query_talos_json_config</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-request_device"><strong>request_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-run_test"><strong>run_test</strong></a>(self)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>config_options</strong> = [[['--mozpool-api-url'], {'dest': 'mozpool_api_url', 'help': 'Override mozpool api url'}], [['--mozpool-device'], {'dest': 'mozpool_device', 'help': 'Set Panda device to run tests on'}], [['--mozpool-assignee'], {'dest': 'mozpool_assignee', 'help': 'Set mozpool assignee (requestor name, free-form)'}], [['--total-chunks'], {'action': 'store', 'dest': 'total_chunks', 'help': 'Number of total chunks'}], [['--this-chunk'], {'action': 'store', 'dest': 'this_chunk', 'help': 'Number of this chunk'}], [['--extra-args'], {'action': 'store', 'dest': 'extra_args', 'help': 'Extra arguments'}], [['--talos-suite'], {'action': 'extend', 'dest': 'specified_talos_suites', 'help': "Specify which talos suite to run. Suites are def...remote-troboprovider', 'remote-tsvg', 'tpn', 'ts'", 'type': 'string'}], [['--branch-name'], {'action': 'store', 'dest': 'talos_branch', 'help': 'Graphserver branch to report to'}], [['--run-all-suites'], {'action': 'store_true', 'default': False, 'dest': 'run_all_suites', 'help': 'This will run all suites that are specified in t...ny other suites. Beware, this may take a while ;)'}], [['--installer-url'], {'action': 'store', 'default': None, 'dest': 'installer_url', 'help': 'URL to the installer to install'}], [['--installer-path'], {'action': 'store', 'default': None, 'dest': 'installer_path', 'help': 'Path to the installer to install.  This is set automatically if run with --download-and-extract.'}], [['--binary-path'], {'action': 'store', 'default': None, 'dest': 'binary_path', 'help': 'Path to installed binary.  This is set automatically if run with --install.'}], [['--exe-suffix'], {'action': 'store', 'default': None, 'dest': 'exe_suffix', 'help': 'Executable suffix for binaries on this platform'}], [['--test-url'], {'action': 'store', 'default': None, 'dest': 'test_url', 'help': 'URL to the zip file containing the actual tests'}], [['--jsshell-url'], {'action': 'store', 'default': None, 'dest': 'jsshell_url', 'help': 'URL to the jsshell to install'}], [['--download-symbols'], {'action': 'store', 'choices': ['ondemand', 'true'], 'dest': 'download_symbols', 'help': 'Download and extract crash reporter symbols.', 'type': 'choice'}], [['--venv-path', '--virtualenv-path'], {'action': 'store', 'default': 'venv', 'dest': 'virtualenv_path', 'help': 'Specify the path to the virtualenv top level directory'}], [['--virtualenv'], {'action': 'store', 'dest': 'virtualenv', 'help': 'Specify the virtualenv executable to use'}], [['--find-links'], {'action': 'extend', 'dest': 'find_links', 'help': 'URL to look for packages at'}], [['--pip-index'], {'action': 'store_true', 'default': True, 'dest': 'pip_index', 'help': 'Use pip indexes (default)'}], ...]</dl>
+
+<dl><dt><strong>error_list</strong> = []</dl>
+
+<dl><dt><strong>mozpool_handler</strong> = None</dl>
+
+<dl><dt><strong>test_suites</strong> = ['talos']</dl>
+
+<dl><dt><strong>virtualenv_modules</strong> = ['mozpoolclient', 'mozcrash']</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.mozilla.testing.testbase.html#TestingMixin">mozharness.mozilla.testing.testbase.TestingMixin</a>:<br>
+<dl><dt><a name="PandaTalosTest-download_file"><strong>download_file</strong></a>(self, *args, **kwargs)</dt><dd><tt>This&nbsp;function&nbsp;helps&nbsp;not&nbsp;to&nbsp;use&nbsp;download&nbsp;of&nbsp;proxied&nbsp;files<br>
+since&nbsp;it&nbsp;does&nbsp;not&nbsp;support&nbsp;authenticated&nbsp;downloads.<br>
+This&nbsp;could&nbsp;be&nbsp;re-factored&nbsp;and&nbsp;fixed&nbsp;in&nbsp;bug&nbsp;1087664.</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-download_proxied_file"><strong>download_proxied_file</strong></a>(self, url, file_name<font color="#909090">=None</font>, parent_dir<font color="#909090">=None</font>, create_parent_dir<font color="#909090">=True</font>, error_level<font color="#909090">='fatal'</font>, exit_code<font color="#909090">=3</font>)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-get_test_output_parser"><strong>get_test_output_parser</strong></a>(self, suite_category, strict<font color="#909090">=False</font>, fallback_parser_class<font color="#909090">=&lt;class 'mozharness.mozilla.testing.unittest.DesktopUnittestOutputParser'&gt;</font>, **kwargs)</dt><dd><tt>Derive&nbsp;and&nbsp;return&nbsp;an&nbsp;appropriate&nbsp;output&nbsp;parser,&nbsp;either&nbsp;the&nbsp;structured<br>
+output&nbsp;parser&nbsp;or&nbsp;a&nbsp;fallback&nbsp;based&nbsp;on&nbsp;the&nbsp;type&nbsp;of&nbsp;logging&nbsp;in&nbsp;use&nbsp;as&nbsp;determined&nbsp;by<br>
+configuration.</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-install"><strong>install</strong></a>(self)</dt><dd><tt>Dependent&nbsp;on&nbsp;mozinstall</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-install_minidump_stackwalk"><strong>install_minidump_stackwalk</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-postflight_run_tests"><strong>postflight_run_tests</strong></a>(self)</dt><dd><tt>preflight&nbsp;commands&nbsp;for&nbsp;all&nbsp;tests</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-preflight_download_and_extract"><strong>preflight_download_and_extract</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-preflight_install"><strong>preflight_install</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-preflight_run_tests"><strong>preflight_run_tests</strong></a>(self)</dt><dd><tt>preflight&nbsp;commands&nbsp;for&nbsp;all&nbsp;tests</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-query_jsshell_url"><strong>query_jsshell_url</strong></a>(self)</dt><dd><tt>Attempt&nbsp;to&nbsp;determine&nbsp;the&nbsp;url&nbsp;of&nbsp;the&nbsp;js&nbsp;shell&nbsp;package&nbsp;given<br>
+the&nbsp;installer&nbsp;url.</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-query_minidump_stackwalk"><strong>query_minidump_stackwalk</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-query_symbols_url"><strong>query_symbols_url</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-query_value"><strong>query_value</strong></a>(self, key)</dt><dd><tt>This&nbsp;function&nbsp;allows&nbsp;us&nbsp;to&nbsp;check&nbsp;for&nbsp;a&nbsp;value<br>
+in&nbsp;the&nbsp;self.<strong>tree_config</strong>&nbsp;first&nbsp;and&nbsp;then&nbsp;on&nbsp;self.<strong>config</strong></tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-structured_output"><strong>structured_output</strong></a>(self, suite_category)</dt><dd><tt>Defines&nbsp;whether&nbsp;structured&nbsp;logging&nbsp;is&nbsp;in&nbsp;use&nbsp;in&nbsp;this&nbsp;configuration.&nbsp;This<br>
+may&nbsp;need&nbsp;to&nbsp;be&nbsp;replaced&nbsp;with&nbsp;data&nbsp;from&nbsp;a&nbsp;different&nbsp;config&nbsp;at&nbsp;the&nbsp;resolution<br>
+of&nbsp;bug&nbsp;1070041&nbsp;and&nbsp;related&nbsp;bugs.</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="mozharness.mozilla.testing.testbase.html#TestingMixin">mozharness.mozilla.testing.testbase.TestingMixin</a>:<br>
+<dl><dt><strong>binary_path</strong> = None</dl>
+
+<dl><dt><strong>default_tools_repo</strong> = 'https://hg.mozilla.org/build/tools'</dl>
+
+<dl><dt><strong>installer_path</strong> = None</dl>
+
+<dl><dt><strong>installer_url</strong> = None</dl>
+
+<dl><dt><strong>jsshell_url</strong> = None</dl>
+
+<dl><dt><strong>minidump_stackwalk_path</strong> = None</dl>
+
+<dl><dt><strong>proxxy</strong> = None</dl>
+
+<dl><dt><strong>symbols_path</strong> = None</dl>
+
+<dl><dt><strong>symbols_url</strong> = None</dl>
+
+<dl><dt><strong>test_url</strong> = None</dl>
+
+<dl><dt><strong>test_zip_path</strong> = None</dl>
+
+<dl><dt><strong>tree_config</strong> = {}</dl>
+
+<hr>
+Data and other attributes inherited from <a href="mozharness.base.vcs.vcsbase.html#MercurialScript">mozharness.base.vcs.vcsbase.MercurialScript</a>:<br>
+<dl><dt><strong>default_vcs</strong> = 'hg'</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.vcs.vcsbase.html#VCSScript">mozharness.base.vcs.vcsbase.VCSScript</a>:<br>
+<dl><dt><a name="PandaTalosTest-pull"><strong>pull</strong></a>(self, repos<font color="#909090">=None</font>, parent_dir<font color="#909090">=None</font>)</dt></dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.vcs.vcsbase.html#VCSMixin">mozharness.base.vcs.vcsbase.VCSMixin</a>:<br>
+<dl><dt><a name="PandaTalosTest-query_dest"><strong>query_dest</strong></a>(self, kwargs)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-vcs_checkout"><strong>vcs_checkout</strong></a>(self, vcs<font color="#909090">=None</font>, error_level<font color="#909090">='fatal'</font>, **kwargs)</dt><dd><tt>Check&nbsp;out&nbsp;a&nbsp;single&nbsp;repo.</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-vcs_checkout_repos"><strong>vcs_checkout_repos</strong></a>(self, repo_list, parent_dir<font color="#909090">=None</font>, tag_override<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Check&nbsp;out&nbsp;a&nbsp;list&nbsp;of&nbsp;repos.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mozharness.base.vcs.vcsbase.html#VCSMixin">mozharness.base.vcs.vcsbase.VCSMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="mozharness.base.script.html#BaseScript">mozharness.base.script.BaseScript</a>:<br>
+<dl><dt><a name="PandaTalosTest-action_message"><strong>action_message</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-add_failure"><strong>add_failure</strong></a>(self, key, message<font color="#909090">='%(key)s failed.'</font>, level<font color="#909090">='error'</font>, increment_return_code<font color="#909090">=True</font>)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-add_summary"><strong>add_summary</strong></a>(self, message, level<font color="#909090">='info'</font>)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-clobber"><strong>clobber</strong></a>(self)</dt><dd><tt>Delete&nbsp;the&nbsp;working&nbsp;directory</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-copy_logs_to_upload_dir"><strong>copy_logs_to_upload_dir</strong></a>(self)</dt><dd><tt>Copies&nbsp;logs&nbsp;to&nbsp;the&nbsp;upload&nbsp;directory</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-copy_to_upload_dir"><strong>copy_to_upload_dir</strong></a>(self, target, dest<font color="#909090">=None</font>, short_desc<font color="#909090">='unknown'</font>, long_desc<font color="#909090">='unknown'</font>, log_level<font color="#909090">='debug'</font>, error_level<font color="#909090">='error'</font>, max_backups<font color="#909090">=None</font>, compress<font color="#909090">=False</font>, upload_dir<font color="#909090">=None</font>)</dt><dd><tt>Copy&nbsp;target&nbsp;file&nbsp;to&nbsp;upload_dir/dest.<br>
+&nbsp;<br>
+Potentially&nbsp;update&nbsp;a&nbsp;manifest&nbsp;in&nbsp;the&nbsp;future&nbsp;if&nbsp;we&nbsp;go&nbsp;that&nbsp;route.<br>
+&nbsp;<br>
+Currently&nbsp;only&nbsp;copies&nbsp;a&nbsp;single&nbsp;file;&nbsp;would&nbsp;be&nbsp;nice&nbsp;to&nbsp;allow&nbsp;for<br>
+recursive&nbsp;copying;&nbsp;that&nbsp;would&nbsp;probably&nbsp;done&nbsp;by&nbsp;creating&nbsp;a&nbsp;helper<br>
+_copy_file_to_upload_dir().<br>
+&nbsp;<br>
+short_desc&nbsp;and&nbsp;long_desc&nbsp;are&nbsp;placeholders&nbsp;for&nbsp;if/when&nbsp;we&nbsp;add<br>
+upload_dir&nbsp;manifests.</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-dump_config"><strong>dump_config</strong></a>(self, file_path<font color="#909090">=None</font>, config<font color="#909090">=None</font>, console_output<font color="#909090">=True</font>, exit_on_finish<font color="#909090">=False</font>)</dt><dd><tt>Dump&nbsp;self.<strong>config</strong>&nbsp;to&nbsp;localconfig.json</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-file_sha512sum"><strong>file_sha512sum</strong></a>(self, file_path)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-new_log_obj"><strong>new_log_obj</strong></a>(self, default_log_level<font color="#909090">='info'</font>)</dt><dd><tt>#&nbsp;logging&nbsp;{{{2</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-query_failure"><strong>query_failure</strong></a>(self, key)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-run"><strong>run</strong></a>(self)</dt><dd><tt>Default&nbsp;run&nbsp;method.<br>
+This&nbsp;is&nbsp;the&nbsp;"do&nbsp;everything"&nbsp;method,&nbsp;based&nbsp;on&nbsp;actions&nbsp;and&nbsp;all_actions.<br>
+&nbsp;<br>
+First&nbsp;run&nbsp;<a href="#PandaTalosTest-dump_config">dump_config</a>()&nbsp;if&nbsp;it&nbsp;exists.<br>
+Second,&nbsp;go&nbsp;through&nbsp;the&nbsp;list&nbsp;of&nbsp;all_actions.<br>
+If&nbsp;they're&nbsp;in&nbsp;the&nbsp;list&nbsp;of&nbsp;self.<strong>actions</strong>,&nbsp;try&nbsp;to&nbsp;run<br>
+preflight_ACTION(),&nbsp;ACTION(),&nbsp;and&nbsp;postflight_ACTION().<br>
+&nbsp;<br>
+Preflight&nbsp;is&nbsp;sanity&nbsp;checking&nbsp;before&nbsp;doing&nbsp;anything&nbsp;time&nbsp;consuming&nbsp;or<br>
+destructive.<br>
+&nbsp;<br>
+Postflight&nbsp;is&nbsp;quick&nbsp;testing&nbsp;for&nbsp;success&nbsp;after&nbsp;an&nbsp;action.</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-run_action"><strong>run_action</strong></a>(self, action)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-run_and_exit"><strong>run_and_exit</strong></a>(self)</dt><dd><tt>Runs&nbsp;the&nbsp;script&nbsp;and&nbsp;exits&nbsp;the&nbsp;current&nbsp;interpreter.</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-summarize_success_count"><strong>summarize_success_count</strong></a>(self, success_count, total_count, message<font color="#909090">='%d of %d successful.'</font>, level<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-summary"><strong>summary</strong></a>(self)</dt><dd><tt>Print&nbsp;out&nbsp;all&nbsp;the&nbsp;summary&nbsp;lines&nbsp;added&nbsp;via&nbsp;<a href="#PandaTalosTest-add_summary">add_summary</a>()<br>
+throughout&nbsp;the&nbsp;script.<br>
+&nbsp;<br>
+I'd&nbsp;like&nbsp;to&nbsp;revisit&nbsp;how&nbsp;to&nbsp;do&nbsp;this&nbsp;in&nbsp;a&nbsp;prettier&nbsp;fashion.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="mozharness.mozilla.blob_upload.html#BlobUploadMixin">mozharness.mozilla.blob_upload.BlobUploadMixin</a>:<br>
+<dl><dt><a name="PandaTalosTest-upload_blobber_files"><strong>upload_blobber_files</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.python.html#VirtualenvMixin">mozharness.base.python.VirtualenvMixin</a>:<br>
+<dl><dt><a name="PandaTalosTest-activate_virtualenv"><strong>activate_virtualenv</strong></a>(self)</dt><dd><tt>Import&nbsp;the&nbsp;virtualenv's&nbsp;packages&nbsp;into&nbsp;this&nbsp;Python&nbsp;interpreter.</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-create_virtualenv"><strong>create_virtualenv</strong></a>(self, modules<font color="#909090">=()</font>, requirements<font color="#909090">=()</font>)</dt><dd><tt>Create&nbsp;a&nbsp;python&nbsp;virtualenv.<br>
+&nbsp;<br>
+The&nbsp;virtualenv&nbsp;exe&nbsp;can&nbsp;be&nbsp;defined&nbsp;in&nbsp;c['virtualenv']&nbsp;or<br>
+c['exes']['virtualenv'],&nbsp;as&nbsp;a&nbsp;string&nbsp;(path)&nbsp;or&nbsp;list&nbsp;(path&nbsp;+<br>
+arguments).<br>
+&nbsp;<br>
+c['virtualenv_python_dll']&nbsp;is&nbsp;an&nbsp;optional&nbsp;config&nbsp;item&nbsp;that&nbsp;works<br>
+around&nbsp;an&nbsp;old&nbsp;windows&nbsp;virtualenv&nbsp;bug.<br>
+&nbsp;<br>
+virtualenv_modules&nbsp;can&nbsp;be&nbsp;a&nbsp;list&nbsp;of&nbsp;module&nbsp;names&nbsp;to&nbsp;install,&nbsp;e.g.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;virtualenv_modules&nbsp;=&nbsp;['module1',&nbsp;'module2']<br>
+&nbsp;<br>
+or&nbsp;it&nbsp;can&nbsp;be&nbsp;a&nbsp;heterogeneous&nbsp;list&nbsp;of&nbsp;modules&nbsp;names&nbsp;and&nbsp;dicts&nbsp;that<br>
+define&nbsp;a&nbsp;module&nbsp;by&nbsp;its&nbsp;name,&nbsp;url-or-path,&nbsp;and&nbsp;a&nbsp;list&nbsp;of&nbsp;its&nbsp;global<br>
+options.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;virtualenv_modules&nbsp;=&nbsp;[<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'name':&nbsp;'module1',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'url':&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'global_options':&nbsp;['--opt',&nbsp;'--without-gcc']<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'name':&nbsp;'module2',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'url':&nbsp;'<a href="http://url/to/package">http://url/to/package</a>',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'global_options':&nbsp;['--use-clang']<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'name':&nbsp;'module3',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'url':&nbsp;os.path.join('path',&nbsp;'to',&nbsp;'setup_py',&nbsp;'dir')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'global_options':&nbsp;[]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'module4'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+&nbsp;<br>
+virtualenv_requirements&nbsp;is&nbsp;an&nbsp;optional&nbsp;list&nbsp;of&nbsp;pip&nbsp;requirements&nbsp;files&nbsp;to<br>
+use&nbsp;when&nbsp;invoking&nbsp;pip,&nbsp;e.g.,<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;virtualenv_requirements&nbsp;=&nbsp;[<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'/path/to/requirements1.txt',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'/path/to/requirements2.txt'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;]</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-install_module"><strong>install_module</strong></a>(self, module<font color="#909090">=None</font>, module_url<font color="#909090">=None</font>, install_method<font color="#909090">=None</font>, requirements<font color="#909090">=()</font>, optional<font color="#909090">=False</font>, global_options<font color="#909090">=[]</font>, no_deps<font color="#909090">=False</font>, editable<font color="#909090">=False</font>)</dt><dd><tt>Install&nbsp;module&nbsp;via&nbsp;pip.<br>
+&nbsp;<br>
+module_url&nbsp;can&nbsp;be&nbsp;a&nbsp;url&nbsp;to&nbsp;a&nbsp;python&nbsp;package&nbsp;tarball,&nbsp;a&nbsp;path&nbsp;to<br>
+a&nbsp;directory&nbsp;containing&nbsp;a&nbsp;setup.py&nbsp;(absolute&nbsp;or&nbsp;relative&nbsp;to&nbsp;work_dir)<br>
+or&nbsp;None,&nbsp;in&nbsp;which&nbsp;case&nbsp;it&nbsp;will&nbsp;default&nbsp;to&nbsp;the&nbsp;module&nbsp;name.<br>
+&nbsp;<br>
+requirements&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;pip&nbsp;requirements&nbsp;files.&nbsp;&nbsp;If&nbsp;specified,&nbsp;these<br>
+will&nbsp;be&nbsp;combined&nbsp;with&nbsp;the&nbsp;module_url&nbsp;(if&nbsp;any),&nbsp;like&nbsp;so:<br>
+&nbsp;<br>
+pip&nbsp;install&nbsp;-r&nbsp;requirements1.txt&nbsp;-r&nbsp;requirements2.txt&nbsp;module_url</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-is_python_package_installed"><strong>is_python_package_installed</strong></a>(self, package_name, error_level<font color="#909090">='warning'</font>)</dt><dd><tt>Return&nbsp;whether&nbsp;the&nbsp;package&nbsp;is&nbsp;installed</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-package_versions"><strong>package_versions</strong></a>(self, pip_freeze_output<font color="#909090">=None</font>, error_level<font color="#909090">='warning'</font>, log_output<font color="#909090">=False</font>)</dt><dd><tt>reads&nbsp;packages&nbsp;from&nbsp;`pip&nbsp;freeze`&nbsp;output&nbsp;and&nbsp;returns&nbsp;a&nbsp;dict&nbsp;of<br>
+{package_name:&nbsp;'version'}</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-query_python_path"><strong>query_python_path</strong></a>(self, binary<font color="#909090">='python'</font>)</dt><dd><tt>Return&nbsp;the&nbsp;path&nbsp;of&nbsp;a&nbsp;binary&nbsp;inside&nbsp;the&nbsp;virtualenv,&nbsp;if<br>
+c['virtualenv_path']&nbsp;is&nbsp;set;&nbsp;otherwise&nbsp;return&nbsp;the&nbsp;binary&nbsp;name.<br>
+Otherwise&nbsp;return&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-query_python_site_packages_path"><strong>query_python_site_packages_path</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-query_virtualenv_path"><strong>query_virtualenv_path</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-register_virtualenv_module"><strong>register_virtualenv_module</strong></a>(self, name<font color="#909090">=None</font>, url<font color="#909090">=None</font>, method<font color="#909090">=None</font>, requirements<font color="#909090">=None</font>, optional<font color="#909090">=False</font>, two_pass<font color="#909090">=False</font>, editable<font color="#909090">=False</font>)</dt><dd><tt>Register&nbsp;a&nbsp;module&nbsp;to&nbsp;be&nbsp;installed&nbsp;with&nbsp;the&nbsp;virtualenv.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;can&nbsp;be&nbsp;called&nbsp;up&nbsp;until&nbsp;<a href="#PandaTalosTest-create_virtualenv">create_virtualenv</a>()&nbsp;to&nbsp;register<br>
+modules&nbsp;that&nbsp;should&nbsp;be&nbsp;installed&nbsp;in&nbsp;the&nbsp;virtualenv.<br>
+&nbsp;<br>
+See&nbsp;the&nbsp;documentation&nbsp;for&nbsp;install_module&nbsp;for&nbsp;how&nbsp;the&nbsp;arguments&nbsp;are<br>
+applied.</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="mozharness.base.python.html#VirtualenvMixin">mozharness.base.python.VirtualenvMixin</a>:<br>
+<dl><dt><strong>python_paths</strong> = {}</dl>
+
+<dl><dt><strong>site_packages_path</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.mozilla.testing.mozpool.html#MozpoolMixin">mozharness.mozilla.testing.mozpool.MozpoolMixin</a>:<br>
+<dl><dt><a name="PandaTalosTest-determine_mozpool_host"><strong>determine_mozpool_host</strong></a>(self, device)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-query_mozpool_handler"><strong>query_mozpool_handler</strong></a>(self, device<font color="#909090">=None</font>, mozpool_api_url<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-retrieve_android_device"><strong>retrieve_android_device</strong></a>(self, b2gbase)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-retrieve_b2g_device"><strong>retrieve_b2g_device</strong></a>(self, b2gbase)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="mozharness.mozilla.testing.mozpool.html#MozpoolMixin">mozharness.mozilla.testing.mozpool.MozpoolMixin</a>:<br>
+<dl><dt><strong>mobile_imaging_format</strong> = 'http://mobile-imaging'</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>:<br>
+<dl><dt><a name="PandaTalosTest-buildbot_status"><strong>buildbot_status</strong></a>(self, tbpl_status, level<font color="#909090">=None</font>, set_return_code<font color="#909090">=True</font>)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-dump_buildbot_properties"><strong>dump_buildbot_properties</strong></a>(self, prop_list<font color="#909090">=None</font>, file_name<font color="#909090">='properties'</font>, error_level<font color="#909090">='error'</font>)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-query_buildbot_property"><strong>query_buildbot_property</strong></a>(self, prop_name)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-query_is_nightly"><strong>query_is_nightly</strong></a>(self)</dt><dd><tt>returns&nbsp;whether&nbsp;or&nbsp;not&nbsp;the&nbsp;script&nbsp;should&nbsp;run&nbsp;as&nbsp;a&nbsp;nightly&nbsp;build.<br>
+&nbsp;<br>
+First&nbsp;will&nbsp;check&nbsp;for&nbsp;'nightly_build'&nbsp;in&nbsp;self.<strong>config</strong>&nbsp;and&nbsp;if&nbsp;that&nbsp;is<br>
+not&nbsp;True,&nbsp;we&nbsp;will&nbsp;also&nbsp;allow&nbsp;buildbot_config&nbsp;to&nbsp;determine<br>
+for&nbsp;us.&nbsp;Failing&nbsp;all&nbsp;of&nbsp;that,&nbsp;we&nbsp;default&nbsp;to&nbsp;False.<br>
+Note,&nbsp;dependancy&nbsp;on&nbsp;buildbot_config&nbsp;is&nbsp;being&nbsp;deprecated.<br>
+Putting&nbsp;everything&nbsp;in&nbsp;self.<strong>config</strong>&nbsp;is&nbsp;the&nbsp;preference.</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-read_buildbot_config"><strong>read_buildbot_config</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-sendchange"><strong>sendchange</strong></a>(self, downloadables<font color="#909090">=None</font>, branch<font color="#909090">=None</font>, username<font color="#909090">='sendchange-unittest'</font>, sendchange_props<font color="#909090">=None</font>)</dt><dd><tt>Generic&nbsp;sendchange,&nbsp;currently&nbsp;b2g-&nbsp;and&nbsp;unittest-specific.</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-set_buildbot_property"><strong>set_buildbot_property</strong></a>(self, prop_name, prop_value, write_to_file<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-tryserver_email"><strong>tryserver_email</strong></a>(self)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="mozharness.mozilla.buildbot.html#BuildbotMixin">mozharness.mozilla.buildbot.BuildbotMixin</a>:<br>
+<dl><dt><strong>buildbot_config</strong> = None</dl>
+
+<dl><dt><strong>buildbot_properties</strong> = {}</dl>
+
+<dl><dt><strong>worst_buildbot_status</strong> = 'SUCCESS'</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.mozilla.testing.device.html#SUTDeviceMozdeviceMixin">mozharness.mozilla.testing.device.SUTDeviceMozdeviceMixin</a>:<br>
+<dl><dt><a name="PandaTalosTest-get_logcat"><strong>get_logcat</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-query_devicemanager"><strong>query_devicemanager</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-query_file"><strong>query_file</strong></a>(self, filename)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-set_device_epoch_time"><strong>set_device_epoch_time</strong></a>(self, timestamp<font color="#909090">=1423677609</font>)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="mozharness.mozilla.testing.device.html#SUTDeviceMozdeviceMixin">mozharness.mozilla.testing.device.SUTDeviceMozdeviceMixin</a>:<br>
+<dl><dt><strong>dm</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.mozilla.testing.device.html#SUTDeviceHandler">mozharness.mozilla.testing.device.SUTDeviceHandler</a>:<br>
+<dl><dt><a name="PandaTalosTest-check_device"><strong>check_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-cleanup_device"><strong>cleanup_device</strong></a>(self, reboot<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-install_app"><strong>install_app</strong></a>(self, file_path)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-ping_device"><strong>ping_device</strong></a>(self)</dt><dd><tt>#&nbsp;maintenance&nbsp;{{{2</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-query_device_root"><strong>query_device_root</strong></a>(self, strict<font color="#909090">=False</font>)</dt><dd><tt>#&nbsp;device&nbsp;calls&nbsp;{{{2</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-query_device_time"><strong>query_device_time</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-reboot_device"><strong>reboot_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-remove_etc_hosts"><strong>remove_etc_hosts</strong></a>(self, hosts_file<font color="#909090">='/system/etc/hosts'</font>)</dt><dd><tt>#&nbsp;device&nbsp;type&nbsp;specific&nbsp;{{{2</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-set_device_time"><strong>set_device_time</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-wait_for_device"><strong>wait_for_device</strong></a>(self, interval<font color="#909090">=60</font>, max_attempts<font color="#909090">=20</font>)</dt></dl>
+
+<hr>
+Methods inherited from <a href="mozharness.mozilla.testing.device.html#BaseDeviceHandler">mozharness.mozilla.testing.device.BaseDeviceHandler</a>:<br>
+<dl><dt><a name="PandaTalosTest-add_device_flag"><strong>add_device_flag</strong></a>(self, flag)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-query_device_id"><strong>query_device_id</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-query_download_filename"><strong>query_download_filename</strong></a>(self, file_id<font color="#909090">=None</font>)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="mozharness.mozilla.testing.device.html#BaseDeviceHandler">mozharness.mozilla.testing.device.BaseDeviceHandler</a>:<br>
+<dl><dt><strong>default_port</strong> = None</dl>
+
+<dl><dt><strong>device_flags</strong> = []</dl>
+
+<dl><dt><strong>device_id</strong> = None</dl>
+
+<dl><dt><strong>device_root</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><a name="PandaTalosTest-chdir"><strong>chdir</strong></a>(self, dir_name)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-chmod"><strong>chmod</strong></a>(self, path, mode)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-copyfile"><strong>copyfile</strong></a>(self, src, dest, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, copystat<font color="#909090">=False</font>, compress<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-copytree"><strong>copytree</strong></a>(self, src, dest, overwrite<font color="#909090">='no_overwrite'</font>, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>an&nbsp;implementation&nbsp;of&nbsp;shutil.copytree&nbsp;however&nbsp;it&nbsp;allows&nbsp;for<br>
+dest&nbsp;to&nbsp;exist&nbsp;and&nbsp;implements&nbsp;different&nbsp;overwrite&nbsp;levels.<br>
+overwrite&nbsp;uses:<br>
+'no_overwrite'&nbsp;will&nbsp;keep&nbsp;all(any)&nbsp;existing&nbsp;files&nbsp;in&nbsp;destination&nbsp;tree<br>
+'overwrite_if_exists'&nbsp;will&nbsp;only&nbsp;overwrite&nbsp;destination&nbsp;paths&nbsp;that&nbsp;have<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;same&nbsp;path&nbsp;names&nbsp;relative&nbsp;to&nbsp;the&nbsp;root&nbsp;of&nbsp;the&nbsp;src&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destination&nbsp;tree<br>
+'clobber'&nbsp;will&nbsp;replace&nbsp;the&nbsp;whole&nbsp;destination&nbsp;tree(clobber)&nbsp;if&nbsp;it&nbsp;exists</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-get_filename_from_url"><strong>get_filename_from_url</strong></a>(self, url)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-get_output_from_command"><strong>get_output_from_command</strong></a>(self, command, cwd<font color="#909090">=None</font>, halt_on_failure<font color="#909090">=False</font>, env<font color="#909090">=None</font>, silent<font color="#909090">=False</font>, log_level<font color="#909090">='info'</font>, tmpfile_base_path<font color="#909090">='tmpfile'</font>, return_type<font color="#909090">='output'</font>, save_tmpfiles<font color="#909090">=False</font>, throw_exception<font color="#909090">=False</font>, fatal_exit_code<font color="#909090">=2</font>, ignore_errors<font color="#909090">=False</font>, success_codes<font color="#909090">=None</font>)</dt><dd><tt>Similar&nbsp;to&nbsp;run_command,&nbsp;but&nbsp;where&nbsp;run_command&nbsp;is&nbsp;an<br>
+os.system(command)&nbsp;analog,&nbsp;get_output_from_command&nbsp;is&nbsp;a&nbsp;`command`<br>
+analog.<br>
+&nbsp;<br>
+Less&nbsp;error&nbsp;checking&nbsp;by&nbsp;design,&nbsp;though&nbsp;if&nbsp;we&nbsp;figure&nbsp;out&nbsp;how&nbsp;to<br>
+do&nbsp;it&nbsp;without&nbsp;borking&nbsp;the&nbsp;output,&nbsp;great.<br>
+&nbsp;<br>
+TODO:&nbsp;binary&nbsp;mode?&nbsp;silent&nbsp;is&nbsp;kinda&nbsp;like&nbsp;that.<br>
+TODO:&nbsp;since&nbsp;p.wait()&nbsp;can&nbsp;take&nbsp;a&nbsp;long&nbsp;time,&nbsp;optionally&nbsp;log&nbsp;something<br>
+every&nbsp;N&nbsp;seconds?<br>
+TODO:&nbsp;optionally&nbsp;only&nbsp;keep&nbsp;the&nbsp;first&nbsp;or&nbsp;last&nbsp;(N)&nbsp;line(s)&nbsp;of&nbsp;output?<br>
+TODO:&nbsp;optionally&nbsp;only&nbsp;return&nbsp;the&nbsp;tmp_stdout_filename?<br>
+&nbsp;<br>
+ignore_errors=True&nbsp;is&nbsp;for&nbsp;the&nbsp;case&nbsp;where&nbsp;a&nbsp;command&nbsp;might&nbsp;produce&nbsp;standard<br>
+error&nbsp;output,&nbsp;but&nbsp;you&nbsp;don't&nbsp;particularly&nbsp;care;&nbsp;setting&nbsp;to&nbsp;True&nbsp;will<br>
+cause&nbsp;standard&nbsp;error&nbsp;to&nbsp;be&nbsp;logged&nbsp;at&nbsp;DEBUG&nbsp;rather&nbsp;than&nbsp;ERROR</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-mkdir_p"><strong>mkdir_p</strong></a>(self, path, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Returns&nbsp;None&nbsp;for&nbsp;success,&nbsp;not&nbsp;None&nbsp;for&nbsp;failure</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-move"><strong>move</strong></a>(self, src, dest, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-opened"><strong>opened</strong></a>(*args, **kwds)</dt><dd><tt>Returns&nbsp;an&nbsp;open&nbsp;file,&nbsp;error&nbsp;pair,&nbsp;for&nbsp;use&nbsp;in&nbsp;a&nbsp;'with'&nbsp;statement:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;<a href="#PandaTalosTest-opened">opened</a>("file.txt")&nbsp;as&nbsp;(fh,&nbsp;err):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;err:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#PandaTalosTest-log">log</a>("badness")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;line&nbsp;in&nbsp;fh:&nbsp;...</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-query_env"><strong>query_env</strong></a>(self, partial_env<font color="#909090">=None</font>, replace_dict<font color="#909090">=None</font>, purge_env<font color="#909090">=()</font>, set_self_env<font color="#909090">=None</font>, log_level<font color="#909090">='debug'</font>)</dt><dd><tt>Environment&nbsp;query/generation&nbsp;method.<br>
+&nbsp;<br>
+The&nbsp;default,&nbsp;<a href="#PandaTalosTest-query_env">query_env</a>(),&nbsp;will&nbsp;look&nbsp;for&nbsp;self.<strong>config</strong>['env']<br>
+and&nbsp;replace&nbsp;any&nbsp;special&nbsp;strings&nbsp;in&nbsp;there&nbsp;(&nbsp;%(PATH)s&nbsp;).<br>
+It&nbsp;will&nbsp;then&nbsp;store&nbsp;it&nbsp;as&nbsp;self.<strong>env</strong>&nbsp;for&nbsp;speeding&nbsp;things&nbsp;up&nbsp;later.<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;specify&nbsp;partial_env,&nbsp;partial_env&nbsp;will&nbsp;be&nbsp;used&nbsp;instead&nbsp;of<br>
+self.<strong>config</strong>['env'],&nbsp;and&nbsp;we&nbsp;don't&nbsp;save&nbsp;self.<strong>env</strong>&nbsp;as&nbsp;it's&nbsp;a&nbsp;one-off.</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-query_exe"><strong>query_exe</strong></a>(self, exe_name, exe_dict<font color="#909090">='exes'</font>, default<font color="#909090">=None</font>, return_type<font color="#909090">=None</font>, error_level<font color="#909090">='fatal'</font>)</dt><dd><tt>One&nbsp;way&nbsp;to&nbsp;work&nbsp;around&nbsp;PATH&nbsp;rewrites.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;return&nbsp;exe_name,&nbsp;and&nbsp;we'll&nbsp;fall&nbsp;through&nbsp;to&nbsp;searching<br>
+os.environ["PATH"].<br>
+However,&nbsp;if&nbsp;self.<strong>config</strong>[exe_dict][exe_name]&nbsp;exists,&nbsp;return&nbsp;that.<br>
+This&nbsp;lets&nbsp;us&nbsp;override&nbsp;exe&nbsp;paths&nbsp;via&nbsp;config&nbsp;file.<br>
+&nbsp;<br>
+'return_type'&nbsp;can&nbsp;be&nbsp;None&nbsp;(don't&nbsp;do&nbsp;anything&nbsp;to&nbsp;the&nbsp;value),<br>
+'list'&nbsp;(return&nbsp;a&nbsp;list),&nbsp;or&nbsp;'string'&nbsp;(return&nbsp;a&nbsp;string).<br>
+&nbsp;<br>
+If&nbsp;we&nbsp;need&nbsp;runtime&nbsp;setting,&nbsp;we&nbsp;can&nbsp;build&nbsp;in&nbsp;self.<strong>exes</strong>&nbsp;support&nbsp;later.</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-query_msys_path"><strong>query_msys_path</strong></a>(self, path)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-read_from_file"><strong>read_from_file</strong></a>(self, file_path, verbose<font color="#909090">=True</font>, open_mode<font color="#909090">='r'</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Reads&nbsp;from&nbsp;file_path.<br>
+&nbsp;<br>
+Returns&nbsp;contents&nbsp;if&nbsp;successful,&nbsp;None&nbsp;if&nbsp;not.</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-retry"><strong>retry</strong></a>(self, action, attempts<font color="#909090">=None</font>, sleeptime<font color="#909090">=60</font>, max_sleeptime<font color="#909090">=300</font>, retry_exceptions<font color="#909090">=(&lt;type 'exceptions.Exception'&gt;,)</font>, good_statuses<font color="#909090">=None</font>, cleanup<font color="#909090">=None</font>, error_level<font color="#909090">='error'</font>, error_message<font color="#909090">='%(action)s failed after %(attempts)d tries!'</font>, failure_status<font color="#909090">=-1</font>, log_level<font color="#909090">='info'</font>, args<font color="#909090">=()</font>, kwargs<font color="#909090">={}</font>)</dt><dd><tt>Generic&nbsp;retry&nbsp;command.<br>
+Ported&nbsp;from&nbsp;tools&nbsp;util.retry.<br>
+&nbsp;<br>
+Call&nbsp;`action'&nbsp;a&nbsp;maximum&nbsp;of&nbsp;`attempts'&nbsp;times&nbsp;until&nbsp;it&nbsp;succeeds,<br>
+defaulting&nbsp;to&nbsp;self.<strong>config</strong>.get('global_retries',&nbsp;5).<br>
+&nbsp;<br>
+`sleeptime'&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;seconds&nbsp;to&nbsp;wait&nbsp;between&nbsp;attempts,<br>
+defaulting&nbsp;to&nbsp;60&nbsp;and&nbsp;doubling&nbsp;each&nbsp;retry&nbsp;attempt,&nbsp;to&nbsp;a&nbsp;maximum&nbsp;of<br>
+`max_sleeptime'.<br>
+&nbsp;<br>
+`retry_exceptions'&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;Exceptions&nbsp;that&nbsp;should&nbsp;be&nbsp;caught.<br>
+If&nbsp;exceptions&nbsp;other&nbsp;than&nbsp;those&nbsp;listed&nbsp;in&nbsp;`retry_exceptions'&nbsp;are<br>
+raised&nbsp;from&nbsp;`action',&nbsp;they&nbsp;will&nbsp;be&nbsp;raised&nbsp;immediately.<br>
+&nbsp;<br>
+`good_statuses'&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;return&nbsp;values&nbsp;which,&nbsp;if&nbsp;specified,<br>
+will&nbsp;result&nbsp;in&nbsp;retrying&nbsp;if&nbsp;the&nbsp;return&nbsp;value&nbsp;isn't&nbsp;listed.<br>
+&nbsp;<br>
+If&nbsp;`cleanup'&nbsp;is&nbsp;provided&nbsp;and&nbsp;callable&nbsp;it&nbsp;will&nbsp;be&nbsp;called&nbsp;immediately<br>
+after&nbsp;an&nbsp;Exception&nbsp;is&nbsp;caught.&nbsp;&nbsp;No&nbsp;arguments&nbsp;will&nbsp;be&nbsp;passed&nbsp;to&nbsp;it.<br>
+If&nbsp;your&nbsp;cleanup&nbsp;function&nbsp;requires&nbsp;arguments&nbsp;it&nbsp;is&nbsp;recommended&nbsp;that<br>
+you&nbsp;wrap&nbsp;it&nbsp;in&nbsp;an&nbsp;argumentless&nbsp;function.<br>
+&nbsp;<br>
+`args'&nbsp;and&nbsp;`kwargs'&nbsp;are&nbsp;a&nbsp;tuple&nbsp;and&nbsp;dict&nbsp;of&nbsp;arguments&nbsp;to&nbsp;pass&nbsp;onto<br>
+to&nbsp;`callable'.</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-rmtree"><strong>rmtree</strong></a>(self, path, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=-1</font>)</dt><dd><tt>Returns&nbsp;None&nbsp;for&nbsp;success,&nbsp;not&nbsp;None&nbsp;for&nbsp;failure</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-run_command"><strong>run_command</strong></a>(self, command, cwd<font color="#909090">=None</font>, error_list<font color="#909090">=None</font>, halt_on_failure<font color="#909090">=False</font>, success_codes<font color="#909090">=None</font>, env<font color="#909090">=None</font>, partial_env<font color="#909090">=None</font>, return_type<font color="#909090">='status'</font>, throw_exception<font color="#909090">=False</font>, output_parser<font color="#909090">=None</font>, output_timeout<font color="#909090">=None</font>, fatal_exit_code<font color="#909090">=2</font>, error_level<font color="#909090">='error'</font>, **kwargs)</dt><dd><tt>Run&nbsp;a&nbsp;command,&nbsp;with&nbsp;logging&nbsp;and&nbsp;error&nbsp;parsing.<br>
+&nbsp;<br>
+output_timeout&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;seconds&nbsp;without&nbsp;output&nbsp;before&nbsp;the&nbsp;process<br>
+is&nbsp;killed.<br>
+&nbsp;<br>
+TODO:&nbsp;context_lines<br>
+&nbsp;<br>
+output_parser&nbsp;lets&nbsp;you&nbsp;provide&nbsp;an&nbsp;instance&nbsp;of&nbsp;your&nbsp;own&nbsp;OutputParser<br>
+subclass,&nbsp;or&nbsp;pass&nbsp;None&nbsp;to&nbsp;use&nbsp;OutputParser.<br>
+&nbsp;<br>
+error_list&nbsp;example:<br>
+[{'regex':&nbsp;re.compile('^Error:&nbsp;LOL&nbsp;J/K'),&nbsp;level=IGNORE},<br>
+&nbsp;{'regex':&nbsp;re.compile('^Error:'),&nbsp;level=ERROR,&nbsp;contextLines='5:5'},<br>
+&nbsp;{'substr':&nbsp;'THE&nbsp;WORLD&nbsp;IS&nbsp;ENDING',&nbsp;level=FATAL,&nbsp;contextLines='20:'}<br>
+]<br>
+(context_lines&nbsp;isn't&nbsp;written&nbsp;yet)</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-unpack"><strong>unpack</strong></a>(self, filename, extract_to)</dt><dd><tt>This&nbsp;method&nbsp;allows&nbsp;us&nbsp;to&nbsp;extract&nbsp;a&nbsp;file&nbsp;regardless&nbsp;of&nbsp;its&nbsp;extension</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-which"><strong>which</strong></a>(self, program)</dt><dd><tt>OS&nbsp;independent&nbsp;implementation&nbsp;of&nbsp;Unix's&nbsp;which&nbsp;command<br>
+Takes&nbsp;in&nbsp;a&nbsp;program&nbsp;name<br>
+Returns&nbsp;path&nbsp;to&nbsp;executable&nbsp;or&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-write_to_file"><strong>write_to_file</strong></a>(self, file_path, contents, verbose<font color="#909090">=True</font>, open_mode<font color="#909090">='w'</font>, create_parent_dir<font color="#909090">=False</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Write&nbsp;contents&nbsp;to&nbsp;file_path.<br>
+&nbsp;<br>
+This&nbsp;doesn't&nbsp;currently&nbsp;create&nbsp;the&nbsp;parent_dir&nbsp;or&nbsp;translate&nbsp;into<br>
+abs_path;&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;done&nbsp;beforehand,&nbsp;since&nbsp;ScriptMixin&nbsp;doesn't<br>
+necessarily&nbsp;have&nbsp;access&nbsp;to&nbsp;<a href="#PandaTalosTest-query_abs_dirs">query_abs_dirs</a>().<br>
+&nbsp;<br>
+Returns&nbsp;file_path&nbsp;if&nbsp;successful,&nbsp;None&nbsp;if&nbsp;not.</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><strong>env</strong> = None</dl>
+
+<dl><dt><strong>script_obj</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>:<br>
+<dl><dt><a name="PandaTalosTest-critical"><strong>critical</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-debug"><strong>debug</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-error"><strong>error</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-exception"><strong>exception</strong></a>(self, message<font color="#909090">=None</font>, level<font color="#909090">='error'</font>)</dt><dd><tt>#&nbsp;Copying&nbsp;Bear's&nbsp;dumpException():<br>
+#&nbsp;https://hg.mozilla.org/build/tools/annotate/1485f23c38e0/sut_tools/sut_lib.py#l23</tt></dd></dl>
+
+<dl><dt><a name="PandaTalosTest-fatal"><strong>fatal</strong></a>(self, message, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-info"><strong>info</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-log"><strong>log</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-warning"><strong>warning</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="PandaTalosTest-worst_level"><strong>worst_level</strong></a>(self, target_level, existing_level, levels<font color="#909090">=None</font>)</dt><dd><tt>returns&nbsp;either&nbsp;existing_level&nbsp;or&nbsp;target&nbsp;level.<br>
+This&nbsp;depends&nbsp;on&nbsp;which&nbsp;is&nbsp;closest&nbsp;to&nbsp;levels[0]<br>
+By&nbsp;default,&nbsp;levels&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;log&nbsp;levels</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>FATAL</strong> = 'fatal'<br>
+<strong>INFO</strong> = 'info'<br>
+<strong>SUITE_CATEGORIES</strong> = ['talos']<br>
+<strong>TalosErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'warning', 'regex': &lt;_sre.SRE_Pattern object at 0xb7e652c0&gt;}, {'level': 'error', 'substr': 'Traceback (most recent call last)'}, {'level': 'error', 'substr': 'SyntaxError: '}, {'level': 'error', 'substr': 'TypeError: '}, {'level': 'error', 'substr': 'NameError: '}, {'level': 'error', 'substr': 'ZeroDivisionError: '}, {'level': 'critical', 'regex': &lt;_sre.SRE_Pattern object at 0x82f2180&gt;}, {'level': 'critical', 'regex': &lt;_sre.SRE_Pattern object at 0xb7dd1a20&gt;}, {'level': 'debug', 'regex': &lt;_sre.SRE_Pattern object at 0x83e7320&gt;}, {'level': 'critical', 'substr': 'FAIL: Graph server unreachable'}, {'level': 'critical', 'substr': 'FAIL: Busted:'}, {'level': 'error', 'substr': 'FAIL: failed to cleanup'}, {'level': 'critical', 'substr': 'erfConfigurator.py: Unknown error'}, {'level': 'critical', 'substr': 'talosError'}, {'level': 'critical', 'regex': &lt;_sre.SRE_Pattern object at 0x83da1f8&gt;}, {'explanation': 'Most likely the browser failed to launch, or the test was otherwise unsuccessful in even starting.', 'level': 'critical', 'substr': "No such file or directory: 'browser_output.txt'"}]<br>
+<strong>blobupload_config_options</strong> = [[['--blob-upload-branch'], {'dest': 'blob_upload_branch', 'help': "Branch for blob server's metadata"}], [['--blob-upload-server'], {'action': 'extend', 'dest': 'blob_upload_servers', 'help': "Blob servers's location"}]]<br>
+<strong>testing_config_options</strong> = [[['--installer-url'], {'action': 'store', 'default': None, 'dest': 'installer_url', 'help': 'URL to the installer to install'}], [['--installer-path'], {'action': 'store', 'default': None, 'dest': 'installer_path', 'help': 'Path to the installer to install.  This is set automatically if run with --download-and-extract.'}], [['--binary-path'], {'action': 'store', 'default': None, 'dest': 'binary_path', 'help': 'Path to installed binary.  This is set automatically if run with --install.'}], [['--exe-suffix'], {'action': 'store', 'default': None, 'dest': 'exe_suffix', 'help': 'Executable suffix for binaries on this platform'}], [['--test-url'], {'action': 'store', 'default': None, 'dest': 'test_url', 'help': 'URL to the zip file containing the actual tests'}], [['--jsshell-url'], {'action': 'store', 'default': None, 'dest': 'jsshell_url', 'help': 'URL to the jsshell to install'}], [['--download-symbols'], {'action': 'store', 'choices': ['ondemand', 'true'], 'dest': 'download_symbols', 'help': 'Download and extract crash reporter symbols.', 'type': 'choice'}], [['--venv-path', '--virtualenv-path'], {'action': 'store', 'default': 'venv', 'dest': 'virtualenv_path', 'help': 'Specify the path to the virtualenv top level directory'}], [['--virtualenv'], {'action': 'store', 'dest': 'virtualenv', 'help': 'Specify the virtualenv executable to use'}], [['--find-links'], {'action': 'extend', 'dest': 'find_links', 'help': 'URL to look for packages at'}], [['--pip-index'], {'action': 'store_true', 'default': True, 'dest': 'pip_index', 'help': 'Use pip indexes (default)'}], [['--no-pip-index'], {'action': 'store_false', 'dest': 'pip_index', 'help': "Don't use pip indexes"}]]</td></tr></table>
+</body></html>

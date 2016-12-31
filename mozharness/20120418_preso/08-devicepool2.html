@@ -1,0 +1,55 @@
+<html><head>
+<link rel="stylesheet" href="mh.css" type="text/css"/>
+</head><body>
+
+<ul>
+<h3>A brief overview of the device pool future</h3>
+
+<center><a href="2.jpg"><img src="2t.jpg"/></a></center>
+
+<ol><li>
+Buildbot master assigns a job to a build or test slave.
+</li><li>
+Buildbot slave runs mozharness script.
+</li><li>
+Mozharness script requests <i>n</i> number of free devices from device library.
+<ul><li>
+We don't currently have the ability to control multiple processes from a single mozharness script; that's still handwavey.
+  </li><li>
+We don't have the device library either.
+</li></ul></li><li>
+For each of these devices, make sure they're alive and good.
+<br /><br />
+<ul><li class="monospace">
+ping
+  </li><li class="monospace">
+writable sdcard if applicable
+  </li><li class="monospace">
+able to install a test app?
+  </li><li class="monospace">
+attempt to rescue if it's bad: reboot, format.
+  </li><li class="monospace">
+if it's not rescuable, return it to the library as "needs rescuing" and request another device.
+  </li><li class="monospace">
+We need to determine the course of action if we're unable to find <i>n</i> good devices.  Continue?  Retry later?
+</li></ul></li><li>
+Set up.  Create virtualenv, install app on devices, set up local web servers as needed.
+</li><li>
+Run tests in parallel across devices.  Logging should be separate and aggregated/summarized/reported later.
+</li><li>
+Report status on successful or test-failed jobs.
+<ul><li>
+We currently don't have the ability to report multiple statuses per buildbot job.
+</li></ul></li><li>
+If we had fewer devices than test suites, or if one or more test suites ended up in a RETRY scenario, initialize the devices again and run the tests that need running; report on those.
+</li><li>
+Post-job device cleanup.  Return devices to library, with test status; mark suspect devices as such.
+</li><li>
+Post-job buildbot slave cleanup.  Kill errant daemons, reboot.
+</li></ol>
+
+<p>
+<a href="09-devicepool3.html">more thoughts on the device pool --&gt;</a><br />
+</p>
+
+</body></html>

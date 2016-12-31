@@ -1,0 +1,1138 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module device</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>device</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/testing/device.py">/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/testing/device.py</a></font></td></tr></table>
+    <p><tt>Interact&nbsp;with&nbsp;a&nbsp;device&nbsp;via&nbsp;ADB&nbsp;or&nbsp;SUT.<br>
+&nbsp;<br>
+This&nbsp;code&nbsp;is&nbsp;largely&nbsp;from<br>
+https://hg.mozilla.org/build/tools/file/default/sut_tools</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+<a href="subprocess.html">subprocess</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="time.html">time</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="device.html#DeviceMixin">DeviceMixin</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="exceptions.html#Exception">exceptions.Exception</a>(<a href="exceptions.html#BaseException">exceptions.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="device.html#DeviceException">DeviceException</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="device.html#BaseDeviceHandler">BaseDeviceHandler</a>(<a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>, <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="device.html#ADBDeviceHandler">ADBDeviceHandler</a>
+</font></dt><dt><font face="helvetica, arial"><a href="device.html#SUTDeviceHandler">SUTDeviceHandler</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="device.html#SUTDeviceMozdeviceMixin">SUTDeviceMozdeviceMixin</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="device.html#BaseDeviceHandler">BaseDeviceHandler</a>(<a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>, <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="device.html#ADBDeviceHandler">ADBDeviceHandler</a>
+</font></dt><dt><font face="helvetica, arial"><a href="device.html#SUTDeviceHandler">SUTDeviceHandler</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="device.html#SUTDeviceMozdeviceMixin">SUTDeviceMozdeviceMixin</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ADBDeviceHandler">class <strong>ADBDeviceHandler</strong></a>(<a href="device.html#BaseDeviceHandler">BaseDeviceHandler</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>#&nbsp;<a href="#ADBDeviceHandler">ADBDeviceHandler</a>&nbsp;{{{1<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="device.html#ADBDeviceHandler">ADBDeviceHandler</a></dd>
+<dd><a href="device.html#BaseDeviceHandler">BaseDeviceHandler</a></dd>
+<dd><a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a></dd>
+<dd><a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ADBDeviceHandler-__init__"><strong>__init__</strong></a>(self, **kwargs)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-check_device"><strong>check_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-cleanup_device"><strong>cleanup_device</strong></a>(self, reboot<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-connect_device"><strong>connect_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-disconnect_device"><strong>disconnect_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-install_app"><strong>install_app</strong></a>(self, file_path)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-ping_device"><strong>ping_device</strong></a>(self, auto_connect<font color="#909090">=False</font>, silent<font color="#909090">=False</font>)</dt><dd><tt>#&nbsp;maintenance&nbsp;{{{2</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-query_device_exe"><strong>query_device_exe</strong></a>(self, exe_name)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-query_device_file_exists"><strong>query_device_file_exists</strong></a>(self, file_name)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-query_device_id"><strong>query_device_id</strong></a>(self, auto_connect<font color="#909090">=True</font>)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-query_device_root"><strong>query_device_root</strong></a>(self, silent<font color="#909090">=False</font>)</dt><dd><tt>#&nbsp;device&nbsp;calls&nbsp;{{{2</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-query_device_time"><strong>query_device_time</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-reboot_device"><strong>reboot_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-remove_device_root"><strong>remove_device_root</strong></a>(self, error_level<font color="#909090">='error'</font>)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-remove_etc_hosts"><strong>remove_etc_hosts</strong></a>(self, hosts_file<font color="#909090">='/system/etc/hosts'</font>)</dt><dd><tt>#&nbsp;Device-type-specific.&nbsp;{{{2</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-set_device_time"><strong>set_device_time</strong></a>(self, device_time<font color="#909090">=None</font>, error_level<font color="#909090">='error'</font>)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-uninstall_app"><strong>uninstall_app</strong></a>(self, package_name, package_root<font color="#909090">='/data/data'</font>, error_level<font color="#909090">='error'</font>)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-wait_for_device"><strong>wait_for_device</strong></a>(self, interval<font color="#909090">=60</font>, max_attempts<font color="#909090">=20</font>)</dt><dd><tt>#&nbsp;TODO&nbsp;from&nbsp;here&nbsp;on&nbsp;down&nbsp;needs&nbsp;to&nbsp;be&nbsp;copied&nbsp;to&nbsp;Base+SUT</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="device.html#BaseDeviceHandler">BaseDeviceHandler</a>:<br>
+<dl><dt><a name="ADBDeviceHandler-add_device_flag"><strong>add_device_flag</strong></a>(self, flag)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-query_download_filename"><strong>query_download_filename</strong></a>(self, file_id<font color="#909090">=None</font>)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="device.html#BaseDeviceHandler">BaseDeviceHandler</a>:<br>
+<dl><dt><strong>default_port</strong> = None</dl>
+
+<dl><dt><strong>device_flags</strong> = []</dl>
+
+<dl><dt><strong>device_id</strong> = None</dl>
+
+<dl><dt><strong>device_root</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><a name="ADBDeviceHandler-chdir"><strong>chdir</strong></a>(self, dir_name)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-chmod"><strong>chmod</strong></a>(self, path, mode)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-copyfile"><strong>copyfile</strong></a>(self, src, dest, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, copystat<font color="#909090">=False</font>, compress<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-copytree"><strong>copytree</strong></a>(self, src, dest, overwrite<font color="#909090">='no_overwrite'</font>, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>an&nbsp;implementation&nbsp;of&nbsp;shutil.copytree&nbsp;however&nbsp;it&nbsp;allows&nbsp;for<br>
+dest&nbsp;to&nbsp;exist&nbsp;and&nbsp;implements&nbsp;different&nbsp;overwrite&nbsp;levels.<br>
+overwrite&nbsp;uses:<br>
+'no_overwrite'&nbsp;will&nbsp;keep&nbsp;all(any)&nbsp;existing&nbsp;files&nbsp;in&nbsp;destination&nbsp;tree<br>
+'overwrite_if_exists'&nbsp;will&nbsp;only&nbsp;overwrite&nbsp;destination&nbsp;paths&nbsp;that&nbsp;have<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;same&nbsp;path&nbsp;names&nbsp;relative&nbsp;to&nbsp;the&nbsp;root&nbsp;of&nbsp;the&nbsp;src&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destination&nbsp;tree<br>
+'clobber'&nbsp;will&nbsp;replace&nbsp;the&nbsp;whole&nbsp;destination&nbsp;tree(clobber)&nbsp;if&nbsp;it&nbsp;exists</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-download_file"><strong>download_file</strong></a>(self, url, file_name<font color="#909090">=None</font>, parent_dir<font color="#909090">=None</font>, create_parent_dir<font color="#909090">=True</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=3</font>, retry_config<font color="#909090">=None</font>)</dt><dd><tt>Python&nbsp;wget.</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-get_filename_from_url"><strong>get_filename_from_url</strong></a>(self, url)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-get_output_from_command"><strong>get_output_from_command</strong></a>(self, command, cwd<font color="#909090">=None</font>, halt_on_failure<font color="#909090">=False</font>, env<font color="#909090">=None</font>, silent<font color="#909090">=False</font>, log_level<font color="#909090">='info'</font>, tmpfile_base_path<font color="#909090">='tmpfile'</font>, return_type<font color="#909090">='output'</font>, save_tmpfiles<font color="#909090">=False</font>, throw_exception<font color="#909090">=False</font>, fatal_exit_code<font color="#909090">=2</font>, ignore_errors<font color="#909090">=False</font>, success_codes<font color="#909090">=None</font>)</dt><dd><tt>Similar&nbsp;to&nbsp;run_command,&nbsp;but&nbsp;where&nbsp;run_command&nbsp;is&nbsp;an<br>
+os.system(command)&nbsp;analog,&nbsp;get_output_from_command&nbsp;is&nbsp;a&nbsp;`command`<br>
+analog.<br>
+&nbsp;<br>
+Less&nbsp;error&nbsp;checking&nbsp;by&nbsp;design,&nbsp;though&nbsp;if&nbsp;we&nbsp;figure&nbsp;out&nbsp;how&nbsp;to<br>
+do&nbsp;it&nbsp;without&nbsp;borking&nbsp;the&nbsp;output,&nbsp;great.<br>
+&nbsp;<br>
+TODO:&nbsp;binary&nbsp;mode?&nbsp;silent&nbsp;is&nbsp;kinda&nbsp;like&nbsp;that.<br>
+TODO:&nbsp;since&nbsp;p.wait()&nbsp;can&nbsp;take&nbsp;a&nbsp;long&nbsp;time,&nbsp;optionally&nbsp;log&nbsp;something<br>
+every&nbsp;N&nbsp;seconds?<br>
+TODO:&nbsp;optionally&nbsp;only&nbsp;keep&nbsp;the&nbsp;first&nbsp;or&nbsp;last&nbsp;(N)&nbsp;line(s)&nbsp;of&nbsp;output?<br>
+TODO:&nbsp;optionally&nbsp;only&nbsp;return&nbsp;the&nbsp;tmp_stdout_filename?<br>
+&nbsp;<br>
+ignore_errors=True&nbsp;is&nbsp;for&nbsp;the&nbsp;case&nbsp;where&nbsp;a&nbsp;command&nbsp;might&nbsp;produce&nbsp;standard<br>
+error&nbsp;output,&nbsp;but&nbsp;you&nbsp;don't&nbsp;particularly&nbsp;care;&nbsp;setting&nbsp;to&nbsp;True&nbsp;will<br>
+cause&nbsp;standard&nbsp;error&nbsp;to&nbsp;be&nbsp;logged&nbsp;at&nbsp;DEBUG&nbsp;rather&nbsp;than&nbsp;ERROR</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-mkdir_p"><strong>mkdir_p</strong></a>(self, path, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Returns&nbsp;None&nbsp;for&nbsp;success,&nbsp;not&nbsp;None&nbsp;for&nbsp;failure</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-move"><strong>move</strong></a>(self, src, dest, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-opened"><strong>opened</strong></a>(*args, **kwds)</dt><dd><tt>Returns&nbsp;an&nbsp;open&nbsp;file,&nbsp;error&nbsp;pair,&nbsp;for&nbsp;use&nbsp;in&nbsp;a&nbsp;'with'&nbsp;statement:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;<a href="#ADBDeviceHandler-opened">opened</a>("file.txt")&nbsp;as&nbsp;(fh,&nbsp;err):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;err:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ADBDeviceHandler-log">log</a>("badness")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;line&nbsp;in&nbsp;fh:&nbsp;...</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-query_env"><strong>query_env</strong></a>(self, partial_env<font color="#909090">=None</font>, replace_dict<font color="#909090">=None</font>, purge_env<font color="#909090">=()</font>, set_self_env<font color="#909090">=None</font>, log_level<font color="#909090">='debug'</font>)</dt><dd><tt>Environment&nbsp;query/generation&nbsp;method.<br>
+&nbsp;<br>
+The&nbsp;default,&nbsp;<a href="#ADBDeviceHandler-query_env">query_env</a>(),&nbsp;will&nbsp;look&nbsp;for&nbsp;self.<strong>config</strong>['env']<br>
+and&nbsp;replace&nbsp;any&nbsp;special&nbsp;strings&nbsp;in&nbsp;there&nbsp;(&nbsp;%(PATH)s&nbsp;).<br>
+It&nbsp;will&nbsp;then&nbsp;store&nbsp;it&nbsp;as&nbsp;self.<strong>env</strong>&nbsp;for&nbsp;speeding&nbsp;things&nbsp;up&nbsp;later.<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;specify&nbsp;partial_env,&nbsp;partial_env&nbsp;will&nbsp;be&nbsp;used&nbsp;instead&nbsp;of<br>
+self.<strong>config</strong>['env'],&nbsp;and&nbsp;we&nbsp;don't&nbsp;save&nbsp;self.<strong>env</strong>&nbsp;as&nbsp;it's&nbsp;a&nbsp;one-off.</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-query_exe"><strong>query_exe</strong></a>(self, exe_name, exe_dict<font color="#909090">='exes'</font>, default<font color="#909090">=None</font>, return_type<font color="#909090">=None</font>, error_level<font color="#909090">='fatal'</font>)</dt><dd><tt>One&nbsp;way&nbsp;to&nbsp;work&nbsp;around&nbsp;PATH&nbsp;rewrites.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;return&nbsp;exe_name,&nbsp;and&nbsp;we'll&nbsp;fall&nbsp;through&nbsp;to&nbsp;searching<br>
+os.environ["PATH"].<br>
+However,&nbsp;if&nbsp;self.<strong>config</strong>[exe_dict][exe_name]&nbsp;exists,&nbsp;return&nbsp;that.<br>
+This&nbsp;lets&nbsp;us&nbsp;override&nbsp;exe&nbsp;paths&nbsp;via&nbsp;config&nbsp;file.<br>
+&nbsp;<br>
+'return_type'&nbsp;can&nbsp;be&nbsp;None&nbsp;(don't&nbsp;do&nbsp;anything&nbsp;to&nbsp;the&nbsp;value),<br>
+'list'&nbsp;(return&nbsp;a&nbsp;list),&nbsp;or&nbsp;'string'&nbsp;(return&nbsp;a&nbsp;string).<br>
+&nbsp;<br>
+If&nbsp;we&nbsp;need&nbsp;runtime&nbsp;setting,&nbsp;we&nbsp;can&nbsp;build&nbsp;in&nbsp;self.<strong>exes</strong>&nbsp;support&nbsp;later.</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-query_msys_path"><strong>query_msys_path</strong></a>(self, path)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-read_from_file"><strong>read_from_file</strong></a>(self, file_path, verbose<font color="#909090">=True</font>, open_mode<font color="#909090">='r'</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Reads&nbsp;from&nbsp;file_path.<br>
+&nbsp;<br>
+Returns&nbsp;contents&nbsp;if&nbsp;successful,&nbsp;None&nbsp;if&nbsp;not.</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-retry"><strong>retry</strong></a>(self, action, attempts<font color="#909090">=None</font>, sleeptime<font color="#909090">=60</font>, max_sleeptime<font color="#909090">=300</font>, retry_exceptions<font color="#909090">=(&lt;type 'exceptions.Exception'&gt;,)</font>, good_statuses<font color="#909090">=None</font>, cleanup<font color="#909090">=None</font>, error_level<font color="#909090">='error'</font>, error_message<font color="#909090">='%(action)s failed after %(attempts)d tries!'</font>, failure_status<font color="#909090">=-1</font>, log_level<font color="#909090">='info'</font>, args<font color="#909090">=()</font>, kwargs<font color="#909090">={}</font>)</dt><dd><tt>Generic&nbsp;retry&nbsp;command.<br>
+Ported&nbsp;from&nbsp;tools&nbsp;util.retry.<br>
+&nbsp;<br>
+Call&nbsp;`action'&nbsp;a&nbsp;maximum&nbsp;of&nbsp;`attempts'&nbsp;times&nbsp;until&nbsp;it&nbsp;succeeds,<br>
+defaulting&nbsp;to&nbsp;self.<strong>config</strong>.get('global_retries',&nbsp;5).<br>
+&nbsp;<br>
+`sleeptime'&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;seconds&nbsp;to&nbsp;wait&nbsp;between&nbsp;attempts,<br>
+defaulting&nbsp;to&nbsp;60&nbsp;and&nbsp;doubling&nbsp;each&nbsp;retry&nbsp;attempt,&nbsp;to&nbsp;a&nbsp;maximum&nbsp;of<br>
+`max_sleeptime'.<br>
+&nbsp;<br>
+`retry_exceptions'&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;Exceptions&nbsp;that&nbsp;should&nbsp;be&nbsp;caught.<br>
+If&nbsp;exceptions&nbsp;other&nbsp;than&nbsp;those&nbsp;listed&nbsp;in&nbsp;`retry_exceptions'&nbsp;are<br>
+raised&nbsp;from&nbsp;`action',&nbsp;they&nbsp;will&nbsp;be&nbsp;raised&nbsp;immediately.<br>
+&nbsp;<br>
+`good_statuses'&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;return&nbsp;values&nbsp;which,&nbsp;if&nbsp;specified,<br>
+will&nbsp;result&nbsp;in&nbsp;retrying&nbsp;if&nbsp;the&nbsp;return&nbsp;value&nbsp;isn't&nbsp;listed.<br>
+&nbsp;<br>
+If&nbsp;`cleanup'&nbsp;is&nbsp;provided&nbsp;and&nbsp;callable&nbsp;it&nbsp;will&nbsp;be&nbsp;called&nbsp;immediately<br>
+after&nbsp;an&nbsp;<a href="exceptions.html#Exception">Exception</a>&nbsp;is&nbsp;caught.&nbsp;&nbsp;No&nbsp;arguments&nbsp;will&nbsp;be&nbsp;passed&nbsp;to&nbsp;it.<br>
+If&nbsp;your&nbsp;cleanup&nbsp;function&nbsp;requires&nbsp;arguments&nbsp;it&nbsp;is&nbsp;recommended&nbsp;that<br>
+you&nbsp;wrap&nbsp;it&nbsp;in&nbsp;an&nbsp;argumentless&nbsp;function.<br>
+&nbsp;<br>
+`args'&nbsp;and&nbsp;`kwargs'&nbsp;are&nbsp;a&nbsp;tuple&nbsp;and&nbsp;dict&nbsp;of&nbsp;arguments&nbsp;to&nbsp;pass&nbsp;onto<br>
+to&nbsp;`callable'.</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-rmtree"><strong>rmtree</strong></a>(self, path, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=-1</font>)</dt><dd><tt>Returns&nbsp;None&nbsp;for&nbsp;success,&nbsp;not&nbsp;None&nbsp;for&nbsp;failure</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-run_command"><strong>run_command</strong></a>(self, command, cwd<font color="#909090">=None</font>, error_list<font color="#909090">=None</font>, halt_on_failure<font color="#909090">=False</font>, success_codes<font color="#909090">=None</font>, env<font color="#909090">=None</font>, partial_env<font color="#909090">=None</font>, return_type<font color="#909090">='status'</font>, throw_exception<font color="#909090">=False</font>, output_parser<font color="#909090">=None</font>, output_timeout<font color="#909090">=None</font>, fatal_exit_code<font color="#909090">=2</font>, error_level<font color="#909090">='error'</font>, **kwargs)</dt><dd><tt>Run&nbsp;a&nbsp;command,&nbsp;with&nbsp;logging&nbsp;and&nbsp;error&nbsp;parsing.<br>
+&nbsp;<br>
+output_timeout&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;seconds&nbsp;without&nbsp;output&nbsp;before&nbsp;the&nbsp;process<br>
+is&nbsp;killed.<br>
+&nbsp;<br>
+TODO:&nbsp;context_lines<br>
+&nbsp;<br>
+output_parser&nbsp;lets&nbsp;you&nbsp;provide&nbsp;an&nbsp;instance&nbsp;of&nbsp;your&nbsp;own&nbsp;OutputParser<br>
+subclass,&nbsp;or&nbsp;pass&nbsp;None&nbsp;to&nbsp;use&nbsp;OutputParser.<br>
+&nbsp;<br>
+error_list&nbsp;example:<br>
+[{'regex':&nbsp;re.compile('^Error:&nbsp;LOL&nbsp;J/K'),&nbsp;level=IGNORE},<br>
+&nbsp;{'regex':&nbsp;re.compile('^Error:'),&nbsp;level=ERROR,&nbsp;contextLines='5:5'},<br>
+&nbsp;{'substr':&nbsp;'THE&nbsp;WORLD&nbsp;IS&nbsp;ENDING',&nbsp;level=FATAL,&nbsp;contextLines='20:'}<br>
+]<br>
+(context_lines&nbsp;isn't&nbsp;written&nbsp;yet)</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-unpack"><strong>unpack</strong></a>(self, filename, extract_to)</dt><dd><tt>This&nbsp;method&nbsp;allows&nbsp;us&nbsp;to&nbsp;extract&nbsp;a&nbsp;file&nbsp;regardless&nbsp;of&nbsp;its&nbsp;extension</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-which"><strong>which</strong></a>(self, program)</dt><dd><tt>OS&nbsp;independent&nbsp;implementation&nbsp;of&nbsp;Unix's&nbsp;which&nbsp;command<br>
+Takes&nbsp;in&nbsp;a&nbsp;program&nbsp;name<br>
+Returns&nbsp;path&nbsp;to&nbsp;executable&nbsp;or&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-write_to_file"><strong>write_to_file</strong></a>(self, file_path, contents, verbose<font color="#909090">=True</font>, open_mode<font color="#909090">='w'</font>, create_parent_dir<font color="#909090">=False</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Write&nbsp;contents&nbsp;to&nbsp;file_path.<br>
+&nbsp;<br>
+This&nbsp;doesn't&nbsp;currently&nbsp;create&nbsp;the&nbsp;parent_dir&nbsp;or&nbsp;translate&nbsp;into<br>
+abs_path;&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;done&nbsp;beforehand,&nbsp;since&nbsp;<a href="mozharness.base.script.html#ScriptMixin">ScriptMixin</a>&nbsp;doesn't<br>
+necessarily&nbsp;have&nbsp;access&nbsp;to&nbsp;query_abs_dirs().<br>
+&nbsp;<br>
+Returns&nbsp;file_path&nbsp;if&nbsp;successful,&nbsp;None&nbsp;if&nbsp;not.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><strong>env</strong> = None</dl>
+
+<dl><dt><strong>script_obj</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>:<br>
+<dl><dt><a name="ADBDeviceHandler-critical"><strong>critical</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-debug"><strong>debug</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-error"><strong>error</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-exception"><strong>exception</strong></a>(self, message<font color="#909090">=None</font>, level<font color="#909090">='error'</font>)</dt><dd><tt>#&nbsp;Copying&nbsp;Bear's&nbsp;dumpException():<br>
+#&nbsp;https://hg.mozilla.org/build/tools/annotate/1485f23c38e0/sut_tools/sut_lib.py#l23</tt></dd></dl>
+
+<dl><dt><a name="ADBDeviceHandler-fatal"><strong>fatal</strong></a>(self, message, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-info"><strong>info</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-log"><strong>log</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-warning"><strong>warning</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="ADBDeviceHandler-worst_level"><strong>worst_level</strong></a>(self, target_level, existing_level, levels<font color="#909090">=None</font>)</dt><dd><tt>returns&nbsp;either&nbsp;existing_level&nbsp;or&nbsp;target&nbsp;level.<br>
+This&nbsp;depends&nbsp;on&nbsp;which&nbsp;is&nbsp;closest&nbsp;to&nbsp;levels[0]<br>
+By&nbsp;default,&nbsp;levels&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;log&nbsp;levels</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BaseDeviceHandler">class <strong>BaseDeviceHandler</strong></a>(<a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>, <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>#&nbsp;<a href="#BaseDeviceHandler">BaseDeviceHandler</a>&nbsp;{{{1<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="device.html#BaseDeviceHandler">BaseDeviceHandler</a></dd>
+<dd><a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a></dd>
+<dd><a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="BaseDeviceHandler-__init__"><strong>__init__</strong></a>(self, log_obj<font color="#909090">=None</font>, config<font color="#909090">=None</font>, script_obj<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-add_device_flag"><strong>add_device_flag</strong></a>(self, flag)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-check_device"><strong>check_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-cleanup_device"><strong>cleanup_device</strong></a>(self, reboot<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-install_app"><strong>install_app</strong></a>(self, file_path)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-ping_device"><strong>ping_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-query_device_id"><strong>query_device_id</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-query_device_root"><strong>query_device_root</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-query_download_filename"><strong>query_download_filename</strong></a>(self, file_id<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-reboot_device"><strong>reboot_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-wait_for_device"><strong>wait_for_device</strong></a>(self, interval<font color="#909090">=60</font>, max_attempts<font color="#909090">=20</font>)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>default_port</strong> = None</dl>
+
+<dl><dt><strong>device_flags</strong> = []</dl>
+
+<dl><dt><strong>device_id</strong> = None</dl>
+
+<dl><dt><strong>device_root</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><a name="BaseDeviceHandler-chdir"><strong>chdir</strong></a>(self, dir_name)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-chmod"><strong>chmod</strong></a>(self, path, mode)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-copyfile"><strong>copyfile</strong></a>(self, src, dest, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, copystat<font color="#909090">=False</font>, compress<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-copytree"><strong>copytree</strong></a>(self, src, dest, overwrite<font color="#909090">='no_overwrite'</font>, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>an&nbsp;implementation&nbsp;of&nbsp;shutil.copytree&nbsp;however&nbsp;it&nbsp;allows&nbsp;for<br>
+dest&nbsp;to&nbsp;exist&nbsp;and&nbsp;implements&nbsp;different&nbsp;overwrite&nbsp;levels.<br>
+overwrite&nbsp;uses:<br>
+'no_overwrite'&nbsp;will&nbsp;keep&nbsp;all(any)&nbsp;existing&nbsp;files&nbsp;in&nbsp;destination&nbsp;tree<br>
+'overwrite_if_exists'&nbsp;will&nbsp;only&nbsp;overwrite&nbsp;destination&nbsp;paths&nbsp;that&nbsp;have<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;same&nbsp;path&nbsp;names&nbsp;relative&nbsp;to&nbsp;the&nbsp;root&nbsp;of&nbsp;the&nbsp;src&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destination&nbsp;tree<br>
+'clobber'&nbsp;will&nbsp;replace&nbsp;the&nbsp;whole&nbsp;destination&nbsp;tree(clobber)&nbsp;if&nbsp;it&nbsp;exists</tt></dd></dl>
+
+<dl><dt><a name="BaseDeviceHandler-download_file"><strong>download_file</strong></a>(self, url, file_name<font color="#909090">=None</font>, parent_dir<font color="#909090">=None</font>, create_parent_dir<font color="#909090">=True</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=3</font>, retry_config<font color="#909090">=None</font>)</dt><dd><tt>Python&nbsp;wget.</tt></dd></dl>
+
+<dl><dt><a name="BaseDeviceHandler-get_filename_from_url"><strong>get_filename_from_url</strong></a>(self, url)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-get_output_from_command"><strong>get_output_from_command</strong></a>(self, command, cwd<font color="#909090">=None</font>, halt_on_failure<font color="#909090">=False</font>, env<font color="#909090">=None</font>, silent<font color="#909090">=False</font>, log_level<font color="#909090">='info'</font>, tmpfile_base_path<font color="#909090">='tmpfile'</font>, return_type<font color="#909090">='output'</font>, save_tmpfiles<font color="#909090">=False</font>, throw_exception<font color="#909090">=False</font>, fatal_exit_code<font color="#909090">=2</font>, ignore_errors<font color="#909090">=False</font>, success_codes<font color="#909090">=None</font>)</dt><dd><tt>Similar&nbsp;to&nbsp;run_command,&nbsp;but&nbsp;where&nbsp;run_command&nbsp;is&nbsp;an<br>
+os.system(command)&nbsp;analog,&nbsp;get_output_from_command&nbsp;is&nbsp;a&nbsp;`command`<br>
+analog.<br>
+&nbsp;<br>
+Less&nbsp;error&nbsp;checking&nbsp;by&nbsp;design,&nbsp;though&nbsp;if&nbsp;we&nbsp;figure&nbsp;out&nbsp;how&nbsp;to<br>
+do&nbsp;it&nbsp;without&nbsp;borking&nbsp;the&nbsp;output,&nbsp;great.<br>
+&nbsp;<br>
+TODO:&nbsp;binary&nbsp;mode?&nbsp;silent&nbsp;is&nbsp;kinda&nbsp;like&nbsp;that.<br>
+TODO:&nbsp;since&nbsp;p.wait()&nbsp;can&nbsp;take&nbsp;a&nbsp;long&nbsp;time,&nbsp;optionally&nbsp;log&nbsp;something<br>
+every&nbsp;N&nbsp;seconds?<br>
+TODO:&nbsp;optionally&nbsp;only&nbsp;keep&nbsp;the&nbsp;first&nbsp;or&nbsp;last&nbsp;(N)&nbsp;line(s)&nbsp;of&nbsp;output?<br>
+TODO:&nbsp;optionally&nbsp;only&nbsp;return&nbsp;the&nbsp;tmp_stdout_filename?<br>
+&nbsp;<br>
+ignore_errors=True&nbsp;is&nbsp;for&nbsp;the&nbsp;case&nbsp;where&nbsp;a&nbsp;command&nbsp;might&nbsp;produce&nbsp;standard<br>
+error&nbsp;output,&nbsp;but&nbsp;you&nbsp;don't&nbsp;particularly&nbsp;care;&nbsp;setting&nbsp;to&nbsp;True&nbsp;will<br>
+cause&nbsp;standard&nbsp;error&nbsp;to&nbsp;be&nbsp;logged&nbsp;at&nbsp;DEBUG&nbsp;rather&nbsp;than&nbsp;ERROR</tt></dd></dl>
+
+<dl><dt><a name="BaseDeviceHandler-mkdir_p"><strong>mkdir_p</strong></a>(self, path, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Returns&nbsp;None&nbsp;for&nbsp;success,&nbsp;not&nbsp;None&nbsp;for&nbsp;failure</tt></dd></dl>
+
+<dl><dt><a name="BaseDeviceHandler-move"><strong>move</strong></a>(self, src, dest, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-opened"><strong>opened</strong></a>(*args, **kwds)</dt><dd><tt>Returns&nbsp;an&nbsp;open&nbsp;file,&nbsp;error&nbsp;pair,&nbsp;for&nbsp;use&nbsp;in&nbsp;a&nbsp;'with'&nbsp;statement:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;<a href="#BaseDeviceHandler-opened">opened</a>("file.txt")&nbsp;as&nbsp;(fh,&nbsp;err):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;err:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#BaseDeviceHandler-log">log</a>("badness")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;line&nbsp;in&nbsp;fh:&nbsp;...</tt></dd></dl>
+
+<dl><dt><a name="BaseDeviceHandler-query_env"><strong>query_env</strong></a>(self, partial_env<font color="#909090">=None</font>, replace_dict<font color="#909090">=None</font>, purge_env<font color="#909090">=()</font>, set_self_env<font color="#909090">=None</font>, log_level<font color="#909090">='debug'</font>)</dt><dd><tt>Environment&nbsp;query/generation&nbsp;method.<br>
+&nbsp;<br>
+The&nbsp;default,&nbsp;<a href="#BaseDeviceHandler-query_env">query_env</a>(),&nbsp;will&nbsp;look&nbsp;for&nbsp;self.<strong>config</strong>['env']<br>
+and&nbsp;replace&nbsp;any&nbsp;special&nbsp;strings&nbsp;in&nbsp;there&nbsp;(&nbsp;%(PATH)s&nbsp;).<br>
+It&nbsp;will&nbsp;then&nbsp;store&nbsp;it&nbsp;as&nbsp;self.<strong>env</strong>&nbsp;for&nbsp;speeding&nbsp;things&nbsp;up&nbsp;later.<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;specify&nbsp;partial_env,&nbsp;partial_env&nbsp;will&nbsp;be&nbsp;used&nbsp;instead&nbsp;of<br>
+self.<strong>config</strong>['env'],&nbsp;and&nbsp;we&nbsp;don't&nbsp;save&nbsp;self.<strong>env</strong>&nbsp;as&nbsp;it's&nbsp;a&nbsp;one-off.</tt></dd></dl>
+
+<dl><dt><a name="BaseDeviceHandler-query_exe"><strong>query_exe</strong></a>(self, exe_name, exe_dict<font color="#909090">='exes'</font>, default<font color="#909090">=None</font>, return_type<font color="#909090">=None</font>, error_level<font color="#909090">='fatal'</font>)</dt><dd><tt>One&nbsp;way&nbsp;to&nbsp;work&nbsp;around&nbsp;PATH&nbsp;rewrites.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;return&nbsp;exe_name,&nbsp;and&nbsp;we'll&nbsp;fall&nbsp;through&nbsp;to&nbsp;searching<br>
+os.environ["PATH"].<br>
+However,&nbsp;if&nbsp;self.<strong>config</strong>[exe_dict][exe_name]&nbsp;exists,&nbsp;return&nbsp;that.<br>
+This&nbsp;lets&nbsp;us&nbsp;override&nbsp;exe&nbsp;paths&nbsp;via&nbsp;config&nbsp;file.<br>
+&nbsp;<br>
+'return_type'&nbsp;can&nbsp;be&nbsp;None&nbsp;(don't&nbsp;do&nbsp;anything&nbsp;to&nbsp;the&nbsp;value),<br>
+'list'&nbsp;(return&nbsp;a&nbsp;list),&nbsp;or&nbsp;'string'&nbsp;(return&nbsp;a&nbsp;string).<br>
+&nbsp;<br>
+If&nbsp;we&nbsp;need&nbsp;runtime&nbsp;setting,&nbsp;we&nbsp;can&nbsp;build&nbsp;in&nbsp;self.<strong>exes</strong>&nbsp;support&nbsp;later.</tt></dd></dl>
+
+<dl><dt><a name="BaseDeviceHandler-query_msys_path"><strong>query_msys_path</strong></a>(self, path)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-read_from_file"><strong>read_from_file</strong></a>(self, file_path, verbose<font color="#909090">=True</font>, open_mode<font color="#909090">='r'</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Reads&nbsp;from&nbsp;file_path.<br>
+&nbsp;<br>
+Returns&nbsp;contents&nbsp;if&nbsp;successful,&nbsp;None&nbsp;if&nbsp;not.</tt></dd></dl>
+
+<dl><dt><a name="BaseDeviceHandler-retry"><strong>retry</strong></a>(self, action, attempts<font color="#909090">=None</font>, sleeptime<font color="#909090">=60</font>, max_sleeptime<font color="#909090">=300</font>, retry_exceptions<font color="#909090">=(&lt;type 'exceptions.Exception'&gt;,)</font>, good_statuses<font color="#909090">=None</font>, cleanup<font color="#909090">=None</font>, error_level<font color="#909090">='error'</font>, error_message<font color="#909090">='%(action)s failed after %(attempts)d tries!'</font>, failure_status<font color="#909090">=-1</font>, log_level<font color="#909090">='info'</font>, args<font color="#909090">=()</font>, kwargs<font color="#909090">={}</font>)</dt><dd><tt>Generic&nbsp;retry&nbsp;command.<br>
+Ported&nbsp;from&nbsp;tools&nbsp;util.retry.<br>
+&nbsp;<br>
+Call&nbsp;`action'&nbsp;a&nbsp;maximum&nbsp;of&nbsp;`attempts'&nbsp;times&nbsp;until&nbsp;it&nbsp;succeeds,<br>
+defaulting&nbsp;to&nbsp;self.<strong>config</strong>.get('global_retries',&nbsp;5).<br>
+&nbsp;<br>
+`sleeptime'&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;seconds&nbsp;to&nbsp;wait&nbsp;between&nbsp;attempts,<br>
+defaulting&nbsp;to&nbsp;60&nbsp;and&nbsp;doubling&nbsp;each&nbsp;retry&nbsp;attempt,&nbsp;to&nbsp;a&nbsp;maximum&nbsp;of<br>
+`max_sleeptime'.<br>
+&nbsp;<br>
+`retry_exceptions'&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;Exceptions&nbsp;that&nbsp;should&nbsp;be&nbsp;caught.<br>
+If&nbsp;exceptions&nbsp;other&nbsp;than&nbsp;those&nbsp;listed&nbsp;in&nbsp;`retry_exceptions'&nbsp;are<br>
+raised&nbsp;from&nbsp;`action',&nbsp;they&nbsp;will&nbsp;be&nbsp;raised&nbsp;immediately.<br>
+&nbsp;<br>
+`good_statuses'&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;return&nbsp;values&nbsp;which,&nbsp;if&nbsp;specified,<br>
+will&nbsp;result&nbsp;in&nbsp;retrying&nbsp;if&nbsp;the&nbsp;return&nbsp;value&nbsp;isn't&nbsp;listed.<br>
+&nbsp;<br>
+If&nbsp;`cleanup'&nbsp;is&nbsp;provided&nbsp;and&nbsp;callable&nbsp;it&nbsp;will&nbsp;be&nbsp;called&nbsp;immediately<br>
+after&nbsp;an&nbsp;<a href="exceptions.html#Exception">Exception</a>&nbsp;is&nbsp;caught.&nbsp;&nbsp;No&nbsp;arguments&nbsp;will&nbsp;be&nbsp;passed&nbsp;to&nbsp;it.<br>
+If&nbsp;your&nbsp;cleanup&nbsp;function&nbsp;requires&nbsp;arguments&nbsp;it&nbsp;is&nbsp;recommended&nbsp;that<br>
+you&nbsp;wrap&nbsp;it&nbsp;in&nbsp;an&nbsp;argumentless&nbsp;function.<br>
+&nbsp;<br>
+`args'&nbsp;and&nbsp;`kwargs'&nbsp;are&nbsp;a&nbsp;tuple&nbsp;and&nbsp;dict&nbsp;of&nbsp;arguments&nbsp;to&nbsp;pass&nbsp;onto<br>
+to&nbsp;`callable'.</tt></dd></dl>
+
+<dl><dt><a name="BaseDeviceHandler-rmtree"><strong>rmtree</strong></a>(self, path, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=-1</font>)</dt><dd><tt>Returns&nbsp;None&nbsp;for&nbsp;success,&nbsp;not&nbsp;None&nbsp;for&nbsp;failure</tt></dd></dl>
+
+<dl><dt><a name="BaseDeviceHandler-run_command"><strong>run_command</strong></a>(self, command, cwd<font color="#909090">=None</font>, error_list<font color="#909090">=None</font>, halt_on_failure<font color="#909090">=False</font>, success_codes<font color="#909090">=None</font>, env<font color="#909090">=None</font>, partial_env<font color="#909090">=None</font>, return_type<font color="#909090">='status'</font>, throw_exception<font color="#909090">=False</font>, output_parser<font color="#909090">=None</font>, output_timeout<font color="#909090">=None</font>, fatal_exit_code<font color="#909090">=2</font>, error_level<font color="#909090">='error'</font>, **kwargs)</dt><dd><tt>Run&nbsp;a&nbsp;command,&nbsp;with&nbsp;logging&nbsp;and&nbsp;error&nbsp;parsing.<br>
+&nbsp;<br>
+output_timeout&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;seconds&nbsp;without&nbsp;output&nbsp;before&nbsp;the&nbsp;process<br>
+is&nbsp;killed.<br>
+&nbsp;<br>
+TODO:&nbsp;context_lines<br>
+&nbsp;<br>
+output_parser&nbsp;lets&nbsp;you&nbsp;provide&nbsp;an&nbsp;instance&nbsp;of&nbsp;your&nbsp;own&nbsp;OutputParser<br>
+subclass,&nbsp;or&nbsp;pass&nbsp;None&nbsp;to&nbsp;use&nbsp;OutputParser.<br>
+&nbsp;<br>
+error_list&nbsp;example:<br>
+[{'regex':&nbsp;re.compile('^Error:&nbsp;LOL&nbsp;J/K'),&nbsp;level=IGNORE},<br>
+&nbsp;{'regex':&nbsp;re.compile('^Error:'),&nbsp;level=ERROR,&nbsp;contextLines='5:5'},<br>
+&nbsp;{'substr':&nbsp;'THE&nbsp;WORLD&nbsp;IS&nbsp;ENDING',&nbsp;level=FATAL,&nbsp;contextLines='20:'}<br>
+]<br>
+(context_lines&nbsp;isn't&nbsp;written&nbsp;yet)</tt></dd></dl>
+
+<dl><dt><a name="BaseDeviceHandler-unpack"><strong>unpack</strong></a>(self, filename, extract_to)</dt><dd><tt>This&nbsp;method&nbsp;allows&nbsp;us&nbsp;to&nbsp;extract&nbsp;a&nbsp;file&nbsp;regardless&nbsp;of&nbsp;its&nbsp;extension</tt></dd></dl>
+
+<dl><dt><a name="BaseDeviceHandler-which"><strong>which</strong></a>(self, program)</dt><dd><tt>OS&nbsp;independent&nbsp;implementation&nbsp;of&nbsp;Unix's&nbsp;which&nbsp;command<br>
+Takes&nbsp;in&nbsp;a&nbsp;program&nbsp;name<br>
+Returns&nbsp;path&nbsp;to&nbsp;executable&nbsp;or&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="BaseDeviceHandler-write_to_file"><strong>write_to_file</strong></a>(self, file_path, contents, verbose<font color="#909090">=True</font>, open_mode<font color="#909090">='w'</font>, create_parent_dir<font color="#909090">=False</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Write&nbsp;contents&nbsp;to&nbsp;file_path.<br>
+&nbsp;<br>
+This&nbsp;doesn't&nbsp;currently&nbsp;create&nbsp;the&nbsp;parent_dir&nbsp;or&nbsp;translate&nbsp;into<br>
+abs_path;&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;done&nbsp;beforehand,&nbsp;since&nbsp;<a href="mozharness.base.script.html#ScriptMixin">ScriptMixin</a>&nbsp;doesn't<br>
+necessarily&nbsp;have&nbsp;access&nbsp;to&nbsp;query_abs_dirs().<br>
+&nbsp;<br>
+Returns&nbsp;file_path&nbsp;if&nbsp;successful,&nbsp;None&nbsp;if&nbsp;not.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><strong>env</strong> = None</dl>
+
+<dl><dt><strong>script_obj</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>:<br>
+<dl><dt><a name="BaseDeviceHandler-critical"><strong>critical</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-debug"><strong>debug</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-error"><strong>error</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-exception"><strong>exception</strong></a>(self, message<font color="#909090">=None</font>, level<font color="#909090">='error'</font>)</dt><dd><tt>#&nbsp;Copying&nbsp;Bear's&nbsp;dumpException():<br>
+#&nbsp;https://hg.mozilla.org/build/tools/annotate/1485f23c38e0/sut_tools/sut_lib.py#l23</tt></dd></dl>
+
+<dl><dt><a name="BaseDeviceHandler-fatal"><strong>fatal</strong></a>(self, message, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-info"><strong>info</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-log"><strong>log</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-warning"><strong>warning</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="BaseDeviceHandler-worst_level"><strong>worst_level</strong></a>(self, target_level, existing_level, levels<font color="#909090">=None</font>)</dt><dd><tt>returns&nbsp;either&nbsp;existing_level&nbsp;or&nbsp;target&nbsp;level.<br>
+This&nbsp;depends&nbsp;on&nbsp;which&nbsp;is&nbsp;closest&nbsp;to&nbsp;levels[0]<br>
+By&nbsp;default,&nbsp;levels&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;log&nbsp;levels</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DeviceException">class <strong>DeviceException</strong></a>(<a href="exceptions.html#Exception">exceptions.Exception</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="device.html#DeviceException">DeviceException</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><a name="DeviceException-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#DeviceException-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x8162d20&gt;<dd><tt>T.<a href="#DeviceException-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="DeviceException-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#DeviceException-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="DeviceException-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#DeviceException-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="DeviceException-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#DeviceException-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="DeviceException-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#DeviceException-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="DeviceException-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="DeviceException-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#DeviceException-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="DeviceException-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#DeviceException-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="DeviceException-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="DeviceException-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#DeviceException-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<dl><dt><a name="DeviceException-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DeviceMixin">class <strong>DeviceMixin</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>BaseScript&nbsp;mixin,&nbsp;designed&nbsp;to&nbsp;interface&nbsp;with&nbsp;the&nbsp;device.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="DeviceMixin-check_device"><strong>check_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DeviceMixin-cleanup_device"><strong>cleanup_device</strong></a>(self, **kwargs)</dt></dl>
+
+<dl><dt><a name="DeviceMixin-install_app"><strong>install_app</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DeviceMixin-query_device_handler"><strong>query_device_handler</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DeviceMixin-reboot_device"><strong>reboot_device</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>device_handler</strong> = None</dl>
+
+<dl><dt><strong>device_root</strong> = None</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SUTDeviceHandler">class <strong>SUTDeviceHandler</strong></a>(<a href="device.html#BaseDeviceHandler">BaseDeviceHandler</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>#&nbsp;<a href="#SUTDeviceHandler">SUTDeviceHandler</a>&nbsp;{{{1<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="device.html#SUTDeviceHandler">SUTDeviceHandler</a></dd>
+<dd><a href="device.html#BaseDeviceHandler">BaseDeviceHandler</a></dd>
+<dd><a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a></dd>
+<dd><a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SUTDeviceHandler-__init__"><strong>__init__</strong></a>(self, **kwargs)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-check_device"><strong>check_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-cleanup_device"><strong>cleanup_device</strong></a>(self, reboot<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-install_app"><strong>install_app</strong></a>(self, file_path)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-ping_device"><strong>ping_device</strong></a>(self)</dt><dd><tt>#&nbsp;maintenance&nbsp;{{{2</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-query_device_root"><strong>query_device_root</strong></a>(self, strict<font color="#909090">=False</font>)</dt><dd><tt>#&nbsp;device&nbsp;calls&nbsp;{{{2</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-query_device_time"><strong>query_device_time</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-query_devicemanager"><strong>query_devicemanager</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-reboot_device"><strong>reboot_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-remove_etc_hosts"><strong>remove_etc_hosts</strong></a>(self, hosts_file<font color="#909090">='/system/etc/hosts'</font>)</dt><dd><tt>#&nbsp;device&nbsp;type&nbsp;specific&nbsp;{{{2</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-set_device_time"><strong>set_device_time</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-wait_for_device"><strong>wait_for_device</strong></a>(self, interval<font color="#909090">=60</font>, max_attempts<font color="#909090">=20</font>)</dt></dl>
+
+<hr>
+Methods inherited from <a href="device.html#BaseDeviceHandler">BaseDeviceHandler</a>:<br>
+<dl><dt><a name="SUTDeviceHandler-add_device_flag"><strong>add_device_flag</strong></a>(self, flag)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-query_device_id"><strong>query_device_id</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-query_download_filename"><strong>query_download_filename</strong></a>(self, file_id<font color="#909090">=None</font>)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="device.html#BaseDeviceHandler">BaseDeviceHandler</a>:<br>
+<dl><dt><strong>default_port</strong> = None</dl>
+
+<dl><dt><strong>device_flags</strong> = []</dl>
+
+<dl><dt><strong>device_id</strong> = None</dl>
+
+<dl><dt><strong>device_root</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><a name="SUTDeviceHandler-chdir"><strong>chdir</strong></a>(self, dir_name)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-chmod"><strong>chmod</strong></a>(self, path, mode)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-copyfile"><strong>copyfile</strong></a>(self, src, dest, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, copystat<font color="#909090">=False</font>, compress<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-copytree"><strong>copytree</strong></a>(self, src, dest, overwrite<font color="#909090">='no_overwrite'</font>, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>an&nbsp;implementation&nbsp;of&nbsp;shutil.copytree&nbsp;however&nbsp;it&nbsp;allows&nbsp;for<br>
+dest&nbsp;to&nbsp;exist&nbsp;and&nbsp;implements&nbsp;different&nbsp;overwrite&nbsp;levels.<br>
+overwrite&nbsp;uses:<br>
+'no_overwrite'&nbsp;will&nbsp;keep&nbsp;all(any)&nbsp;existing&nbsp;files&nbsp;in&nbsp;destination&nbsp;tree<br>
+'overwrite_if_exists'&nbsp;will&nbsp;only&nbsp;overwrite&nbsp;destination&nbsp;paths&nbsp;that&nbsp;have<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;same&nbsp;path&nbsp;names&nbsp;relative&nbsp;to&nbsp;the&nbsp;root&nbsp;of&nbsp;the&nbsp;src&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destination&nbsp;tree<br>
+'clobber'&nbsp;will&nbsp;replace&nbsp;the&nbsp;whole&nbsp;destination&nbsp;tree(clobber)&nbsp;if&nbsp;it&nbsp;exists</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-download_file"><strong>download_file</strong></a>(self, url, file_name<font color="#909090">=None</font>, parent_dir<font color="#909090">=None</font>, create_parent_dir<font color="#909090">=True</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=3</font>, retry_config<font color="#909090">=None</font>)</dt><dd><tt>Python&nbsp;wget.</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-get_filename_from_url"><strong>get_filename_from_url</strong></a>(self, url)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-get_output_from_command"><strong>get_output_from_command</strong></a>(self, command, cwd<font color="#909090">=None</font>, halt_on_failure<font color="#909090">=False</font>, env<font color="#909090">=None</font>, silent<font color="#909090">=False</font>, log_level<font color="#909090">='info'</font>, tmpfile_base_path<font color="#909090">='tmpfile'</font>, return_type<font color="#909090">='output'</font>, save_tmpfiles<font color="#909090">=False</font>, throw_exception<font color="#909090">=False</font>, fatal_exit_code<font color="#909090">=2</font>, ignore_errors<font color="#909090">=False</font>, success_codes<font color="#909090">=None</font>)</dt><dd><tt>Similar&nbsp;to&nbsp;run_command,&nbsp;but&nbsp;where&nbsp;run_command&nbsp;is&nbsp;an<br>
+os.system(command)&nbsp;analog,&nbsp;get_output_from_command&nbsp;is&nbsp;a&nbsp;`command`<br>
+analog.<br>
+&nbsp;<br>
+Less&nbsp;error&nbsp;checking&nbsp;by&nbsp;design,&nbsp;though&nbsp;if&nbsp;we&nbsp;figure&nbsp;out&nbsp;how&nbsp;to<br>
+do&nbsp;it&nbsp;without&nbsp;borking&nbsp;the&nbsp;output,&nbsp;great.<br>
+&nbsp;<br>
+TODO:&nbsp;binary&nbsp;mode?&nbsp;silent&nbsp;is&nbsp;kinda&nbsp;like&nbsp;that.<br>
+TODO:&nbsp;since&nbsp;p.wait()&nbsp;can&nbsp;take&nbsp;a&nbsp;long&nbsp;time,&nbsp;optionally&nbsp;log&nbsp;something<br>
+every&nbsp;N&nbsp;seconds?<br>
+TODO:&nbsp;optionally&nbsp;only&nbsp;keep&nbsp;the&nbsp;first&nbsp;or&nbsp;last&nbsp;(N)&nbsp;line(s)&nbsp;of&nbsp;output?<br>
+TODO:&nbsp;optionally&nbsp;only&nbsp;return&nbsp;the&nbsp;tmp_stdout_filename?<br>
+&nbsp;<br>
+ignore_errors=True&nbsp;is&nbsp;for&nbsp;the&nbsp;case&nbsp;where&nbsp;a&nbsp;command&nbsp;might&nbsp;produce&nbsp;standard<br>
+error&nbsp;output,&nbsp;but&nbsp;you&nbsp;don't&nbsp;particularly&nbsp;care;&nbsp;setting&nbsp;to&nbsp;True&nbsp;will<br>
+cause&nbsp;standard&nbsp;error&nbsp;to&nbsp;be&nbsp;logged&nbsp;at&nbsp;DEBUG&nbsp;rather&nbsp;than&nbsp;ERROR</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-mkdir_p"><strong>mkdir_p</strong></a>(self, path, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Returns&nbsp;None&nbsp;for&nbsp;success,&nbsp;not&nbsp;None&nbsp;for&nbsp;failure</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-move"><strong>move</strong></a>(self, src, dest, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-opened"><strong>opened</strong></a>(*args, **kwds)</dt><dd><tt>Returns&nbsp;an&nbsp;open&nbsp;file,&nbsp;error&nbsp;pair,&nbsp;for&nbsp;use&nbsp;in&nbsp;a&nbsp;'with'&nbsp;statement:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;<a href="#SUTDeviceHandler-opened">opened</a>("file.txt")&nbsp;as&nbsp;(fh,&nbsp;err):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;err:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#SUTDeviceHandler-log">log</a>("badness")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;line&nbsp;in&nbsp;fh:&nbsp;...</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-query_env"><strong>query_env</strong></a>(self, partial_env<font color="#909090">=None</font>, replace_dict<font color="#909090">=None</font>, purge_env<font color="#909090">=()</font>, set_self_env<font color="#909090">=None</font>, log_level<font color="#909090">='debug'</font>)</dt><dd><tt>Environment&nbsp;query/generation&nbsp;method.<br>
+&nbsp;<br>
+The&nbsp;default,&nbsp;<a href="#SUTDeviceHandler-query_env">query_env</a>(),&nbsp;will&nbsp;look&nbsp;for&nbsp;self.<strong>config</strong>['env']<br>
+and&nbsp;replace&nbsp;any&nbsp;special&nbsp;strings&nbsp;in&nbsp;there&nbsp;(&nbsp;%(PATH)s&nbsp;).<br>
+It&nbsp;will&nbsp;then&nbsp;store&nbsp;it&nbsp;as&nbsp;self.<strong>env</strong>&nbsp;for&nbsp;speeding&nbsp;things&nbsp;up&nbsp;later.<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;specify&nbsp;partial_env,&nbsp;partial_env&nbsp;will&nbsp;be&nbsp;used&nbsp;instead&nbsp;of<br>
+self.<strong>config</strong>['env'],&nbsp;and&nbsp;we&nbsp;don't&nbsp;save&nbsp;self.<strong>env</strong>&nbsp;as&nbsp;it's&nbsp;a&nbsp;one-off.</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-query_exe"><strong>query_exe</strong></a>(self, exe_name, exe_dict<font color="#909090">='exes'</font>, default<font color="#909090">=None</font>, return_type<font color="#909090">=None</font>, error_level<font color="#909090">='fatal'</font>)</dt><dd><tt>One&nbsp;way&nbsp;to&nbsp;work&nbsp;around&nbsp;PATH&nbsp;rewrites.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;return&nbsp;exe_name,&nbsp;and&nbsp;we'll&nbsp;fall&nbsp;through&nbsp;to&nbsp;searching<br>
+os.environ["PATH"].<br>
+However,&nbsp;if&nbsp;self.<strong>config</strong>[exe_dict][exe_name]&nbsp;exists,&nbsp;return&nbsp;that.<br>
+This&nbsp;lets&nbsp;us&nbsp;override&nbsp;exe&nbsp;paths&nbsp;via&nbsp;config&nbsp;file.<br>
+&nbsp;<br>
+'return_type'&nbsp;can&nbsp;be&nbsp;None&nbsp;(don't&nbsp;do&nbsp;anything&nbsp;to&nbsp;the&nbsp;value),<br>
+'list'&nbsp;(return&nbsp;a&nbsp;list),&nbsp;or&nbsp;'string'&nbsp;(return&nbsp;a&nbsp;string).<br>
+&nbsp;<br>
+If&nbsp;we&nbsp;need&nbsp;runtime&nbsp;setting,&nbsp;we&nbsp;can&nbsp;build&nbsp;in&nbsp;self.<strong>exes</strong>&nbsp;support&nbsp;later.</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-query_msys_path"><strong>query_msys_path</strong></a>(self, path)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-read_from_file"><strong>read_from_file</strong></a>(self, file_path, verbose<font color="#909090">=True</font>, open_mode<font color="#909090">='r'</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Reads&nbsp;from&nbsp;file_path.<br>
+&nbsp;<br>
+Returns&nbsp;contents&nbsp;if&nbsp;successful,&nbsp;None&nbsp;if&nbsp;not.</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-retry"><strong>retry</strong></a>(self, action, attempts<font color="#909090">=None</font>, sleeptime<font color="#909090">=60</font>, max_sleeptime<font color="#909090">=300</font>, retry_exceptions<font color="#909090">=(&lt;type 'exceptions.Exception'&gt;,)</font>, good_statuses<font color="#909090">=None</font>, cleanup<font color="#909090">=None</font>, error_level<font color="#909090">='error'</font>, error_message<font color="#909090">='%(action)s failed after %(attempts)d tries!'</font>, failure_status<font color="#909090">=-1</font>, log_level<font color="#909090">='info'</font>, args<font color="#909090">=()</font>, kwargs<font color="#909090">={}</font>)</dt><dd><tt>Generic&nbsp;retry&nbsp;command.<br>
+Ported&nbsp;from&nbsp;tools&nbsp;util.retry.<br>
+&nbsp;<br>
+Call&nbsp;`action'&nbsp;a&nbsp;maximum&nbsp;of&nbsp;`attempts'&nbsp;times&nbsp;until&nbsp;it&nbsp;succeeds,<br>
+defaulting&nbsp;to&nbsp;self.<strong>config</strong>.get('global_retries',&nbsp;5).<br>
+&nbsp;<br>
+`sleeptime'&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;seconds&nbsp;to&nbsp;wait&nbsp;between&nbsp;attempts,<br>
+defaulting&nbsp;to&nbsp;60&nbsp;and&nbsp;doubling&nbsp;each&nbsp;retry&nbsp;attempt,&nbsp;to&nbsp;a&nbsp;maximum&nbsp;of<br>
+`max_sleeptime'.<br>
+&nbsp;<br>
+`retry_exceptions'&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;Exceptions&nbsp;that&nbsp;should&nbsp;be&nbsp;caught.<br>
+If&nbsp;exceptions&nbsp;other&nbsp;than&nbsp;those&nbsp;listed&nbsp;in&nbsp;`retry_exceptions'&nbsp;are<br>
+raised&nbsp;from&nbsp;`action',&nbsp;they&nbsp;will&nbsp;be&nbsp;raised&nbsp;immediately.<br>
+&nbsp;<br>
+`good_statuses'&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;return&nbsp;values&nbsp;which,&nbsp;if&nbsp;specified,<br>
+will&nbsp;result&nbsp;in&nbsp;retrying&nbsp;if&nbsp;the&nbsp;return&nbsp;value&nbsp;isn't&nbsp;listed.<br>
+&nbsp;<br>
+If&nbsp;`cleanup'&nbsp;is&nbsp;provided&nbsp;and&nbsp;callable&nbsp;it&nbsp;will&nbsp;be&nbsp;called&nbsp;immediately<br>
+after&nbsp;an&nbsp;<a href="exceptions.html#Exception">Exception</a>&nbsp;is&nbsp;caught.&nbsp;&nbsp;No&nbsp;arguments&nbsp;will&nbsp;be&nbsp;passed&nbsp;to&nbsp;it.<br>
+If&nbsp;your&nbsp;cleanup&nbsp;function&nbsp;requires&nbsp;arguments&nbsp;it&nbsp;is&nbsp;recommended&nbsp;that<br>
+you&nbsp;wrap&nbsp;it&nbsp;in&nbsp;an&nbsp;argumentless&nbsp;function.<br>
+&nbsp;<br>
+`args'&nbsp;and&nbsp;`kwargs'&nbsp;are&nbsp;a&nbsp;tuple&nbsp;and&nbsp;dict&nbsp;of&nbsp;arguments&nbsp;to&nbsp;pass&nbsp;onto<br>
+to&nbsp;`callable'.</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-rmtree"><strong>rmtree</strong></a>(self, path, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=-1</font>)</dt><dd><tt>Returns&nbsp;None&nbsp;for&nbsp;success,&nbsp;not&nbsp;None&nbsp;for&nbsp;failure</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-run_command"><strong>run_command</strong></a>(self, command, cwd<font color="#909090">=None</font>, error_list<font color="#909090">=None</font>, halt_on_failure<font color="#909090">=False</font>, success_codes<font color="#909090">=None</font>, env<font color="#909090">=None</font>, partial_env<font color="#909090">=None</font>, return_type<font color="#909090">='status'</font>, throw_exception<font color="#909090">=False</font>, output_parser<font color="#909090">=None</font>, output_timeout<font color="#909090">=None</font>, fatal_exit_code<font color="#909090">=2</font>, error_level<font color="#909090">='error'</font>, **kwargs)</dt><dd><tt>Run&nbsp;a&nbsp;command,&nbsp;with&nbsp;logging&nbsp;and&nbsp;error&nbsp;parsing.<br>
+&nbsp;<br>
+output_timeout&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;seconds&nbsp;without&nbsp;output&nbsp;before&nbsp;the&nbsp;process<br>
+is&nbsp;killed.<br>
+&nbsp;<br>
+TODO:&nbsp;context_lines<br>
+&nbsp;<br>
+output_parser&nbsp;lets&nbsp;you&nbsp;provide&nbsp;an&nbsp;instance&nbsp;of&nbsp;your&nbsp;own&nbsp;OutputParser<br>
+subclass,&nbsp;or&nbsp;pass&nbsp;None&nbsp;to&nbsp;use&nbsp;OutputParser.<br>
+&nbsp;<br>
+error_list&nbsp;example:<br>
+[{'regex':&nbsp;re.compile('^Error:&nbsp;LOL&nbsp;J/K'),&nbsp;level=IGNORE},<br>
+&nbsp;{'regex':&nbsp;re.compile('^Error:'),&nbsp;level=ERROR,&nbsp;contextLines='5:5'},<br>
+&nbsp;{'substr':&nbsp;'THE&nbsp;WORLD&nbsp;IS&nbsp;ENDING',&nbsp;level=FATAL,&nbsp;contextLines='20:'}<br>
+]<br>
+(context_lines&nbsp;isn't&nbsp;written&nbsp;yet)</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-unpack"><strong>unpack</strong></a>(self, filename, extract_to)</dt><dd><tt>This&nbsp;method&nbsp;allows&nbsp;us&nbsp;to&nbsp;extract&nbsp;a&nbsp;file&nbsp;regardless&nbsp;of&nbsp;its&nbsp;extension</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-which"><strong>which</strong></a>(self, program)</dt><dd><tt>OS&nbsp;independent&nbsp;implementation&nbsp;of&nbsp;Unix's&nbsp;which&nbsp;command<br>
+Takes&nbsp;in&nbsp;a&nbsp;program&nbsp;name<br>
+Returns&nbsp;path&nbsp;to&nbsp;executable&nbsp;or&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-write_to_file"><strong>write_to_file</strong></a>(self, file_path, contents, verbose<font color="#909090">=True</font>, open_mode<font color="#909090">='w'</font>, create_parent_dir<font color="#909090">=False</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Write&nbsp;contents&nbsp;to&nbsp;file_path.<br>
+&nbsp;<br>
+This&nbsp;doesn't&nbsp;currently&nbsp;create&nbsp;the&nbsp;parent_dir&nbsp;or&nbsp;translate&nbsp;into<br>
+abs_path;&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;done&nbsp;beforehand,&nbsp;since&nbsp;<a href="mozharness.base.script.html#ScriptMixin">ScriptMixin</a>&nbsp;doesn't<br>
+necessarily&nbsp;have&nbsp;access&nbsp;to&nbsp;query_abs_dirs().<br>
+&nbsp;<br>
+Returns&nbsp;file_path&nbsp;if&nbsp;successful,&nbsp;None&nbsp;if&nbsp;not.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><strong>env</strong> = None</dl>
+
+<dl><dt><strong>script_obj</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>:<br>
+<dl><dt><a name="SUTDeviceHandler-critical"><strong>critical</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-debug"><strong>debug</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-error"><strong>error</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-exception"><strong>exception</strong></a>(self, message<font color="#909090">=None</font>, level<font color="#909090">='error'</font>)</dt><dd><tt>#&nbsp;Copying&nbsp;Bear's&nbsp;dumpException():<br>
+#&nbsp;https://hg.mozilla.org/build/tools/annotate/1485f23c38e0/sut_tools/sut_lib.py#l23</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceHandler-fatal"><strong>fatal</strong></a>(self, message, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-info"><strong>info</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-log"><strong>log</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-warning"><strong>warning</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="SUTDeviceHandler-worst_level"><strong>worst_level</strong></a>(self, target_level, existing_level, levels<font color="#909090">=None</font>)</dt><dd><tt>returns&nbsp;either&nbsp;existing_level&nbsp;or&nbsp;target&nbsp;level.<br>
+This&nbsp;depends&nbsp;on&nbsp;which&nbsp;is&nbsp;closest&nbsp;to&nbsp;levels[0]<br>
+By&nbsp;default,&nbsp;levels&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;log&nbsp;levels</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SUTDeviceMozdeviceMixin">class <strong>SUTDeviceMozdeviceMixin</strong></a>(<a href="device.html#SUTDeviceHandler">SUTDeviceHandler</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;SUT&nbsp;device&nbsp;manager&nbsp;class&nbsp;makes&nbsp;calls&nbsp;through&nbsp;mozdevice&nbsp;(from&nbsp;mozbase)&nbsp;[1]<br>
+directly&nbsp;rather&nbsp;than&nbsp;calling&nbsp;SUT&nbsp;tools.<br>
+&nbsp;<br>
+[1]&nbsp;https://github.com/mozilla/mozbase/blob/master/mozdevice/mozdevice/devicemanagerSUT.py<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="device.html#SUTDeviceMozdeviceMixin">SUTDeviceMozdeviceMixin</a></dd>
+<dd><a href="device.html#SUTDeviceHandler">SUTDeviceHandler</a></dd>
+<dd><a href="device.html#BaseDeviceHandler">BaseDeviceHandler</a></dd>
+<dd><a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a></dd>
+<dd><a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SUTDeviceMozdeviceMixin-get_logcat"><strong>get_logcat</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-query_devicemanager"><strong>query_devicemanager</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-query_file"><strong>query_file</strong></a>(self, filename)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-set_device_epoch_time"><strong>set_device_epoch_time</strong></a>(self, timestamp<font color="#909090">=1423677607</font>)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>dm</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="device.html#SUTDeviceHandler">SUTDeviceHandler</a>:<br>
+<dl><dt><a name="SUTDeviceMozdeviceMixin-__init__"><strong>__init__</strong></a>(self, **kwargs)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-check_device"><strong>check_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-cleanup_device"><strong>cleanup_device</strong></a>(self, reboot<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-install_app"><strong>install_app</strong></a>(self, file_path)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-ping_device"><strong>ping_device</strong></a>(self)</dt><dd><tt>#&nbsp;maintenance&nbsp;{{{2</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-query_device_root"><strong>query_device_root</strong></a>(self, strict<font color="#909090">=False</font>)</dt><dd><tt>#&nbsp;device&nbsp;calls&nbsp;{{{2</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-query_device_time"><strong>query_device_time</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-reboot_device"><strong>reboot_device</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-remove_etc_hosts"><strong>remove_etc_hosts</strong></a>(self, hosts_file<font color="#909090">='/system/etc/hosts'</font>)</dt><dd><tt>#&nbsp;device&nbsp;type&nbsp;specific&nbsp;{{{2</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-set_device_time"><strong>set_device_time</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-wait_for_device"><strong>wait_for_device</strong></a>(self, interval<font color="#909090">=60</font>, max_attempts<font color="#909090">=20</font>)</dt></dl>
+
+<hr>
+Methods inherited from <a href="device.html#BaseDeviceHandler">BaseDeviceHandler</a>:<br>
+<dl><dt><a name="SUTDeviceMozdeviceMixin-add_device_flag"><strong>add_device_flag</strong></a>(self, flag)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-query_device_id"><strong>query_device_id</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-query_download_filename"><strong>query_download_filename</strong></a>(self, file_id<font color="#909090">=None</font>)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="device.html#BaseDeviceHandler">BaseDeviceHandler</a>:<br>
+<dl><dt><strong>default_port</strong> = None</dl>
+
+<dl><dt><strong>device_flags</strong> = []</dl>
+
+<dl><dt><strong>device_id</strong> = None</dl>
+
+<dl><dt><strong>device_root</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><a name="SUTDeviceMozdeviceMixin-chdir"><strong>chdir</strong></a>(self, dir_name)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-chmod"><strong>chmod</strong></a>(self, path, mode)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-copyfile"><strong>copyfile</strong></a>(self, src, dest, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, copystat<font color="#909090">=False</font>, compress<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-copytree"><strong>copytree</strong></a>(self, src, dest, overwrite<font color="#909090">='no_overwrite'</font>, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>an&nbsp;implementation&nbsp;of&nbsp;shutil.copytree&nbsp;however&nbsp;it&nbsp;allows&nbsp;for<br>
+dest&nbsp;to&nbsp;exist&nbsp;and&nbsp;implements&nbsp;different&nbsp;overwrite&nbsp;levels.<br>
+overwrite&nbsp;uses:<br>
+'no_overwrite'&nbsp;will&nbsp;keep&nbsp;all(any)&nbsp;existing&nbsp;files&nbsp;in&nbsp;destination&nbsp;tree<br>
+'overwrite_if_exists'&nbsp;will&nbsp;only&nbsp;overwrite&nbsp;destination&nbsp;paths&nbsp;that&nbsp;have<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;same&nbsp;path&nbsp;names&nbsp;relative&nbsp;to&nbsp;the&nbsp;root&nbsp;of&nbsp;the&nbsp;src&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destination&nbsp;tree<br>
+'clobber'&nbsp;will&nbsp;replace&nbsp;the&nbsp;whole&nbsp;destination&nbsp;tree(clobber)&nbsp;if&nbsp;it&nbsp;exists</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-download_file"><strong>download_file</strong></a>(self, url, file_name<font color="#909090">=None</font>, parent_dir<font color="#909090">=None</font>, create_parent_dir<font color="#909090">=True</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=3</font>, retry_config<font color="#909090">=None</font>)</dt><dd><tt>Python&nbsp;wget.</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-get_filename_from_url"><strong>get_filename_from_url</strong></a>(self, url)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-get_output_from_command"><strong>get_output_from_command</strong></a>(self, command, cwd<font color="#909090">=None</font>, halt_on_failure<font color="#909090">=False</font>, env<font color="#909090">=None</font>, silent<font color="#909090">=False</font>, log_level<font color="#909090">='info'</font>, tmpfile_base_path<font color="#909090">='tmpfile'</font>, return_type<font color="#909090">='output'</font>, save_tmpfiles<font color="#909090">=False</font>, throw_exception<font color="#909090">=False</font>, fatal_exit_code<font color="#909090">=2</font>, ignore_errors<font color="#909090">=False</font>, success_codes<font color="#909090">=None</font>)</dt><dd><tt>Similar&nbsp;to&nbsp;run_command,&nbsp;but&nbsp;where&nbsp;run_command&nbsp;is&nbsp;an<br>
+os.system(command)&nbsp;analog,&nbsp;get_output_from_command&nbsp;is&nbsp;a&nbsp;`command`<br>
+analog.<br>
+&nbsp;<br>
+Less&nbsp;error&nbsp;checking&nbsp;by&nbsp;design,&nbsp;though&nbsp;if&nbsp;we&nbsp;figure&nbsp;out&nbsp;how&nbsp;to<br>
+do&nbsp;it&nbsp;without&nbsp;borking&nbsp;the&nbsp;output,&nbsp;great.<br>
+&nbsp;<br>
+TODO:&nbsp;binary&nbsp;mode?&nbsp;silent&nbsp;is&nbsp;kinda&nbsp;like&nbsp;that.<br>
+TODO:&nbsp;since&nbsp;p.wait()&nbsp;can&nbsp;take&nbsp;a&nbsp;long&nbsp;time,&nbsp;optionally&nbsp;log&nbsp;something<br>
+every&nbsp;N&nbsp;seconds?<br>
+TODO:&nbsp;optionally&nbsp;only&nbsp;keep&nbsp;the&nbsp;first&nbsp;or&nbsp;last&nbsp;(N)&nbsp;line(s)&nbsp;of&nbsp;output?<br>
+TODO:&nbsp;optionally&nbsp;only&nbsp;return&nbsp;the&nbsp;tmp_stdout_filename?<br>
+&nbsp;<br>
+ignore_errors=True&nbsp;is&nbsp;for&nbsp;the&nbsp;case&nbsp;where&nbsp;a&nbsp;command&nbsp;might&nbsp;produce&nbsp;standard<br>
+error&nbsp;output,&nbsp;but&nbsp;you&nbsp;don't&nbsp;particularly&nbsp;care;&nbsp;setting&nbsp;to&nbsp;True&nbsp;will<br>
+cause&nbsp;standard&nbsp;error&nbsp;to&nbsp;be&nbsp;logged&nbsp;at&nbsp;DEBUG&nbsp;rather&nbsp;than&nbsp;ERROR</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-mkdir_p"><strong>mkdir_p</strong></a>(self, path, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Returns&nbsp;None&nbsp;for&nbsp;success,&nbsp;not&nbsp;None&nbsp;for&nbsp;failure</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-move"><strong>move</strong></a>(self, src, dest, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-opened"><strong>opened</strong></a>(*args, **kwds)</dt><dd><tt>Returns&nbsp;an&nbsp;open&nbsp;file,&nbsp;error&nbsp;pair,&nbsp;for&nbsp;use&nbsp;in&nbsp;a&nbsp;'with'&nbsp;statement:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;<a href="#SUTDeviceMozdeviceMixin-opened">opened</a>("file.txt")&nbsp;as&nbsp;(fh,&nbsp;err):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;err:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#SUTDeviceMozdeviceMixin-log">log</a>("badness")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;line&nbsp;in&nbsp;fh:&nbsp;...</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-query_env"><strong>query_env</strong></a>(self, partial_env<font color="#909090">=None</font>, replace_dict<font color="#909090">=None</font>, purge_env<font color="#909090">=()</font>, set_self_env<font color="#909090">=None</font>, log_level<font color="#909090">='debug'</font>)</dt><dd><tt>Environment&nbsp;query/generation&nbsp;method.<br>
+&nbsp;<br>
+The&nbsp;default,&nbsp;<a href="#SUTDeviceMozdeviceMixin-query_env">query_env</a>(),&nbsp;will&nbsp;look&nbsp;for&nbsp;self.<strong>config</strong>['env']<br>
+and&nbsp;replace&nbsp;any&nbsp;special&nbsp;strings&nbsp;in&nbsp;there&nbsp;(&nbsp;%(PATH)s&nbsp;).<br>
+It&nbsp;will&nbsp;then&nbsp;store&nbsp;it&nbsp;as&nbsp;self.<strong>env</strong>&nbsp;for&nbsp;speeding&nbsp;things&nbsp;up&nbsp;later.<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;specify&nbsp;partial_env,&nbsp;partial_env&nbsp;will&nbsp;be&nbsp;used&nbsp;instead&nbsp;of<br>
+self.<strong>config</strong>['env'],&nbsp;and&nbsp;we&nbsp;don't&nbsp;save&nbsp;self.<strong>env</strong>&nbsp;as&nbsp;it's&nbsp;a&nbsp;one-off.</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-query_exe"><strong>query_exe</strong></a>(self, exe_name, exe_dict<font color="#909090">='exes'</font>, default<font color="#909090">=None</font>, return_type<font color="#909090">=None</font>, error_level<font color="#909090">='fatal'</font>)</dt><dd><tt>One&nbsp;way&nbsp;to&nbsp;work&nbsp;around&nbsp;PATH&nbsp;rewrites.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;return&nbsp;exe_name,&nbsp;and&nbsp;we'll&nbsp;fall&nbsp;through&nbsp;to&nbsp;searching<br>
+os.environ["PATH"].<br>
+However,&nbsp;if&nbsp;self.<strong>config</strong>[exe_dict][exe_name]&nbsp;exists,&nbsp;return&nbsp;that.<br>
+This&nbsp;lets&nbsp;us&nbsp;override&nbsp;exe&nbsp;paths&nbsp;via&nbsp;config&nbsp;file.<br>
+&nbsp;<br>
+'return_type'&nbsp;can&nbsp;be&nbsp;None&nbsp;(don't&nbsp;do&nbsp;anything&nbsp;to&nbsp;the&nbsp;value),<br>
+'list'&nbsp;(return&nbsp;a&nbsp;list),&nbsp;or&nbsp;'string'&nbsp;(return&nbsp;a&nbsp;string).<br>
+&nbsp;<br>
+If&nbsp;we&nbsp;need&nbsp;runtime&nbsp;setting,&nbsp;we&nbsp;can&nbsp;build&nbsp;in&nbsp;self.<strong>exes</strong>&nbsp;support&nbsp;later.</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-query_msys_path"><strong>query_msys_path</strong></a>(self, path)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-read_from_file"><strong>read_from_file</strong></a>(self, file_path, verbose<font color="#909090">=True</font>, open_mode<font color="#909090">='r'</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Reads&nbsp;from&nbsp;file_path.<br>
+&nbsp;<br>
+Returns&nbsp;contents&nbsp;if&nbsp;successful,&nbsp;None&nbsp;if&nbsp;not.</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-retry"><strong>retry</strong></a>(self, action, attempts<font color="#909090">=None</font>, sleeptime<font color="#909090">=60</font>, max_sleeptime<font color="#909090">=300</font>, retry_exceptions<font color="#909090">=(&lt;type 'exceptions.Exception'&gt;,)</font>, good_statuses<font color="#909090">=None</font>, cleanup<font color="#909090">=None</font>, error_level<font color="#909090">='error'</font>, error_message<font color="#909090">='%(action)s failed after %(attempts)d tries!'</font>, failure_status<font color="#909090">=-1</font>, log_level<font color="#909090">='info'</font>, args<font color="#909090">=()</font>, kwargs<font color="#909090">={}</font>)</dt><dd><tt>Generic&nbsp;retry&nbsp;command.<br>
+Ported&nbsp;from&nbsp;tools&nbsp;util.retry.<br>
+&nbsp;<br>
+Call&nbsp;`action'&nbsp;a&nbsp;maximum&nbsp;of&nbsp;`attempts'&nbsp;times&nbsp;until&nbsp;it&nbsp;succeeds,<br>
+defaulting&nbsp;to&nbsp;self.<strong>config</strong>.get('global_retries',&nbsp;5).<br>
+&nbsp;<br>
+`sleeptime'&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;seconds&nbsp;to&nbsp;wait&nbsp;between&nbsp;attempts,<br>
+defaulting&nbsp;to&nbsp;60&nbsp;and&nbsp;doubling&nbsp;each&nbsp;retry&nbsp;attempt,&nbsp;to&nbsp;a&nbsp;maximum&nbsp;of<br>
+`max_sleeptime'.<br>
+&nbsp;<br>
+`retry_exceptions'&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;Exceptions&nbsp;that&nbsp;should&nbsp;be&nbsp;caught.<br>
+If&nbsp;exceptions&nbsp;other&nbsp;than&nbsp;those&nbsp;listed&nbsp;in&nbsp;`retry_exceptions'&nbsp;are<br>
+raised&nbsp;from&nbsp;`action',&nbsp;they&nbsp;will&nbsp;be&nbsp;raised&nbsp;immediately.<br>
+&nbsp;<br>
+`good_statuses'&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;return&nbsp;values&nbsp;which,&nbsp;if&nbsp;specified,<br>
+will&nbsp;result&nbsp;in&nbsp;retrying&nbsp;if&nbsp;the&nbsp;return&nbsp;value&nbsp;isn't&nbsp;listed.<br>
+&nbsp;<br>
+If&nbsp;`cleanup'&nbsp;is&nbsp;provided&nbsp;and&nbsp;callable&nbsp;it&nbsp;will&nbsp;be&nbsp;called&nbsp;immediately<br>
+after&nbsp;an&nbsp;<a href="exceptions.html#Exception">Exception</a>&nbsp;is&nbsp;caught.&nbsp;&nbsp;No&nbsp;arguments&nbsp;will&nbsp;be&nbsp;passed&nbsp;to&nbsp;it.<br>
+If&nbsp;your&nbsp;cleanup&nbsp;function&nbsp;requires&nbsp;arguments&nbsp;it&nbsp;is&nbsp;recommended&nbsp;that<br>
+you&nbsp;wrap&nbsp;it&nbsp;in&nbsp;an&nbsp;argumentless&nbsp;function.<br>
+&nbsp;<br>
+`args'&nbsp;and&nbsp;`kwargs'&nbsp;are&nbsp;a&nbsp;tuple&nbsp;and&nbsp;dict&nbsp;of&nbsp;arguments&nbsp;to&nbsp;pass&nbsp;onto<br>
+to&nbsp;`callable'.</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-rmtree"><strong>rmtree</strong></a>(self, path, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=-1</font>)</dt><dd><tt>Returns&nbsp;None&nbsp;for&nbsp;success,&nbsp;not&nbsp;None&nbsp;for&nbsp;failure</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-run_command"><strong>run_command</strong></a>(self, command, cwd<font color="#909090">=None</font>, error_list<font color="#909090">=None</font>, halt_on_failure<font color="#909090">=False</font>, success_codes<font color="#909090">=None</font>, env<font color="#909090">=None</font>, partial_env<font color="#909090">=None</font>, return_type<font color="#909090">='status'</font>, throw_exception<font color="#909090">=False</font>, output_parser<font color="#909090">=None</font>, output_timeout<font color="#909090">=None</font>, fatal_exit_code<font color="#909090">=2</font>, error_level<font color="#909090">='error'</font>, **kwargs)</dt><dd><tt>Run&nbsp;a&nbsp;command,&nbsp;with&nbsp;logging&nbsp;and&nbsp;error&nbsp;parsing.<br>
+&nbsp;<br>
+output_timeout&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;seconds&nbsp;without&nbsp;output&nbsp;before&nbsp;the&nbsp;process<br>
+is&nbsp;killed.<br>
+&nbsp;<br>
+TODO:&nbsp;context_lines<br>
+&nbsp;<br>
+output_parser&nbsp;lets&nbsp;you&nbsp;provide&nbsp;an&nbsp;instance&nbsp;of&nbsp;your&nbsp;own&nbsp;OutputParser<br>
+subclass,&nbsp;or&nbsp;pass&nbsp;None&nbsp;to&nbsp;use&nbsp;OutputParser.<br>
+&nbsp;<br>
+error_list&nbsp;example:<br>
+[{'regex':&nbsp;re.compile('^Error:&nbsp;LOL&nbsp;J/K'),&nbsp;level=IGNORE},<br>
+&nbsp;{'regex':&nbsp;re.compile('^Error:'),&nbsp;level=ERROR,&nbsp;contextLines='5:5'},<br>
+&nbsp;{'substr':&nbsp;'THE&nbsp;WORLD&nbsp;IS&nbsp;ENDING',&nbsp;level=FATAL,&nbsp;contextLines='20:'}<br>
+]<br>
+(context_lines&nbsp;isn't&nbsp;written&nbsp;yet)</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-unpack"><strong>unpack</strong></a>(self, filename, extract_to)</dt><dd><tt>This&nbsp;method&nbsp;allows&nbsp;us&nbsp;to&nbsp;extract&nbsp;a&nbsp;file&nbsp;regardless&nbsp;of&nbsp;its&nbsp;extension</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-which"><strong>which</strong></a>(self, program)</dt><dd><tt>OS&nbsp;independent&nbsp;implementation&nbsp;of&nbsp;Unix's&nbsp;which&nbsp;command<br>
+Takes&nbsp;in&nbsp;a&nbsp;program&nbsp;name<br>
+Returns&nbsp;path&nbsp;to&nbsp;executable&nbsp;or&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-write_to_file"><strong>write_to_file</strong></a>(self, file_path, contents, verbose<font color="#909090">=True</font>, open_mode<font color="#909090">='w'</font>, create_parent_dir<font color="#909090">=False</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Write&nbsp;contents&nbsp;to&nbsp;file_path.<br>
+&nbsp;<br>
+This&nbsp;doesn't&nbsp;currently&nbsp;create&nbsp;the&nbsp;parent_dir&nbsp;or&nbsp;translate&nbsp;into<br>
+abs_path;&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;done&nbsp;beforehand,&nbsp;since&nbsp;<a href="mozharness.base.script.html#ScriptMixin">ScriptMixin</a>&nbsp;doesn't<br>
+necessarily&nbsp;have&nbsp;access&nbsp;to&nbsp;query_abs_dirs().<br>
+&nbsp;<br>
+Returns&nbsp;file_path&nbsp;if&nbsp;successful,&nbsp;None&nbsp;if&nbsp;not.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><strong>env</strong> = None</dl>
+
+<dl><dt><strong>script_obj</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>:<br>
+<dl><dt><a name="SUTDeviceMozdeviceMixin-critical"><strong>critical</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-debug"><strong>debug</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-error"><strong>error</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-exception"><strong>exception</strong></a>(self, message<font color="#909090">=None</font>, level<font color="#909090">='error'</font>)</dt><dd><tt>#&nbsp;Copying&nbsp;Bear's&nbsp;dumpException():<br>
+#&nbsp;https://hg.mozilla.org/build/tools/annotate/1485f23c38e0/sut_tools/sut_lib.py#l23</tt></dd></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-fatal"><strong>fatal</strong></a>(self, message, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-info"><strong>info</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-log"><strong>log</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-warning"><strong>warning</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="SUTDeviceMozdeviceMixin-worst_level"><strong>worst_level</strong></a>(self, target_level, existing_level, levels<font color="#909090">=None</font>)</dt><dd><tt>returns&nbsp;either&nbsp;existing_level&nbsp;or&nbsp;target&nbsp;level.<br>
+This&nbsp;depends&nbsp;on&nbsp;which&nbsp;is&nbsp;closest&nbsp;to&nbsp;levels[0]<br>
+By&nbsp;default,&nbsp;levels&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;log&nbsp;levels</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ADBErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'error', 'substr': 'INSTALL_FAILED_'}, {'level': 'error', 'substr': 'Android Debug Bridge version'}, {'level': 'error', 'substr': 'error: protocol fault'}, {'level': 'error', 'substr': 'unable to connect to '}]<br>
+<strong>DEBUG</strong> = 'debug'<br>
+<strong>DEVICE_CANT_REMOVE_DEVROOT</strong> = 6<br>
+<strong>DEVICE_CANT_REMOVE_ETC_HOSTS</strong> = 7<br>
+<strong>DEVICE_CANT_SET_TIME</strong> = 8<br>
+<strong>DEVICE_HOST_ERROR</strong> = 4<br>
+<strong>DEVICE_MISSING_SDCARD</strong> = 3<br>
+<strong>DEVICE_NOT_CONNECTED</strong> = 2<br>
+<strong>DEVICE_NOT_REBOOTED</strong> = 5<br>
+<strong>DEVICE_PROTOCOL_DICT</strong> = {'adb': &lt;class 'device.ADBDeviceHandler'&gt;, 'sut': &lt;class 'device.SUTDeviceHandler'&gt;}<br>
+<strong>DEVICE_UNREACHABLE</strong> = 1<br>
+<strong>device_config_options</strong> = [[['--device-ip'], {'action': 'store', 'dest': 'device_ip', 'help': 'Specify the IP address of the device.'}], [['--device-port'], {'action': 'store', 'dest': 'device_port', 'help': 'Specify the IP port of the device.'}], [['--device-heartbeat-port'], {'action': 'store', 'dest': 'device_heartbeat_port', 'help': 'Specify the heartbeat port of the SUT device.'}], [['--device-protocol'], {'action': 'store', 'choices': ['sut', 'adb'], 'dest': 'device_protocol', 'help': 'Specify the device communication protocol.', 'type': 'choice'}], [['--device-type'], {'action': 'store', 'choices': ['non-tegra', 'tegra250'], 'default': 'non-tegra', 'dest': 'device_type', 'help': 'Specify the device type.', 'type': 'choice'}], [['--devicemanager-path'], {'action': 'store', 'dest': 'devicemanager_path', 'help': 'Specify the parent dir of devicemanagerSUT.py.'}]]</td></tr></table>
+</body></html>

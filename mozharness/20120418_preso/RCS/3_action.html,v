@@ -1,0 +1,104 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2011.10.12.03.32.56;	author asasaki;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2011.10.11.19.37.53;	author asasaki;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@mozharness: actions
+
+<p>
+<a href="http://escapewindow.dreamwidth.org/223757.html"><i>that allows production infrastructure and individual developers to use the same scripts.</i></a>
+</p><p>
+<b>What are actions?</b>
+</p><p>
+Actions are discrete logical steps to a script, similar to [simple] makefile targets.
+</p><p>
+Since certain actions, like <code>upload</code> or <code>notify</code> might not be useful to certain consumers of a script, it's helpful to be able to turn those off.
+</p><p>
+Versatile, reusable <a href="http://escapewindow.dreamwidth.org/230482.html">configs</a> are key to sharing scripts between automation and users with different workflows.  Actions are another key ingredient.
+</p><br /><p>
+<b>What are default actions?</b>
+</p><p>
+<code>default_actions</code> is a subset of <code>all_actions</code>, and specifies the list of actions to run if no action-specific command line options are specified.
+</p><p>
+Using the <code>configtest.py</code> script as an example:
+</p><blockquote><pre>
+deathduck:~/src/clean/mozharness [19:09:59] (default)
+621$ scripts/configtest.py --list-actions
+Actions available: list-config-files, test-json-configs, test-python-configs
+Default actions: test-json-configs, test-python-configs
+</pre></blockquote><p>
+These are specified <a href="http://hg.mozilla.org/build/mozharness/file/e9a73bfed62c/scripts/configtest.py#l70">here</a>.
+</p><p>
+It's now possible to specify your own <code>default_actions</code> in your config file, so if you want to run a script with a different set of default actions, you can do so without copy/pasting a ton of command line arguments.
+</p><br /><p>
+<b>How is the list of actions-to-run generated?</b>
+</p><p>
+I have that documented <a href="http://hg.mozilla.org/build/mozharness/file/e9a73bfed62c/mozharness/base/config.py#l366">here</a>.
+</p><p>
+Using <code>configtest.py</code> as an example again:
+</p><blockquote><pre>
+# Only run the list-config-files action
+configtest.py --list-config-files
+
+# Run the list-config-files and test-json-configs actions
+configtest.py --list-config-files --test-json-configs
+# or
+configtest.py --action list-config-files,test-json-configs
+# or
+configtest.py --action list-config-files --action test-json-configs
+
+# Run list-config-files in addition to the default actions
+configtest.py --add-action list-config-files
+
+# Run the default actions, but not test-python-configs
+configtest.py --no-test-python-configs
+</pre></blockquote><br /><p>
+<b>How are the actions run in the script?</b>
+</p><p>
+That's handled by <a href="http://hg.mozilla.org/build/mozharness/file/e9a73bfed62c/mozharness/base/script.py#l484">BaseScript.run()</a>:
+</p><ol style="list-style-type: lower-alpha"><li>
+Change all dashes in the action name to underscores; that's the method to call
+</li><li>
+If the action is not in the list of actions to run, skip + go to the next action.
+</li><li>
+if <code>preflight_METHODNAME</code> exists, run that before running <code>METHODNAME</code>.
+</li><li>
+Call <code>METHODNAME</code>.
+</li><li>
+If <code>postflight_METHODNAME</code> exists, run that after running <code>METHODNAME</code>.
+</li></ol>
+<br /><p>
+<a href="http://escapewindow.dreamwidth.org/223757.html">Mozharness home</a>
+</p>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 67
+@

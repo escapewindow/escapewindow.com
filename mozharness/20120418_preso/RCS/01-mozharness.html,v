@@ -1,0 +1,187 @@
+head	1.4;
+access;
+symbols;
+locks
+	asasaki:1.4; strict;
+comment	@# @;
+
+
+1.4
+date	2012.04.17.01.26.01;	author asasaki;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2012.04.13.21.39.17;	author asasaki;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2012.04.13.21.16.37;	author asasaki;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2012.04.13.18.33.23;	author asasaki;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@<html><head>
+<link rel="stylesheet" href="mh.css" type="text/css"/>
+</head><body>
+
+<h3>What is Mozharness?</h3>
+<ul>
+<li>Semi-official definition<br />
+  <ul>
+    <blockquote><i>
+Mozharness is a configuration-driven script harness with full logging that allows production infrastructure and individual developers to use the same scripts.
+    </i></blockquote>
+  </ul>
+  <ul><li class="monospace">
+configuration-driven
+  </li><li class="monospace">
+script harness
+  </li><li class="monospace">
+full logging
+  </li><li class="monospace">
+sharing
+</li></ul></li>
+<li>
+Bare bones:
+  <ul><li>
+A harness to write + run python scripts. Or,
+  </li><li>
+A python script harness.
+  </li><ul><li>
+<a href="https://encrypted.google.com/search?q=script%20harness">https://encrypted.google.com/search?q=script harness</a> : lots of "test harness" results
+    </li><li class="monospace">
+<a href="https://encrypted.google.com/search?q=%22script+harness%22">https://encrypted.google.com/search?q="script+harness"</a> : Mozharness is #5.
+    </li><li>
+<a href="https://en.wikipedia.org/wiki/Test_harness">https://en.wikipedia.org/wiki/Test_harness</a> : "test harness" has its own Wikipedia page.
+    </li><li class="monospace">
+<a href="https://en.wikipedia.org/w/index.php?search=script+harness">https://en.wikipedia.org/w/index.php?search=script+harness</a> : "script harness" doesn't.
+    </li></ul>
+  </li></ul>
+</ul>
+
+<p>
+<a href="02-why.html">why --&gt;</a><br />
+</p>
+
+</body></html>
+@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@a3 2
+<h2>Mozharness</h2>
+<h4>Overview for Automation Team, April 2012</h4>
+a4 3
+<br />
+
+<ul>
+a38 1
+</ul>
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d18 1
+a18 1
+  <ul><li>
+d20 1
+a20 1
+  </li><li>
+d22 1
+a22 1
+  </li><li>
+d24 1
+a24 1
+  </li><li>
+d30 1
+a30 1
+A harness to write + run python scripts.
+d33 9
+a45 5
+https://encrypted.google.com/search?q=script%20harness
+https://encrypted.google.com/search?q=%22script+harness%22
+http://en.wikipedia.org/wiki/Test_harness
+http://en.wikipedia.org/w/index.php?search=script+harness
+
+d47 1
+a47 1
+<a href="02-layout.html">layout --&gt;</a><br />
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d2 1
+a2 1
+<link rel="stylesheet" href="webbuild2.css" type="text/css"/>
+d4 2
+a5 2
+<h2>WebBuild2<sup>1</sup></h2>
+<h4>Front-end to build automation</h4>
+d10 25
+a34 32
+  <li>
+    <p>
+<b>One-click builds</b>
+    </p>
+    <ul>
+      <li>
+Kick off a default-config suite of builds.
+      </li><li>
+Much like requesting a set of m-c nightlies; uses the api to do the defaults.
+      </li>
+    </ul>
+  </li><br />
+
+  <li>
+    <p>
+<b>Advanced form</b>
+    </p>
+    <ul>
+      <li>
+Kick off special one-off builds.
+      </li><li>
+Kick off a suite with specific builds or platforms turned on or off.
+      </li><li>
+Change default behavior for this specific set of builds.
+        <ul>
+          <li>
+Where to report to, what toolchain to use, etc.
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+d37 4
+a40 3
+<p>
+<sup>1</sup> If we implement this here, I'd like a better name, please.
+</p>
+@

@@ -1,0 +1,515 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module config</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>config</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/mozharness/base/config.py">/home/aki/wrk/git-mozharness-ro/mozharness/base/config.py</a></font></td></tr></table>
+    <p><tt>Generic&nbsp;config&nbsp;parsing&nbsp;and&nbsp;dumping,&nbsp;the&nbsp;way&nbsp;I&nbsp;remember&nbsp;it&nbsp;from&nbsp;scripts<br>
+gone&nbsp;by.<br>
+&nbsp;<br>
+The&nbsp;config&nbsp;should&nbsp;be&nbsp;built&nbsp;from&nbsp;script-level&nbsp;defaults,&nbsp;overlaid&nbsp;by<br>
+config-file&nbsp;defaults,&nbsp;overlaid&nbsp;by&nbsp;command&nbsp;line&nbsp;options.<br>
+&nbsp;<br>
+&nbsp;&nbsp;(For&nbsp;buildbot-analogues&nbsp;that&nbsp;would&nbsp;be&nbsp;factory-level&nbsp;defaults,<br>
+&nbsp;&nbsp;&nbsp;builder-level&nbsp;defaults,&nbsp;and&nbsp;build&nbsp;request/scheduler&nbsp;settings.)<br>
+&nbsp;<br>
+The&nbsp;config&nbsp;should&nbsp;then&nbsp;be&nbsp;locked&nbsp;(set&nbsp;to&nbsp;read-only,&nbsp;to&nbsp;prevent&nbsp;runtime<br>
+alterations).&nbsp;&nbsp;Afterwards&nbsp;we&nbsp;should&nbsp;dump&nbsp;the&nbsp;config&nbsp;to&nbsp;a&nbsp;file&nbsp;that&nbsp;is<br>
+uploaded&nbsp;with&nbsp;the&nbsp;build,&nbsp;and&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;debug&nbsp;or&nbsp;replicate&nbsp;the&nbsp;build<br>
+at&nbsp;a&nbsp;later&nbsp;time.<br>
+&nbsp;<br>
+TODO:<br>
+&nbsp;<br>
+*&nbsp;check_required_settings&nbsp;or&nbsp;something&nbsp;--&nbsp;run&nbsp;at&nbsp;init,&nbsp;assert&nbsp;that<br>
+&nbsp;&nbsp;these&nbsp;settings&nbsp;are&nbsp;set.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="simplejson.html">simplejson</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="socket.html">socket</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+<a href="urllib2.html">urllib2</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#dict">__builtin__.dict</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="config.html#ReadOnlyDict">ReadOnlyDict</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="config.html#BaseConfig">BaseConfig</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#tuple">__builtin__.tuple</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="config.html#LockedTuple">LockedTuple</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="optparse.html#Option">optparse.Option</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="config.html#ExtendOption">ExtendOption</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="optparse.html#OptionParser">optparse.OptionParser</a>(<a href="optparse.html#OptionContainer">optparse.OptionContainer</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="config.html#ExtendedOptionParser">ExtendedOptionParser</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BaseConfig">class <strong>BaseConfig</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Basic&nbsp;config&nbsp;setting/getting.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="BaseConfig-__init__"><strong>__init__</strong></a>(self, config<font color="#909090">=None</font>, initial_config_file<font color="#909090">=None</font>, config_options<font color="#909090">=None</font>, all_actions<font color="#909090">=None</font>, default_actions<font color="#909090">=None</font>, volatile_config<font color="#909090">=None</font>, option_args<font color="#909090">=None</font>, require_config_file<font color="#909090">=False</font>, usage<font color="#909090">='usage: %prog [options]'</font>)</dt></dl>
+
+<dl><dt><a name="BaseConfig-get_actions"><strong>get_actions</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseConfig-get_cfgs_from_files"><strong>get_cfgs_from_files</strong></a>(self, all_config_files, parser)</dt><dd><tt>returns&nbsp;a&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;from&nbsp;a&nbsp;given&nbsp;list&nbsp;of&nbsp;config&nbsp;files.<br>
+&nbsp;<br>
+this&nbsp;method&nbsp;can&nbsp;be&nbsp;overwritten&nbsp;in&nbsp;a&nbsp;subclassed&nbsp;<a href="#BaseConfig">BaseConfig</a>&nbsp;to&nbsp;add&nbsp;extra<br>
+logic&nbsp;to&nbsp;the&nbsp;way&nbsp;that&nbsp;self.<strong>config</strong>&nbsp;is&nbsp;made&nbsp;up.<br>
+For&nbsp;eg:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Say&nbsp;you&nbsp;don't&nbsp;wish&nbsp;to&nbsp;update&nbsp;self.<strong>config</strong>&nbsp;with&nbsp;the&nbsp;entire&nbsp;contents<br>
+&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;a&nbsp;config&nbsp;file.&nbsp;You&nbsp;may&nbsp;have&nbsp;a&nbsp;config&nbsp;file&nbsp;that&nbsp;represents&nbsp;a&nbsp;<a href="__builtin__.html#dict">dict</a><br>
+&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;branches.&nbsp;&nbsp;These&nbsp;branches&nbsp;could&nbsp;be&nbsp;a&nbsp;series&nbsp;of&nbsp;dicts.&nbsp;You&nbsp;could<br>
+&nbsp;&nbsp;&nbsp;&nbsp;then&nbsp;look&nbsp;for&nbsp;the&nbsp;presence&nbsp;of&nbsp;such&nbsp;a&nbsp;known&nbsp;config&nbsp;file&nbsp;and&nbsp;take&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;branch&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;you&nbsp;desire&nbsp;from&nbsp;it.</tt></dd></dl>
+
+<dl><dt><a name="BaseConfig-get_read_only_config"><strong>get_read_only_config</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseConfig-list_actions"><strong>list_actions</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BaseConfig-parse_args"><strong>parse_args</strong></a>(self, args<font color="#909090">=None</font>)</dt><dd><tt>Parse&nbsp;command&nbsp;line&nbsp;arguments&nbsp;in&nbsp;a&nbsp;generic&nbsp;way.<br>
+Return&nbsp;the&nbsp;parser&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;after&nbsp;adding&nbsp;the&nbsp;basic&nbsp;options,&nbsp;so<br>
+child&nbsp;objects&nbsp;can&nbsp;manipulate&nbsp;it.</tt></dd></dl>
+
+<dl><dt><a name="BaseConfig-set_config"><strong>set_config</strong></a>(self, config, overwrite<font color="#909090">=False</font>)</dt><dd><tt>This&nbsp;is&nbsp;probably&nbsp;doable&nbsp;some&nbsp;other&nbsp;way.</tt></dd></dl>
+
+<dl><dt><a name="BaseConfig-verify_actions"><strong>verify_actions</strong></a>(self, action_list, quiet<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="BaseConfig-verify_actions_order"><strong>verify_actions_order</strong></a>(self, action_list)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ExtendOption">class <strong>ExtendOption</strong></a>(<a href="optparse.html#Option">optparse.Option</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>from&nbsp;<a href="http://docs.python.org/library/optparse.html?highlight=optparse#adding-new-actions">http://docs.python.org/library/optparse.html?highlight=optparse#adding-new-actions</a><br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="ExtendOption-take_action"><strong>take_action</strong></a>(self, action, dest, opt, value, values, parser)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>ACTIONS</strong> = ('store', 'store_const', 'store_true', 'store_false', 'append', 'append_const', 'count', 'callback', 'help', 'version', 'extend')</dl>
+
+<dl><dt><strong>ALWAYS_TYPED_ACTIONS</strong> = ('store', 'append', 'extend')</dl>
+
+<dl><dt><strong>STORE_ACTIONS</strong> = ('store', 'store_const', 'store_true', 'store_false', 'append', 'append_const', 'count', 'extend')</dl>
+
+<dl><dt><strong>TYPED_ACTIONS</strong> = ('store', 'append', 'callback', 'extend')</dl>
+
+<hr>
+Methods inherited from <a href="optparse.html#Option">optparse.Option</a>:<br>
+<dl><dt><a name="ExtendOption-__init__"><strong>__init__</strong></a>(self, *opts, **attrs)</dt></dl>
+
+<dl><dt><a name="ExtendOption-__repr__"><strong>__repr__</strong></a> = _repr(self)</dt></dl>
+
+<dl><dt><a name="ExtendOption-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ExtendOption-check_value"><strong>check_value</strong></a>(self, opt, value)</dt></dl>
+
+<dl><dt><a name="ExtendOption-convert_value"><strong>convert_value</strong></a>(self, opt, value)</dt></dl>
+
+<dl><dt><a name="ExtendOption-get_opt_string"><strong>get_opt_string</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ExtendOption-process"><strong>process</strong></a>(self, opt, value, values, parser)</dt></dl>
+
+<dl><dt><a name="ExtendOption-takes_value"><strong>takes_value</strong></a>(self)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="optparse.html#Option">optparse.Option</a>:<br>
+<dl><dt><strong>ATTRS</strong> = ['action', 'type', 'dest', 'default', 'nargs', 'const', 'choices', 'callback', 'callback_args', 'callback_kwargs', 'help', 'metavar']</dl>
+
+<dl><dt><strong>CHECK_METHODS</strong> = [&lt;function _check_action at 0xb7e90e2c&gt;, &lt;function _check_type at 0xb7e90e64&gt;, &lt;function _check_choice at 0xb7e90e9c&gt;, &lt;function _check_dest at 0xb7e90ed4&gt;, &lt;function _check_const at 0xb7e90f0c&gt;, &lt;function _check_nargs at 0xb7e90f44&gt;, &lt;function _check_callback at 0xb7e90f7c&gt;]</dl>
+
+<dl><dt><strong>CONST_ACTIONS</strong> = ('store_const', 'append_const')</dl>
+
+<dl><dt><strong>TYPES</strong> = ('string', 'int', 'long', 'float', 'complex', 'choice')</dl>
+
+<dl><dt><strong>TYPE_CHECKER</strong> = {'choice': &lt;function check_choice at 0xb7e90cdc&gt;, 'complex': &lt;function check_builtin at 0xb7e90ca4&gt;, 'float': &lt;function check_builtin at 0xb7e90ca4&gt;, 'int': &lt;function check_builtin at 0xb7e90ca4&gt;, 'long': &lt;function check_builtin at 0xb7e90ca4&gt;}</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ExtendedOptionParser">class <strong>ExtendedOptionParser</strong></a>(<a href="optparse.html#OptionParser">optparse.OptionParser</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="optparse.html#OptionParser">OptionParser</a>,&nbsp;but&nbsp;with&nbsp;<a href="#ExtendOption">ExtendOption</a>&nbsp;as&nbsp;the&nbsp;option_class.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="config.html#ExtendedOptionParser">ExtendedOptionParser</a></dd>
+<dd><a href="optparse.html#OptionParser">optparse.OptionParser</a></dd>
+<dd><a href="optparse.html#OptionContainer">optparse.OptionContainer</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ExtendedOptionParser-__init__"><strong>__init__</strong></a>(self, **kwargs)</dt></dl>
+
+<hr>
+Methods inherited from <a href="optparse.html#OptionParser">optparse.OptionParser</a>:<br>
+<dl><dt><a name="ExtendedOptionParser-add_option_group"><strong>add_option_group</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-check_values"><strong>check_values</strong></a>(self, values, args)</dt><dd><tt><a href="#ExtendedOptionParser-check_values">check_values</a>(values&nbsp;:&nbsp;Values,&nbsp;args&nbsp;:&nbsp;[string])<br>
+-&gt;&nbsp;(values&nbsp;:&nbsp;Values,&nbsp;args&nbsp;:&nbsp;[string])<br>
+&nbsp;<br>
+Check&nbsp;that&nbsp;the&nbsp;supplied&nbsp;option&nbsp;values&nbsp;and&nbsp;leftover&nbsp;arguments&nbsp;are<br>
+valid.&nbsp;&nbsp;Returns&nbsp;the&nbsp;option&nbsp;values&nbsp;and&nbsp;leftover&nbsp;arguments<br>
+(possibly&nbsp;adjusted,&nbsp;possibly&nbsp;completely&nbsp;new&nbsp;--&nbsp;whatever&nbsp;you<br>
+like).&nbsp;&nbsp;Default&nbsp;implementation&nbsp;just&nbsp;returns&nbsp;the&nbsp;passed-in<br>
+values;&nbsp;subclasses&nbsp;may&nbsp;override&nbsp;as&nbsp;desired.</tt></dd></dl>
+
+<dl><dt><a name="ExtendedOptionParser-destroy"><strong>destroy</strong></a>(self)</dt><dd><tt>Declare&nbsp;that&nbsp;you&nbsp;are&nbsp;done&nbsp;with&nbsp;this&nbsp;<a href="optparse.html#OptionParser">OptionParser</a>.&nbsp;&nbsp;This&nbsp;cleans&nbsp;up<br>
+reference&nbsp;cycles&nbsp;so&nbsp;the&nbsp;<a href="optparse.html#OptionParser">OptionParser</a>&nbsp;(and&nbsp;all&nbsp;objects&nbsp;referenced&nbsp;by<br>
+it)&nbsp;can&nbsp;be&nbsp;garbage-collected&nbsp;promptly.&nbsp;&nbsp;After&nbsp;calling&nbsp;<a href="#ExtendedOptionParser-destroy">destroy</a>(),&nbsp;the<br>
+<a href="optparse.html#OptionParser">OptionParser</a>&nbsp;is&nbsp;unusable.</tt></dd></dl>
+
+<dl><dt><a name="ExtendedOptionParser-disable_interspersed_args"><strong>disable_interspersed_args</strong></a>(self)</dt><dd><tt>Set&nbsp;parsing&nbsp;to&nbsp;stop&nbsp;on&nbsp;the&nbsp;first&nbsp;non-option.&nbsp;Use&nbsp;this&nbsp;if<br>
+you&nbsp;have&nbsp;a&nbsp;command&nbsp;processor&nbsp;which&nbsp;runs&nbsp;another&nbsp;command&nbsp;that<br>
+has&nbsp;options&nbsp;of&nbsp;its&nbsp;own&nbsp;and&nbsp;you&nbsp;want&nbsp;to&nbsp;make&nbsp;sure&nbsp;these&nbsp;options<br>
+don't&nbsp;get&nbsp;confused.</tt></dd></dl>
+
+<dl><dt><a name="ExtendedOptionParser-enable_interspersed_args"><strong>enable_interspersed_args</strong></a>(self)</dt><dd><tt>Set&nbsp;parsing&nbsp;to&nbsp;not&nbsp;stop&nbsp;on&nbsp;the&nbsp;first&nbsp;non-option,&nbsp;allowing<br>
+interspersing&nbsp;switches&nbsp;with&nbsp;command&nbsp;arguments.&nbsp;This&nbsp;is&nbsp;the<br>
+default&nbsp;behavior.&nbsp;See&nbsp;also&nbsp;<a href="#ExtendedOptionParser-disable_interspersed_args">disable_interspersed_args</a>()&nbsp;and&nbsp;the<br>
+class&nbsp;documentation&nbsp;description&nbsp;of&nbsp;the&nbsp;attribute<br>
+allow_interspersed_args.</tt></dd></dl>
+
+<dl><dt><a name="ExtendedOptionParser-error"><strong>error</strong></a>(self, msg)</dt><dd><tt><a href="#ExtendedOptionParser-error">error</a>(msg&nbsp;:&nbsp;string)<br>
+&nbsp;<br>
+Print&nbsp;a&nbsp;usage&nbsp;message&nbsp;incorporating&nbsp;'msg'&nbsp;to&nbsp;stderr&nbsp;and&nbsp;exit.<br>
+If&nbsp;you&nbsp;override&nbsp;this&nbsp;in&nbsp;a&nbsp;subclass,&nbsp;it&nbsp;should&nbsp;not&nbsp;return&nbsp;--&nbsp;it<br>
+should&nbsp;either&nbsp;exit&nbsp;or&nbsp;raise&nbsp;an&nbsp;exception.</tt></dd></dl>
+
+<dl><dt><a name="ExtendedOptionParser-exit"><strong>exit</strong></a>(self, status<font color="#909090">=0</font>, msg<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-expand_prog_name"><strong>expand_prog_name</strong></a>(self, s)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-format_epilog"><strong>format_epilog</strong></a>(self, formatter)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-format_help"><strong>format_help</strong></a>(self, formatter<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-format_option_help"><strong>format_option_help</strong></a>(self, formatter<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-get_default_values"><strong>get_default_values</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-get_description"><strong>get_description</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-get_option_group"><strong>get_option_group</strong></a>(self, opt_str)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-get_prog_name"><strong>get_prog_name</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-get_usage"><strong>get_usage</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-get_version"><strong>get_version</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-parse_args"><strong>parse_args</strong></a>(self, args<font color="#909090">=None</font>, values<font color="#909090">=None</font>)</dt><dd><tt><a href="#ExtendedOptionParser-parse_args">parse_args</a>(args&nbsp;:&nbsp;[string]&nbsp;=&nbsp;sys.argv[1:],<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;values&nbsp;:&nbsp;Values&nbsp;=&nbsp;None)<br>
+-&gt;&nbsp;(values&nbsp;:&nbsp;Values,&nbsp;args&nbsp;:&nbsp;[string])<br>
+&nbsp;<br>
+Parse&nbsp;the&nbsp;command-line&nbsp;options&nbsp;found&nbsp;in&nbsp;'args'&nbsp;(default:<br>
+sys.argv[1:]).&nbsp;&nbsp;Any&nbsp;errors&nbsp;result&nbsp;in&nbsp;a&nbsp;call&nbsp;to&nbsp;'<a href="#ExtendedOptionParser-error">error</a>()',&nbsp;which<br>
+by&nbsp;default&nbsp;prints&nbsp;the&nbsp;usage&nbsp;message&nbsp;to&nbsp;stderr&nbsp;and&nbsp;calls<br>
+sys.<a href="#ExtendedOptionParser-exit">exit</a>()&nbsp;with&nbsp;an&nbsp;error&nbsp;message.&nbsp;&nbsp;On&nbsp;success&nbsp;returns&nbsp;a&nbsp;pair<br>
+(values,&nbsp;args)&nbsp;where&nbsp;'values'&nbsp;is&nbsp;an&nbsp;Values&nbsp;instance&nbsp;(with&nbsp;all<br>
+your&nbsp;option&nbsp;values)&nbsp;and&nbsp;'args'&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;arguments&nbsp;left<br>
+over&nbsp;after&nbsp;parsing&nbsp;options.</tt></dd></dl>
+
+<dl><dt><a name="ExtendedOptionParser-print_help"><strong>print_help</strong></a>(self, file<font color="#909090">=None</font>)</dt><dd><tt><a href="#ExtendedOptionParser-print_help">print_help</a>(file&nbsp;:&nbsp;file&nbsp;=&nbsp;stdout)<br>
+&nbsp;<br>
+Print&nbsp;an&nbsp;extended&nbsp;help&nbsp;message,&nbsp;listing&nbsp;all&nbsp;options&nbsp;and&nbsp;any<br>
+help&nbsp;text&nbsp;provided&nbsp;with&nbsp;them,&nbsp;to&nbsp;'file'&nbsp;(default&nbsp;stdout).</tt></dd></dl>
+
+<dl><dt><a name="ExtendedOptionParser-print_usage"><strong>print_usage</strong></a>(self, file<font color="#909090">=None</font>)</dt><dd><tt><a href="#ExtendedOptionParser-print_usage">print_usage</a>(file&nbsp;:&nbsp;file&nbsp;=&nbsp;stdout)<br>
+&nbsp;<br>
+Print&nbsp;the&nbsp;usage&nbsp;message&nbsp;for&nbsp;the&nbsp;current&nbsp;program&nbsp;(self.<strong>usage</strong>)&nbsp;to<br>
+'file'&nbsp;(default&nbsp;stdout).&nbsp;&nbsp;Any&nbsp;occurence&nbsp;of&nbsp;the&nbsp;string&nbsp;"%prog"&nbsp;in<br>
+self.<strong>usage</strong>&nbsp;is&nbsp;replaced&nbsp;with&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;current&nbsp;program<br>
+(basename&nbsp;of&nbsp;sys.argv[0]).&nbsp;&nbsp;Does&nbsp;nothing&nbsp;if&nbsp;self.<strong>usage</strong>&nbsp;is&nbsp;empty<br>
+or&nbsp;not&nbsp;defined.</tt></dd></dl>
+
+<dl><dt><a name="ExtendedOptionParser-print_version"><strong>print_version</strong></a>(self, file<font color="#909090">=None</font>)</dt><dd><tt><a href="#ExtendedOptionParser-print_version">print_version</a>(file&nbsp;:&nbsp;file&nbsp;=&nbsp;stdout)<br>
+&nbsp;<br>
+Print&nbsp;the&nbsp;version&nbsp;message&nbsp;for&nbsp;this&nbsp;program&nbsp;(self.<strong>version</strong>)&nbsp;to<br>
+'file'&nbsp;(default&nbsp;stdout).&nbsp;&nbsp;As&nbsp;with&nbsp;<a href="#ExtendedOptionParser-print_usage">print_usage</a>(),&nbsp;any&nbsp;occurence<br>
+of&nbsp;"%prog"&nbsp;in&nbsp;self.<strong>version</strong>&nbsp;is&nbsp;replaced&nbsp;by&nbsp;the&nbsp;current&nbsp;program's<br>
+name.&nbsp;&nbsp;Does&nbsp;nothing&nbsp;if&nbsp;self.<strong>version</strong>&nbsp;is&nbsp;empty&nbsp;or&nbsp;undefined.</tt></dd></dl>
+
+<dl><dt><a name="ExtendedOptionParser-set_default"><strong>set_default</strong></a>(self, dest, value)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-set_defaults"><strong>set_defaults</strong></a>(self, **kwargs)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-set_process_default_values"><strong>set_process_default_values</strong></a>(self, process)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-set_usage"><strong>set_usage</strong></a>(self, usage)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="optparse.html#OptionParser">optparse.OptionParser</a>:<br>
+<dl><dt><strong>standard_option_list</strong> = []</dl>
+
+<hr>
+Methods inherited from <a href="optparse.html#OptionContainer">optparse.OptionContainer</a>:<br>
+<dl><dt><a name="ExtendedOptionParser-add_option"><strong>add_option</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#ExtendedOptionParser-add_option">add_option</a>(<a href="optparse.html#Option">Option</a>)<br>
+<a href="#ExtendedOptionParser-add_option">add_option</a>(opt_str,&nbsp;...,&nbsp;kwarg=val,&nbsp;...)</tt></dd></dl>
+
+<dl><dt><a name="ExtendedOptionParser-add_options"><strong>add_options</strong></a>(self, option_list)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-format_description"><strong>format_description</strong></a>(self, formatter)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-get_option"><strong>get_option</strong></a>(self, opt_str)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-has_option"><strong>has_option</strong></a>(self, opt_str)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-remove_option"><strong>remove_option</strong></a>(self, opt_str)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-set_conflict_handler"><strong>set_conflict_handler</strong></a>(self, handler)</dt></dl>
+
+<dl><dt><a name="ExtendedOptionParser-set_description"><strong>set_description</strong></a>(self, description)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="LockedTuple">class <strong>LockedTuple</strong></a>(<a href="__builtin__.html#tuple">__builtin__.tuple</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="config.html#LockedTuple">LockedTuple</a></dd>
+<dd><a href="__builtin__.html#tuple">__builtin__.tuple</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="LockedTuple-__deepcopy__"><strong>__deepcopy__</strong></a>(self, memo)</dt></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="LockedTuple-__new__"><strong>__new__</strong></a>(cls, items)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="__builtin__.html#tuple">__builtin__.tuple</a>:<br>
+<dl><dt><a name="LockedTuple-__add__"><strong>__add__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__add__">__add__</a>(y)&nbsp;&lt;==&gt;&nbsp;x+y</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__contains__"><strong>__contains__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__contains__">__contains__</a>(y)&nbsp;&lt;==&gt;&nbsp;y&nbsp;in&nbsp;x</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__eq__">__eq__</a>(y)&nbsp;&lt;==&gt;&nbsp;x==y</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__ge__"><strong>__ge__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__ge__">__ge__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&gt;=y</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__getnewargs__"><strong>__getnewargs__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="LockedTuple-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__gt__"><strong>__gt__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__gt__">__gt__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&gt;y</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__hash__"><strong>__hash__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__hash__">__hash__</a>()&nbsp;&lt;==&gt;&nbsp;hash(x)</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__iter__"><strong>__iter__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__iter__">__iter__</a>()&nbsp;&lt;==&gt;&nbsp;iter(x)</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__le__"><strong>__le__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__le__">__le__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&lt;=y</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__len__"><strong>__len__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__len__">__len__</a>()&nbsp;&lt;==&gt;&nbsp;len(x)</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__lt__"><strong>__lt__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__lt__">__lt__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&lt;y</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__mul__"><strong>__mul__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__mul__">__mul__</a>(n)&nbsp;&lt;==&gt;&nbsp;x*n</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__ne__"><strong>__ne__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__ne__">__ne__</a>(y)&nbsp;&lt;==&gt;&nbsp;x!=y</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__rmul__"><strong>__rmul__</strong></a>(...)</dt><dd><tt>x.<a href="#LockedTuple-__rmul__">__rmul__</a>(n)&nbsp;&lt;==&gt;&nbsp;n*x</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-__sizeof__"><strong>__sizeof__</strong></a>(...)</dt><dd><tt>T.<a href="#LockedTuple-__sizeof__">__sizeof__</a>()&nbsp;--&nbsp;size&nbsp;of&nbsp;T&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-count"><strong>count</strong></a>(...)</dt><dd><tt>T.<a href="#LockedTuple-count">count</a>(value)&nbsp;-&gt;&nbsp;integer&nbsp;--&nbsp;return&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;of&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="LockedTuple-index"><strong>index</strong></a>(...)</dt><dd><tt>T.<a href="#LockedTuple-index">index</a>(value,&nbsp;[start,&nbsp;[stop]])&nbsp;-&gt;&nbsp;integer&nbsp;--&nbsp;return&nbsp;first&nbsp;index&nbsp;of&nbsp;value.<br>
+Raises&nbsp;ValueError&nbsp;if&nbsp;the&nbsp;value&nbsp;is&nbsp;not&nbsp;present.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ReadOnlyDict">class <strong>ReadOnlyDict</strong></a>(<a href="__builtin__.html#dict">__builtin__.dict</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>#&nbsp;<a href="#ReadOnlyDict">ReadOnlyDict</a>&nbsp;{{{1<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="config.html#ReadOnlyDict">ReadOnlyDict</a></dd>
+<dd><a href="__builtin__.html#dict">__builtin__.dict</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ReadOnlyDict-__deepcopy__"><strong>__deepcopy__</strong></a>(self, memo)</dt></dl>
+
+<dl><dt><a name="ReadOnlyDict-__delitem__"><strong>__delitem__</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="ReadOnlyDict-__init__"><strong>__init__</strong></a>(self, dictionary)</dt></dl>
+
+<dl><dt><a name="ReadOnlyDict-__setitem__"><strong>__setitem__</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="ReadOnlyDict-clear"><strong>clear</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="ReadOnlyDict-lock"><strong>lock</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ReadOnlyDict-pop"><strong>pop</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="ReadOnlyDict-popitem"><strong>popitem</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="ReadOnlyDict-setdefault"><strong>setdefault</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="ReadOnlyDict-update"><strong>update</strong></a>(self, *args)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="__builtin__.html#dict">__builtin__.dict</a>:<br>
+<dl><dt><a name="ReadOnlyDict-__cmp__"><strong>__cmp__</strong></a>(...)</dt><dd><tt>x.<a href="#ReadOnlyDict-__cmp__">__cmp__</a>(y)&nbsp;&lt;==&gt;&nbsp;cmp(x,y)</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-__contains__"><strong>__contains__</strong></a>(...)</dt><dd><tt>D.<a href="#ReadOnlyDict-__contains__">__contains__</a>(k)&nbsp;-&gt;&nbsp;True&nbsp;if&nbsp;D&nbsp;has&nbsp;a&nbsp;key&nbsp;k,&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt>x.<a href="#ReadOnlyDict-__eq__">__eq__</a>(y)&nbsp;&lt;==&gt;&nbsp;x==y</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-__ge__"><strong>__ge__</strong></a>(...)</dt><dd><tt>x.<a href="#ReadOnlyDict-__ge__">__ge__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&gt;=y</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#ReadOnlyDict-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#ReadOnlyDict-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-__gt__"><strong>__gt__</strong></a>(...)</dt><dd><tt>x.<a href="#ReadOnlyDict-__gt__">__gt__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&gt;y</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-__iter__"><strong>__iter__</strong></a>(...)</dt><dd><tt>x.<a href="#ReadOnlyDict-__iter__">__iter__</a>()&nbsp;&lt;==&gt;&nbsp;iter(x)</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-__le__"><strong>__le__</strong></a>(...)</dt><dd><tt>x.<a href="#ReadOnlyDict-__le__">__le__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&lt;=y</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-__len__"><strong>__len__</strong></a>(...)</dt><dd><tt>x.<a href="#ReadOnlyDict-__len__">__len__</a>()&nbsp;&lt;==&gt;&nbsp;len(x)</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-__lt__"><strong>__lt__</strong></a>(...)</dt><dd><tt>x.<a href="#ReadOnlyDict-__lt__">__lt__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&lt;y</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-__ne__"><strong>__ne__</strong></a>(...)</dt><dd><tt>x.<a href="#ReadOnlyDict-__ne__">__ne__</a>(y)&nbsp;&lt;==&gt;&nbsp;x!=y</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#ReadOnlyDict-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-__sizeof__"><strong>__sizeof__</strong></a>(...)</dt><dd><tt>D.<a href="#ReadOnlyDict-__sizeof__">__sizeof__</a>()&nbsp;-&gt;&nbsp;size&nbsp;of&nbsp;D&nbsp;in&nbsp;memory,&nbsp;in&nbsp;bytes</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-copy"><strong>copy</strong></a>(...)</dt><dd><tt>D.<a href="#ReadOnlyDict-copy">copy</a>()&nbsp;-&gt;&nbsp;a&nbsp;shallow&nbsp;copy&nbsp;of&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-get"><strong>get</strong></a>(...)</dt><dd><tt>D.<a href="#ReadOnlyDict-get">get</a>(k[,d])&nbsp;-&gt;&nbsp;D[k]&nbsp;if&nbsp;k&nbsp;in&nbsp;D,&nbsp;else&nbsp;d.&nbsp;&nbsp;d&nbsp;defaults&nbsp;to&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-has_key"><strong>has_key</strong></a>(...)</dt><dd><tt>D.<a href="#ReadOnlyDict-has_key">has_key</a>(k)&nbsp;-&gt;&nbsp;True&nbsp;if&nbsp;D&nbsp;has&nbsp;a&nbsp;key&nbsp;k,&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-items"><strong>items</strong></a>(...)</dt><dd><tt>D.<a href="#ReadOnlyDict-items">items</a>()&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;D's&nbsp;(key,&nbsp;value)&nbsp;pairs,&nbsp;as&nbsp;2-tuples</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-iteritems"><strong>iteritems</strong></a>(...)</dt><dd><tt>D.<a href="#ReadOnlyDict-iteritems">iteritems</a>()&nbsp;-&gt;&nbsp;an&nbsp;iterator&nbsp;over&nbsp;the&nbsp;(key,&nbsp;value)&nbsp;items&nbsp;of&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-iterkeys"><strong>iterkeys</strong></a>(...)</dt><dd><tt>D.<a href="#ReadOnlyDict-iterkeys">iterkeys</a>()&nbsp;-&gt;&nbsp;an&nbsp;iterator&nbsp;over&nbsp;the&nbsp;keys&nbsp;of&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-itervalues"><strong>itervalues</strong></a>(...)</dt><dd><tt>D.<a href="#ReadOnlyDict-itervalues">itervalues</a>()&nbsp;-&gt;&nbsp;an&nbsp;iterator&nbsp;over&nbsp;the&nbsp;values&nbsp;of&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-keys"><strong>keys</strong></a>(...)</dt><dd><tt>D.<a href="#ReadOnlyDict-keys">keys</a>()&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;D's&nbsp;keys</tt></dd></dl>
+
+<dl><dt><a name="ReadOnlyDict-values"><strong>values</strong></a>(...)</dt><dd><tt>D.<a href="#ReadOnlyDict-values">values</a>()&nbsp;-&gt;&nbsp;list&nbsp;of&nbsp;D's&nbsp;values</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="__builtin__.html#dict">__builtin__.dict</a>:<br>
+<dl><dt><strong>__hash__</strong> = None</dl>
+
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x8169060&gt;<dd><tt>T.<a href="#ReadOnlyDict-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<dl><dt><strong>fromkeys</strong> = &lt;built-in method fromkeys of type object at 0x8316ec4&gt;<dd><tt><a href="__builtin__.html#dict">dict</a>.<a href="#ReadOnlyDict-fromkeys">fromkeys</a>(S[,v])&nbsp;-&gt;&nbsp;New&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;with&nbsp;keys&nbsp;from&nbsp;S&nbsp;and&nbsp;values&nbsp;equal&nbsp;to&nbsp;v.<br>
+v&nbsp;defaults&nbsp;to&nbsp;None.</tt></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-download_config_file"><strong>download_config_file</strong></a>(url, file_name)</dt></dl>
+ <dl><dt><a name="-make_immutable"><strong>make_immutable</strong></a>(item)</dt></dl>
+ <dl><dt><a name="-parse_config_file"><strong>parse_config_file</strong></a>(file_name, quiet<font color="#909090">=False</font>, search_path<font color="#909090">=None</font>, config_dict_name<font color="#909090">='config'</font>)</dt><dd><tt>Read&nbsp;a&nbsp;config&nbsp;file&nbsp;and&nbsp;return&nbsp;a&nbsp;dictionary.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>CRITICAL</strong> = 'critical'<br>
+<strong>DEBUG</strong> = 'debug'<br>
+<strong>ERROR</strong> = 'error'<br>
+<strong>FATAL</strong> = 'fatal'<br>
+<strong>INFO</strong> = 'info'<br>
+<strong>WARNING</strong> = 'warning'</td></tr></table>
+</body></html>

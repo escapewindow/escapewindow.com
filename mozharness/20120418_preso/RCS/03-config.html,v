@@ -1,0 +1,223 @@
+head	1.6;
+access;
+symbols;
+locks
+	asasaki:1.6; strict;
+comment	@# @;
+
+
+1.6
+date	2012.04.19.01.46.14;	author asasaki;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2012.04.19.01.29.21;	author asasaki;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2012.04.16.23.15.41;	author asasaki;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2012.04.16.22.38.43;	author asasaki;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2012.04.14.01.04.02;	author asasaki;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2012.04.14.00.54.31;	author asasaki;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.6
+log
+@*** empty log message ***
+@
+text
+@<html><head>
+<link rel="stylesheet" href="mh.css" type="text/css"/>
+</head><body>
+
+<ul>
+<h3>Config</h3>
+
+<div style="padding: 1em; border: thin solid #990000;">
+<p>
+Approach 1: hardcode everything in a script.
+</p><ul><li class="monospace">
+Runs great for the user/environment/problem it's written for.
+</li><li class="monospace">
+For everything else, edit the file.
+</li><li class="monospace">
+If you find yourself to use the script for another purpose on a regular basis, fork it.
+</li><br /><li class="monospace">
+Pros: Quick.
+</li><li class="monospace">
+Cons: Lots of duplicated code, hard to figure out how to edit.
+</li></ul></div><br />
+<div style="padding: 1em; border: thin solid #009900;">
+<p>
+Approach 2: use command line options for everything overrideable.
+</p><ul><li class="monospace">
+Pros: Allows for a limited amount of configuration overrides. Preferable to (1)
+</li><li class="monospace">
+Cons: As the argument list approaches ARG_MAX, usage complexity increases.  Sharing command line arguments can be problematic.<br />
+</li></ul></div><br />
+<div style="padding: 1em; border: thin solid #000099;">
+<p>
+Approach 3: use a config file for everything overrideable.
+</p><ul><li>
+Pros: Allows for more complex configuration than (2).<br />
+Cons: Running with a small change requires an edit or a config file fork.
+</li></ul></p></div><br />
+<div style="padding: 1em; border: thin solid #000000;">
+<p>
+Mozharness creates a config dictionary by:
+</p>
+<ol><li>
+OptParse defaults.
+</li><li>
+Overlay initial config (optional).
+</li><li>
+Overlay <code>--config-file FILE</code> contents (optional but can be marked as mandatory per-script).
+</li><li>
+Overlay command line options.
+</li><li>
+Lock self.config (ReadOnlyDict).
+</li><li>
+Dump self.config to console, log, and localconfig.json
+</li></ol>
+<br />
+<ul>
+<li class="monospace">
+Pros: If done properly, this can give the pros from (1-3) without the cons.
+</li><li class="monospace">
+Cons: Learning curve for developers + users.
+</li></ul>
+</div><br />
+
+<ul><li>
+<a href="http://hg.mozilla.org/build/mozharness/file/dd81d754a7fd/configs/multi_locale">multilocale configs</a>
+</li><li>
+<a href="http://hg.mozilla.org/build/mozharness/file/dd81d754a7fd/configs/single_locale">single locale configs</a>
+</li></ul>
+
+<p>
+<a href="04-logging.html">logging --&gt;</a><br />
+</p>
+
+</body></html>
+@
+
+
+1.5
+log
+@*** empty log message ***
+@
+text
+@d42 1
+a42 1
+Initial config (optional).
+d44 1
+a44 1
+Overlay OptParse defaults.
+d48 1
+a48 1
+Overlay OptParse defaults + command line options.
+@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@d44 2
+d52 1
+a52 1
+Dump self.config to console, log, and upload_dir/localconfig.json .
+@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@d59 7
+a65 1
+</div>
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d8 2
+a9 1
+<ul><li>
+d11 5
+a15 3
+</li><ul><li>
+Runs great for the user/environment/problem it's written for.<br />
+For everything else, edit the file.<br />
+d17 3
+a19 2
+  </li><li>
+Pros: Quick.<br />
+d21 3
+a23 1
+</li></ul><li>
+d25 3
+a27 2
+</li><ul><li>
+Pros: Allows for a limited amount of configuration overrides. Preferable to (1)<br />
+d29 3
+a31 1
+</li></ul><li>
+d33 1
+a33 1
+</li><ul><li>
+d36 2
+a37 3
+</li></ul></ul>
+
+<br />
+a40 1
+
+d44 1
+a44 1
+Overlay <code>--config-file FILE</code> contents (optional).
+d52 5
+a56 3
+
+<p>
+Pros: If done properly, this can give the pros from (1-3) without the cons.<br />
+d58 2
+a59 1
+</p>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d29 16
+d46 4
+@

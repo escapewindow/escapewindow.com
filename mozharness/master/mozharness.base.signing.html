@@ -1,0 +1,119 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module signing</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>signing</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/mozharness/base/signing.py">/home/aki/wrk/git-mozharness-ro/mozharness/base/signing.py</a></font></td></tr></table>
+    <p><tt>Generic&nbsp;signing&nbsp;methods.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="getpass.html">getpass</a><br>
+<a href="hashlib.html">hashlib</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="subprocess.html">subprocess</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="signing.html#AndroidSigningMixin">AndroidSigningMixin</a>
+</font></dt><dt><font face="helvetica, arial"><a href="signing.html#BaseSigningMixin">BaseSigningMixin</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="AndroidSigningMixin">class <strong>AndroidSigningMixin</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Generic&nbsp;Android&nbsp;apk&nbsp;signing&nbsp;methods.<br>
+&nbsp;<br>
+Dependent&nbsp;on&nbsp;BaseScript.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="AndroidSigningMixin-align_apk"><strong>align_apk</strong></a>(self, unaligned_apk, aligned_apk, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Zipalign&nbsp;apk.<br>
+Returns&nbsp;None&nbsp;on&nbsp;success,&nbsp;not&nbsp;None&nbsp;on&nbsp;failure.</tt></dd></dl>
+
+<dl><dt><a name="AndroidSigningMixin-passphrase"><strong>passphrase</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="AndroidSigningMixin-postflight_passphrase"><strong>postflight_passphrase</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="AndroidSigningMixin-sign_apk"><strong>sign_apk</strong></a>(self, apk, keystore, storepass, keypass, key_alias, remove_signature<font color="#909090">=True</font>, error_list<font color="#909090">=None</font>, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Signs&nbsp;an&nbsp;apk&nbsp;with&nbsp;jarsigner.</tt></dd></dl>
+
+<dl><dt><a name="AndroidSigningMixin-unsign_apk"><strong>unsign_apk</strong></a>(self, apk, **kwargs)</dt></dl>
+
+<dl><dt><a name="AndroidSigningMixin-verify_passphrases"><strong>verify_passphrases</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>key_passphrase</strong> = None</dl>
+
+<dl><dt><strong>store_passphrase</strong> = None</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BaseSigningMixin">class <strong>BaseSigningMixin</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Generic&nbsp;signing&nbsp;helper&nbsp;methods.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="BaseSigningMixin-query_filesize"><strong>query_filesize</strong></a>(self, file_path)</dt></dl>
+
+<dl><dt><a name="BaseSigningMixin-query_sha512sum"><strong>query_sha512sum</strong></a>(self, file_path)</dt><dd><tt>#&nbsp;TODO&nbsp;this&nbsp;should&nbsp;be&nbsp;parallelized&nbsp;with&nbsp;the&nbsp;to-be-written&nbsp;BaseHelper!</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>DEBUG</strong> = 'debug'<br>
+<strong>ERROR</strong> = 'error'<br>
+<strong>FATAL</strong> = 'fatal'<br>
+<strong>IGNORE</strong> = 'ignore'<br>
+<strong>INFO</strong> = 'info'<br>
+<strong>JarsignerErrorList</strong> = [{'level': 'fatal', 'substr': 'command not found'}, {'explanation': 'The store passphrase is probably incorrect!', 'level': 'fatal', 'substr': 'jarsigner error: java.lang.RuntimeException: key...tore was tampered with, or password was incorrect'}, {'explanation': 'The key passphrase is probably incorrect!', 'level': 'fatal', 'regex': &lt;_sre.SRE_Pattern object at 0x82524e8&gt;}, {'explanation': "The keystore doesn't exist!", 'level': 'fatal', 'regex': &lt;_sre.SRE_Pattern object at 0x8265968&gt;}, {'explanation': 'The apk is missing!', 'level': 'fatal', 'substr': 'jarsigner: unable to open jar file:'}]<br>
+<strong>TestJarsignerErrorList</strong> = [{'level': 'ignore', 'substr': 'jarsigner: unable to open jar file:'}, {'level': 'fatal', 'substr': 'command not found'}, {'explanation': 'The store passphrase is probably incorrect!', 'level': 'fatal', 'substr': 'jarsigner error: java.lang.RuntimeException: key...tore was tampered with, or password was incorrect'}, {'explanation': 'The key passphrase is probably incorrect!', 'level': 'fatal', 'regex': &lt;_sre.SRE_Pattern object at 0x82524e8&gt;}, {'explanation': "The keystore doesn't exist!", 'level': 'fatal', 'regex': &lt;_sre.SRE_Pattern object at 0x8265968&gt;}, {'explanation': 'The apk is missing!', 'level': 'fatal', 'substr': 'jarsigner: unable to open jar file:'}]<br>
+<strong>UnsignApkErrorList</strong> = [{'explanation': 'This apk is already unsigned.', 'level': 'info', 'regex': &lt;_sre.SRE_Pattern object at 0x826b408&gt;}, {'level': 'ignore', 'substr': 'zip error: Nothing to do!'}, {'level': 'error', 'substr': 'command not found'}, {'level': 'warning', 'substr': 'zip warning:'}, {'level': 'error', 'substr': 'zip error:'}, {'level': 'error', 'substr': 'Cannot open file: it does not appear to be a valid archive'}]<br>
+<strong>ZipErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'warning', 'substr': 'zip warning:'}, {'level': 'error', 'substr': 'zip error:'}, {'level': 'error', 'substr': 'Cannot open file: it does not appear to be a valid archive'}]<br>
+<strong>ZipalignErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0x82542d0&gt;}, {'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0xb7d870e8&gt;}, {'level': 'error', 'substr': "Input and output can't be the same file"}]</td></tr></table>
+</body></html>

@@ -1,0 +1,28 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2011.10.11.19.37.53;	author asasaki;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<p>
+</p>
+<ul>
+<li><code>adb connect</code> to your device (either over usb or ip)</li>
+</ul>
+@

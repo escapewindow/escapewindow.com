@@ -1,0 +1,101 @@
+head	1.2;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.2
+date	2011.10.12.01.51.38;	author asasaki;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2011.10.11.19.37.53;	author asasaki;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@mozharness: logging
+<p>
+<a href="http://escapewindow.dreamwidth.org/223757.html"><i>with full logging</i></a>
+</p><p>
+<b>Why so many log files?</b>
+</p><p>
+This is the <a href="http://hg.mozilla.org/build/mozharness/file/e76fdabbca55/mozharness/base/log.py#l295">MultiFileLogger</a>, which creates a log file per log level.  We could just as easily default to the <a href="http://hg.mozilla.org/build/mozharness/file/e76fdabbca55/mozharness/base/log.py#l273">SimpleFileLogger</a> or write a new class, e.g. a MultiNetworkLogger.
+</p><blockquote><pre>
+deathduck:~/src/clean/mozharness [17:39:57] (default)
+608$ ls -l logs
+total 24
+drwxr-xr-x   8 asasaki  staff   272B Oct 11 17:18 ./
+drwxr-xr-x  15 asasaki  staff   510B Oct 11 17:18 ../
+-rw-r--r--   1 asasaki  staff     0B Oct 11 17:18 log_critical.log
+-rw-r--r--   1 asasaki  staff     0B Oct 11 17:18 log_error.log
+-rw-r--r--   1 asasaki  staff     0B Oct 11 17:18 log_fatal.log
+-rw-r--r--   1 asasaki  staff   5.1K Oct 11 17:18 log_info.log
+-rw-r--r--   1 asasaki  staff   3.6K Oct 11 17:18 log_raw.log
+-rw-r--r--   1 asasaki  staff     0B Oct 11 17:18 log_warning.log
+</pre></blockquote><p>
+Because each log file is a superset of all levels above it, you can easily glance at the warning or error log file and determine whether the script detected any warnings or errors.
+<br />
+(debug &gt; info &gt; warning &gt; error &gt; critical &gt; fatal, where '&gt;' means is-a-superset-of)
+</p><p>
+These are all standard <a href="http://docs.python.org/library/logging.html">logging module</a> levels except for <code>FATAL</code>, which I added to indicate a critical error that should also exit the script.
+</p><br /><p>
+<b>What do Mozharness logs look like?</b>
+</p><p>
+Here's a snippet from running <code>scripts/configtest.py</code> (without arguments):
+</p><blockquote><pre>
+17:18:00     INFO - Testing /src/clean/mozharness/scripts/../configs/deb_repos/staging_release_mozilla-release.py.
+17:18:00     INFO - Good.
+17:18:00     INFO - Testing /src/clean/mozharness/scripts/../configs/test/test.py.
+17:18:00     INFO - Good.
+17:18:00     INFO - 5 of 5 python config files were good.
+17:18:00     INFO - #####
+17:18:00     INFO - ##### ConfigTest summary:
+17:18:00     INFO - #####
+17:18:00     INFO - 17 of 17 json config files were good.
+17:18:00     INFO - 5 of 5 python config files were good.
+</pre></blockquote><p>
+The timestamp and log level are prepended to most log files and the console output.  By default, we also create a raw log without that information, which is potentially more scrape-friendly.
+</p><br /><p>
+<b>How does Mozharness detect errors?</b>
+</p><p>
+The core error detection is through the <a href="http://hg.mozilla.org/build/mozharness/file/e76fdabbca55/mozharness/base/script.py#l240">ShellMixin.run_command</a> <code>error_list</code>.
+</p><p>
+Generic error lists are defined in <a href="http://hg.mozilla.org/build/mozharness/file/e76fdabbca55/mozharness/base/errors.py#l59">errors.py</a>.  These are ordered lists of substrings and/or regular expressions, which, if matched against a log line, determines its log level.  When we hit a match, we exit the loop.
+</p><p>
+Two very important features I want to add here:
+</p><ol style="list-style-type: lower-roman"><li>
+<i>context lines</i>:
+<p>
+If we set <code>'context_lines': (10, 3)</code>, I want ten lines up and three lines down to also be marked at this log level.<br />
+This requires buffering lines before outputting to the log file and/or console.
+</p><p>
+This allows for more useful contents in the error log. Rather than only highlighting, say, <code>make: *** [all] Error 2</code>, you can also include some lines of context above and/or below that line.
+</p>
+</li><li>
+<i>explanations</i>, to translate obscure error messages into "this probably means [insert human readable message here]".  More <a href="https://github.com/escapewindow/mozharness/blob/a0f12802c04dadf81232978f6284b5da6ad3a745/mozharness/base/errors.py#L49">here</a>.
+</li></ol>
+<br /><p>
+<a href="http://escapewindow.com/mozharness/">Mozharness home</a>
+</p>
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 64
+@

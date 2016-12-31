@@ -1,0 +1,46 @@
+head	1.1;
+access;
+symbols;
+locks
+	aki:1.1; strict;
+comment	@# @;
+
+
+1.1
+date	2011.09.28.01.32.35;	author aki;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@<html>
+<head>
+<title>Mozharness docs</title>
+<style>
+body
+{
+	padding: 5em;
+}
+</style>
+</head>
+<body>
+<b><font face="courier">
+docs<br />
+====<br /><br />
+master/<br />
+0.4/<br />
+talosrunner/<br />
+<br />
+<a href="http://escapewindow.dreamwidth.org/223757.html">about mozharness</a><br />
+</font></b>
+</body>
+</html>
+@

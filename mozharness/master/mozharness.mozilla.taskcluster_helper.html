@@ -1,0 +1,95 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module taskcluster_helper</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>taskcluster_helper</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/taskcluster_helper.py">/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/taskcluster_helper.py</a></font></td></tr></table>
+    <p><tt><a href="#Taskcluster">Taskcluster</a>&nbsp;module.&nbsp;Defines&nbsp;a&nbsp;few&nbsp;helper&nbsp;functions&nbsp;to&nbsp;call&nbsp;into&nbsp;the&nbsp;taskcluster<br>
+client.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="taskcluster_helper.html#Taskcluster">Taskcluster</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Taskcluster">class <strong>Taskcluster</strong></a>(<a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Helper&nbsp;functions&nbsp;to&nbsp;report&nbsp;data&nbsp;to&nbsp;<a href="#Taskcluster">Taskcluster</a><br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="taskcluster_helper.html#Taskcluster">Taskcluster</a></dd>
+<dd><a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Taskcluster-__init__"><strong>__init__</strong></a>(self, branch, stage_platform, revision, client_id, access_token, log_obj)</dt></dl>
+
+<dl><dt><a name="Taskcluster-claim_task"><strong>claim_task</strong></a>(self, task)</dt></dl>
+
+<dl><dt><a name="Taskcluster-create_artifact"><strong>create_artifact</strong></a>(self, task, filename)</dt></dl>
+
+<dl><dt><a name="Taskcluster-create_task"><strong>create_task</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Taskcluster-report_completed"><strong>report_completed</strong></a>(self, task)</dt></dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>:<br>
+<dl><dt><a name="Taskcluster-critical"><strong>critical</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="Taskcluster-debug"><strong>debug</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="Taskcluster-error"><strong>error</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="Taskcluster-exception"><strong>exception</strong></a>(self, message<font color="#909090">=None</font>, level<font color="#909090">='error'</font>)</dt><dd><tt>#&nbsp;Copying&nbsp;Bear's&nbsp;dumpException():<br>
+#&nbsp;https://hg.mozilla.org/build/tools/annotate/1485f23c38e0/sut_tools/sut_lib.py#l23</tt></dd></dl>
+
+<dl><dt><a name="Taskcluster-fatal"><strong>fatal</strong></a>(self, message, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="Taskcluster-info"><strong>info</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="Taskcluster-log"><strong>log</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="Taskcluster-warning"><strong>warning</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="Taskcluster-worst_level"><strong>worst_level</strong></a>(self, target_level, existing_level, levels<font color="#909090">=None</font>)</dt><dd><tt>returns&nbsp;either&nbsp;existing_level&nbsp;or&nbsp;target&nbsp;level.<br>
+This&nbsp;depends&nbsp;on&nbsp;which&nbsp;is&nbsp;closest&nbsp;to&nbsp;levels[0]<br>
+By&nbsp;default,&nbsp;levels&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;log&nbsp;levels</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

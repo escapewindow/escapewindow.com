@@ -1,0 +1,203 @@
+head	1.5;
+access;
+symbols;
+locks
+	asasaki:1.5; strict;
+comment	@# @;
+
+
+1.5
+date	2012.04.17.01.26.01;	author asasaki;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2012.04.16.22.38.43;	author asasaki;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2012.04.14.01.13.18;	author asasaki;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2012.04.13.23.37.54;	author asasaki;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2012.04.13.22.13.03;	author asasaki;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.5
+log
+@*** empty log message ***
+@
+text
+@<html><head>
+<link rel="stylesheet" href="mh.css" type="text/css"/>
+</head><body>
+
+<ul>
+<h3>Why use Mozharness?</h3>
+
+<ul><p>
+With a good deal of generalization:
+</p></ul>
+
+<center>
+<table border="1" cellpadding="4" cellspacing="0"><tr>
+<th>Problem</th><th>Individual scripts</th><th>Mozharness scripts</th>
+</tr><tr><td>
+Learning curve
+  </td><td>
+<center>X</center>
+  </td><td>
+&nbsp;
+</td></tr><tr><td>
+Sharing code
+  </td><td>
+&nbsp;
+  </td><td>
+<center>X</center>
+</td></tr><tr><td>
+Familiarity between scripts, both for devs and users
+  </td><td>
+&nbsp;
+  </td><td>
+<center>X</center>
+</td></tr><tr><td>
+Intricate configuration management
+  </td><td>
+&nbsp;
+  </td><td>
+<center>X</center>
+</td></tr><tr><td>
+Full logging
+  </td><td>
+&nbsp;
+  </td><td>
+<center>X</center>
+</td></tr><tr><td>
+Built in error parsing
+  </td><td>
+&nbsp;
+  </td><td>
+<center>X</center>
+</td></tr><tr><td>
+Usable in many different contexts
+  </td><td>
+&nbsp;
+  </td><td>
+<center>X</center>
+</td></tr></table>
+</center>
+
+<br />
+
+<ul><li>
+Allows for shared scripts between various platforms, products, branches in production; also between production and developers.
+</li><li>
+Makes us less dependent on buildbot.
+</li><li>
+Once we get over the learning curve and we get a critical mass of knowledge + shared code, development will be faster.
+</li></ul>
+
+<p>
+<a href="03-config.html">config --&gt;</a><br />
+</p>
+
+</body></html>
+@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@d6 1
+a6 1
+<h3>Why Mozharness?</h3>
+@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@d60 2
+d66 2
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d60 6
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@a3 2
+<h2>Mozharness</h2>
+<h4>Overview for Automation Team, April 2012</h4>
+d5 6
+a10 1
+<br />
+d12 47
+a58 36
+<ul>
+<h3>What is Mozharness?</h3>
+<ul>
+<li>Semi-official definition<br />
+  <ul>
+    <blockquote><i>
+Mozharness is a configuration-driven script harness with full logging that allows production infrastructure and individual developers to use the same scripts.
+    </i></blockquote>
+  </ul>
+  <ul><li class="monospace">
+configuration-driven
+  </li><li class="monospace">
+script harness
+  </li><li class="monospace">
+full logging
+  </li><li class="monospace">
+sharing
+</li></ul></li>
+<li>
+Bare bones:
+  <ul><li>
+A harness to write + run python scripts. Or,
+  </li><li>
+A python script harness.
+  </li><ul><li>
+<a href="https://encrypted.google.com/search?q=script%20harness">https://encrypted.google.com/search?q=script harness</a> : lots of "test harness" results
+    </li><li class="monospace">
+<a href="https://encrypted.google.com/search?q=%22script+harness%22">https://encrypted.google.com/search?q="script+harness"</a> : Mozharness is #5.
+    </li><li>
+<a href="https://en.wikipedia.org/wiki/Test_harness">https://en.wikipedia.org/wiki/Test_harness</a> : "test harness" has its own Wikipedia page.
+    </li><li class="monospace">
+<a href="https://en.wikipedia.org/w/index.php?search=script+harness">https://en.wikipedia.org/w/index.php?search=script+harness</a> : "script harness" doesn't.
+    </li></ul>
+  </li></ul>
+</ul>
+</ul>
+d61 1
+a61 1
+<a href="02-why.html">why --&gt;</a><br />
+@

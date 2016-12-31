@@ -1,0 +1,89 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module gaia</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>gaia</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/gaia.py">/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/gaia.py</a></font></td></tr></table>
+    <p><tt>Module&nbsp;for&nbsp;performing&nbsp;gaia-specific&nbsp;tasks</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="json.html">json</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="gaia.html#GaiaMixin">GaiaMixin</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="GaiaMixin">class <strong>GaiaMixin</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="GaiaMixin-clone_gaia"><strong>clone_gaia</strong></a>(self, dest, repo, use_gaia_json<font color="#909090">=False</font>)</dt><dd><tt>Clones&nbsp;an&nbsp;hg&nbsp;mirror&nbsp;of&nbsp;gaia.<br>
+&nbsp;<br>
+repo:&nbsp;a&nbsp;dict&nbsp;containing&nbsp;'repo_path',&nbsp;'revision',&nbsp;and&nbsp;optionally<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'branch'&nbsp;parameters<br>
+use_gaia_json:&nbsp;if&nbsp;True,&nbsp;the&nbsp;repo&nbsp;parameter&nbsp;is&nbsp;used&nbsp;to&nbsp;retrieve<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;gaia.json&nbsp;file&nbsp;from&nbsp;a&nbsp;gecko&nbsp;repo,&nbsp;which&nbsp;in&nbsp;turn&nbsp;is&nbsp;used&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clone&nbsp;gaia;&nbsp;if&nbsp;False,&nbsp;repo&nbsp;represents&nbsp;a&nbsp;gaia&nbsp;repo&nbsp;to&nbsp;clone.</tt></dd></dl>
+
+<dl><dt><a name="GaiaMixin-make_gaia"><strong>make_gaia</strong></a>(self, gaia_dir, xre_dir, debug<font color="#909090">=False</font>, noftu<font color="#909090">=True</font>, build_config_path<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="GaiaMixin-make_node_modules"><strong>make_node_modules</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="GaiaMixin-node_setup"><strong>node_setup</strong></a>(self)</dt><dd><tt>Set&nbsp;up&nbsp;environment&nbsp;for&nbsp;node-based&nbsp;Gaia&nbsp;tests.</tt></dd></dl>
+
+<dl><dt><a name="GaiaMixin-preflight_pull"><strong>preflight_pull</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="GaiaMixin-pull"><strong>pull</strong></a>(self, **kwargs)</dt><dd><tt>Two&nbsp;ways&nbsp;of&nbsp;using&nbsp;this&nbsp;function:<br>
+-&nbsp;The&nbsp;user&nbsp;specifies&nbsp;--gaia-repo&nbsp;or&nbsp;in&nbsp;a&nbsp;config&nbsp;file<br>
+-&nbsp;The&nbsp;buildbot&nbsp;propeties&nbsp;exist&nbsp;and&nbsp;we&nbsp;query&nbsp;the&nbsp;gaia&nbsp;json&nbsp;url<br>
+&nbsp;&nbsp;for&nbsp;the&nbsp;current&nbsp;gecko&nbsp;tree</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>npm_error_list</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'error', 'substr': 'npm ERR! Error:'}]</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>BaseErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}]<br>
+<strong>ERROR</strong> = 'error'<br>
+<strong>HgErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'explanation': 'Automation Error: hg not responding', 'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0xb7eef128&gt;}, {'explanation': 'Automation Error: python exception in hg', 'level': 'error', 'substr': 'unknown exception encountered'}, {'explanation': 'Automation Error: hg extension missing', 'level': 'warning', 'substr': 'failed to import extension'}]<br>
+<strong>gaia_config_options</strong> = [[['--gaia-dir'], {'action': 'store', 'dest': 'gaia_dir', 'help': 'directory where gaia repo should be cloned'}], [['--gaia-repo'], {'action': 'store', 'dest': 'gaia_repo', 'help': 'url of gaia repo to clone'}], [['--gaia-branch'], {'action': 'store', 'default': 'default', 'dest': 'gaia_branch', 'help': 'branch of gaia repo to clone'}]]</td></tr></table>
+</body></html>

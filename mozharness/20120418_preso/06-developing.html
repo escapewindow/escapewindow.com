@@ -1,0 +1,66 @@
+<html><head>
+<link rel="stylesheet" href="mh.css" type="text/css"/>
+</head><body>
+
+<ul>
+<h3>How to get a test harness running in Mozharness</h3>
+
+<div style="padding: 1em; border: thin solid #990000;">
+<p>
+<b>Scenario 1</b>: Everything needed is already on disk + installed.
+</p><p>
+Actions:
+</p>
+<ol><li class="monospace">
+run-tests : <code>self.run_command("run_my_tests.py", ...)</code>
+</li></ol>
+</div><br />
+
+<div style="padding: 1em; border: thin solid #009900;">
+<p>
+<b>Scenario 2</b>: Everything's set up but the virtualenv.
+</p><p>
+Actions:
+</p>
+<ol><li class="monospace">
+create-virtualenv : <code>virtualenv_modules = ['PyYAML', ...]</code><br />
+Available through <code>mozharness.base.python.VirtualenvMixin</code>
+</li><li>
+run-tests : <code>self.run_command("run_my_tests.py", ...)</code>
+</li></ol>
+</div><br />
+
+<div style="padding: 1em; border: thin solid #000099;">
+<p>
+<b>Scenario 3</b>: Nothing's set up, and you want to run in both buildbot and locally.
+</p><p>
+Actions:
+</p>
+<ol><li class="monospace">
+clobber<br />
+Available through <code>mozharness.base.script.BaseScript</code>
+</li><li>
+pull (optional)<br />
+Available through <code>mozharness.base.vcs.vcsbase.VCSMixin</code>
+</li><li>
+read-buildbot-config<br />
+Available through <code>mozharness.mozilla.buildbot.BuildbotMixin</code>
+</li><li>
+download-and-extract<br />
+Available through <code>mozharness.mozilla.testing.testbase.TestingMixin</code>
+</li><li>
+create-virtualenv : <code>virtualenv_modules = ['PyYAML', ...]</code><br />
+Available through <code>mozharness.base.python.VirtualenvMixin</code>
+</li><li>
+install<br />
+Available through <code>mozharness.mozilla.testing.testbase.TestingMixin</code>
+</li><li>
+run-tests : <code>self.run_command("run_my_tests.py", ...)</code>
+</li></ol>
+</div><br />
+
+<p>
+<a href="07-devicepool1.html">device pool now --&gt;</a><br />
+</p>
+
+</body></html>

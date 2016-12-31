@@ -1,0 +1,132 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module errors</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>errors</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/mozharness/base/errors.py">/home/aki/wrk/git-mozharness-ro/mozharness/base/errors.py</a></font></td></tr></table>
+    <p><tt>Generic&nbsp;error&nbsp;lists.<br>
+&nbsp;<br>
+Error&nbsp;lists&nbsp;are&nbsp;used&nbsp;to&nbsp;parse&nbsp;output&nbsp;in&nbsp;mozharness.base.log.OutputParser.<br>
+&nbsp;<br>
+Each&nbsp;line&nbsp;of&nbsp;output&nbsp;is&nbsp;matched&nbsp;against&nbsp;each&nbsp;substring&nbsp;or&nbsp;regular&nbsp;expression<br>
+in&nbsp;the&nbsp;error&nbsp;list.&nbsp;&nbsp;On&nbsp;a&nbsp;match,&nbsp;we&nbsp;determine&nbsp;the&nbsp;'level'&nbsp;of&nbsp;that&nbsp;line,<br>
+whether&nbsp;IGNORE,&nbsp;DEBUG,&nbsp;INFO,&nbsp;WARNING,&nbsp;ERROR,&nbsp;CRITICAL,&nbsp;or&nbsp;FATAL.<br>
+&nbsp;<br>
+TODO:&nbsp;Context&nbsp;lines&nbsp;(requires&nbsp;work&nbsp;on&nbsp;the&nbsp;OutputParser&nbsp;side)<br>
+&nbsp;<br>
+TODO:&nbsp;We&nbsp;could&nbsp;also&nbsp;create&nbsp;classes&nbsp;that&nbsp;generate&nbsp;these,&nbsp;but&nbsp;with&nbsp;the<br>
+appropriate&nbsp;level&nbsp;(please&nbsp;don't&nbsp;die&nbsp;on&nbsp;any&nbsp;errors;&nbsp;please&nbsp;die&nbsp;on&nbsp;any<br>
+warning;&nbsp;etc.)&nbsp;or&nbsp;platform&nbsp;or&nbsp;language&nbsp;or&nbsp;whatever.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="exceptions.html#Exception">exceptions.Exception</a>(<a href="exceptions.html#BaseException">exceptions.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="errors.html#VCSException">VCSException</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="VCSException">class <strong>VCSException</strong></a>(<a href="exceptions.html#Exception">exceptions.Exception</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>#&nbsp;Exceptions<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="errors.html#VCSException">VCSException</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><a name="VCSException-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#VCSException-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x8162d20&gt;<dd><tt>T.<a href="#VCSException-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="VCSException-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#VCSException-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="VCSException-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#VCSException-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="VCSException-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#VCSException-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="VCSException-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#VCSException-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="VCSException-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="VCSException-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#VCSException-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="VCSException-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#VCSException-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="VCSException-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="VCSException-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#VCSException-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<dl><dt><a name="VCSException-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ADBErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'error', 'substr': 'INSTALL_FAILED_'}, {'level': 'error', 'substr': 'Android Debug Bridge version'}, {'level': 'error', 'substr': 'error: protocol fault'}, {'level': 'error', 'substr': 'unable to connect to '}]<br>
+<strong>BaseErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}]<br>
+<strong>CRITICAL</strong> = 'critical'<br>
+<strong>DEBUG</strong> = 'debug'<br>
+<strong>ERROR</strong> = 'error'<br>
+<strong>FATAL</strong> = 'fatal'<br>
+<strong>GitErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'error', 'substr': 'Permission denied (publickey).'}, {'level': 'error', 'substr': 'fatal: The remote end hung up unexpectedly'}, {'level': 'error', 'substr': 'does not appear to be a git repository'}, {'level': 'error', 'substr': 'error: src refspec'}, {'level': 'error', 'substr': 'invalid author/committer line -'}, {'level': 'error', 'substr': 'remote: fatal: Error in object'}, {'level': 'error', 'substr': "fatal: sha1 file '&lt;stdout&gt;' write error: Broken pipe"}, {'level': 'error', 'substr': 'error: failed to push some refs to '}, {'level': 'error', 'substr': 'remote: error: denying non-fast-forward '}, {'level': 'error', 'substr': '! [remote rejected] '}, {'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0xb7f14b00&gt;}]<br>
+<strong>HgErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'explanation': 'Automation Error: hg not responding', 'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0xb7ee8cd8&gt;}, {'explanation': 'Automation Error: python exception in hg', 'level': 'error', 'substr': 'unknown exception encountered'}, {'explanation': 'Automation Error: hg extension missing', 'level': 'warning', 'substr': 'failed to import extension'}]<br>
+<strong>JarsignerErrorList</strong> = [{'level': 'fatal', 'substr': 'command not found'}, {'explanation': 'The store passphrase is probably incorrect!', 'level': 'fatal', 'substr': 'jarsigner error: java.lang.RuntimeException: key...tore was tampered with, or password was incorrect'}, {'explanation': 'The key passphrase is probably incorrect!', 'level': 'fatal', 'regex': &lt;_sre.SRE_Pattern object at 0x82540e8&gt;}, {'explanation': "The keystore doesn't exist!", 'level': 'fatal', 'regex': &lt;_sre.SRE_Pattern object at 0x8254fc0&gt;}, {'explanation': 'The apk is missing!', 'level': 'fatal', 'substr': 'jarsigner: unable to open jar file:'}]<br>
+<strong>MakefileErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'error', 'substr': 'command not found'}, {'level': 'warning', 'regex': &lt;_sre.SRE_Pattern object at 0xb7ead410&gt;}, {'level': 'error', 'substr': 'Traceback (most recent call last)'}, {'level': 'error', 'substr': 'SyntaxError: '}, {'level': 'error', 'substr': 'TypeError: '}, {'level': 'error', 'substr': 'NameError: '}, {'level': 'error', 'substr': 'ZeroDivisionError: '}, {'level': 'critical', 'regex': &lt;_sre.SRE_Pattern object at 0xb7f73de0&gt;}, {'level': 'critical', 'regex': &lt;_sre.SRE_Pattern object at 0xb7eeb8e0&gt;}, {'level': 'error', 'substr': 'No rule to make target '}, {'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0xb7eb43b8&gt;}, {'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0xb7ea5158&gt;}, {'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0xb7e9b4d0&gt;}, {'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0xb7ea4458&gt;}, {'level': 'warning', 'regex': &lt;_sre.SRE_Pattern object at 0xb7ed0020&gt;}, {'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0xb7eeb980&gt;}, {'level': 'warning', 'substr': 'Warning: '}]<br>
+<strong>PythonErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'warning', 'regex': &lt;_sre.SRE_Pattern object at 0xb7ead410&gt;}, {'level': 'error', 'substr': 'Traceback (most recent call last)'}, {'level': 'error', 'substr': 'SyntaxError: '}, {'level': 'error', 'substr': 'TypeError: '}, {'level': 'error', 'substr': 'NameError: '}, {'level': 'error', 'substr': 'ZeroDivisionError: '}, {'level': 'critical', 'regex': &lt;_sre.SRE_Pattern object at 0xb7f73de0&gt;}, {'level': 'critical', 'regex': &lt;_sre.SRE_Pattern object at 0xb7eeb8e0&gt;}]<br>
+<strong>SSHErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'error', 'substr': 'Name or service not known'}, {'level': 'error', 'substr': 'Could not resolve hostname'}, {'level': 'warning', 'substr': 'POSSIBLE BREAK-IN ATTEMPT'}, {'level': 'error', 'substr': 'Network error:'}, {'level': 'error', 'substr': 'Access denied'}, {'level': 'error', 'substr': 'Authentication refused'}, {'level': 'error', 'substr': 'Out of memory'}, {'level': 'warning', 'substr': 'Connection reset by peer'}, {'level': 'error', 'substr': 'Host key verification failed'}, {'level': 'warning', 'substr': 'WARNING:'}, {'level': 'error', 'substr': 'rsync error:'}, {'level': 'error', 'substr': 'Broken pipe:'}, {'level': 'error', 'substr': 'Permission denied:'}, {'level': 'error', 'substr': 'connection unexpectedly closed'}, {'level': 'error', 'substr': 'Warning: Identity file'}, {'level': 'error', 'substr': 'command-line line 0: Missing argument'}]<br>
+<strong>TarErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'error', 'substr': '(stdin) is not a bzip2 file.'}, {'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0xb7f49bc0&gt;}, {'level': 'error', 'substr': 'Error exit delayed from previous errors'}, {'level': 'error', 'substr': 'stdin: unexpected end of file'}, {'level': 'error', 'substr': 'stdin: not in gzip format'}, {'level': 'error', 'substr': 'Cannot exec: No such file or directory'}, {'level': 'error', 'substr': ': Error is not recoverable: exiting now'}]<br>
+<strong>VirtualenvErrorList</strong> = [{'level': 'warning', 'substr': 'not found or a compiler error:'}, {'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0xb7e9c090&gt;}, {'level': 'warning', 'regex': &lt;_sre.SRE_Pattern object at 0xb7e9b458&gt;}, {'level': 'debug', 'regex': &lt;_sre.SRE_Pattern object at 0x82480f8&gt;}, {'level': 'error', 'substr': 'command not found'}, {'level': 'warning', 'regex': &lt;_sre.SRE_Pattern object at 0xb7ead410&gt;}, {'level': 'error', 'substr': 'Traceback (most recent call last)'}, {'level': 'error', 'substr': 'SyntaxError: '}, {'level': 'error', 'substr': 'TypeError: '}, {'level': 'error', 'substr': 'NameError: '}, {'level': 'error', 'substr': 'ZeroDivisionError: '}, {'level': 'critical', 'regex': &lt;_sre.SRE_Pattern object at 0xb7f73de0&gt;}, {'level': 'critical', 'regex': &lt;_sre.SRE_Pattern object at 0xb7eeb8e0&gt;}]<br>
+<strong>WARNING</strong> = 'warning'<br>
+<strong>ZipErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'warning', 'substr': 'zip warning:'}, {'level': 'error', 'substr': 'zip error:'}, {'level': 'error', 'substr': 'Cannot open file: it does not appear to be a valid archive'}]<br>
+<strong>ZipalignErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0x824b8a0&gt;}, {'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0xb7f5eef8&gt;}, {'level': 'error', 'substr': "Input and output can't be the same file"}]</td></tr></table>
+</body></html>

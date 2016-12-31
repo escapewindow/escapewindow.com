@@ -1,0 +1,84 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module purge</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>purge</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/purge.py">/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/purge.py</a></font></td></tr></table>
+    <p><tt>Purge/clobber&nbsp;support</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="mozharness.html">mozharness</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="purge.html#PurgeMixin">PurgeMixin</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PurgeMixin">class <strong>PurgeMixin</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>#&nbsp;<a href="#PurgeMixin">PurgeMixin</a>&nbsp;{{{1<br>
+#&nbsp;Depends&nbsp;on&nbsp;ScriptMixin&nbsp;for&nbsp;self.<strong>run_command</strong>,<br>
+#&nbsp;and&nbsp;BuildbotMixin&nbsp;for&nbsp;self.<strong>buildbot_config</strong>&nbsp;and&nbsp;query_is_nightly()<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="PurgeMixin-clobber"><strong>clobber</strong></a>(self, always_clobber_dirs<font color="#909090">=None</font>)</dt><dd><tt>Mozilla&nbsp;clobberer-type&nbsp;clobber.</tt></dd></dl>
+
+<dl><dt><a name="PurgeMixin-clobberer"><strong>clobberer</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PurgeMixin-purge_builds"><strong>purge_builds</strong></a>(self, basedirs<font color="#909090">=None</font>, min_size<font color="#909090">=None</font>, skip<font color="#909090">=None</font>, max_age<font color="#909090">=None</font>)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>clobber_tool</strong> = '/home/aki/wrk/git-mozharness-ro/external_tools/clobberer.py'</dl>
+
+<dl><dt><strong>default_maxage</strong> = 14</dl>
+
+<dl><dt><strong>default_periodic_clobber</strong> = 168</dl>
+
+<dl><dt><strong>default_skips</strong> = ['info', 'rel-*', 'tb-rel-*']</dl>
+
+<dl><dt><strong>purge_tool</strong> = '/home/aki/wrk/git-mozharness-ro/external_tools/purge_builds.py'</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ERROR</strong> = 'error'<br>
+<strong>external_tools_path</strong> = '/home/aki/wrk/git-mozharness-ro/external_tools'</td></tr></table>
+</body></html>

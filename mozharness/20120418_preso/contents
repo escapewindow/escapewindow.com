@@ -1,0 +1,30 @@
+no foopies
+q&a
+
+easy to debug
+  logging
+  run only the affected portion
+
+
+Links
+=====
+what is mozharness? http://escapewindow.dreamwidth.org/223757.html
+
+
+
+Bare bones: A harness to write + run python scripts.
+Mozharness is a configuration-driven script harness with full logging that allows production infrastructure and individual developers to use the same scripts.
+overview
+* config
+* shared: in production + on developers' desks
+* make us less dependent on buildbot
+a lot of code can be shared
+learning curve
+* logging
+* actions
+configuration-driven
+script harness
+full logging
+sharing
+* how do you use it
+how to make a test harness use mozharness

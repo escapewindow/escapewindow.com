@@ -1,0 +1,122 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module locales</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>locales</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/l10n/locales.py">/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/l10n/locales.py</a></font></td></tr></table>
+    <p><tt>Localization.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="locales.html#GaiaLocalesMixin">GaiaLocalesMixin</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="mozharness.base.parallel.html#ChunkingMixin">mozharness.base.parallel.ChunkingMixin</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="locales.html#LocalesMixin">LocalesMixin</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="GaiaLocalesMixin">class <strong>GaiaLocalesMixin</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>#&nbsp;<a href="#GaiaLocalesMixin">GaiaLocalesMixin</a>&nbsp;{{{1<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="GaiaLocalesMixin-pull_gaia_locale_source"><strong>pull_gaia_locale_source</strong></a>(self, l10n_config, locales, base_dir)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>gaia_locale_revisions</strong> = None</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="LocalesMixin">class <strong>LocalesMixin</strong></a>(<a href="mozharness.base.parallel.html#ChunkingMixin">mozharness.base.parallel.ChunkingMixin</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>#&nbsp;<a href="#LocalesMixin">LocalesMixin</a>&nbsp;{{{1<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="locales.html#LocalesMixin">LocalesMixin</a></dd>
+<dd><a href="mozharness.base.parallel.html#ChunkingMixin">mozharness.base.parallel.ChunkingMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="LocalesMixin-__init__"><strong>__init__</strong></a>(self, **kwargs)</dt><dd><tt>Mixins&nbsp;generally&nbsp;don't&nbsp;have&nbsp;an&nbsp;__init__.<br>
+This&nbsp;breaks&nbsp;super().<a href="#LocalesMixin-__init__">__init__</a>()&nbsp;for&nbsp;children.<br>
+However,&nbsp;this&nbsp;is&nbsp;needed&nbsp;to&nbsp;override&nbsp;the&nbsp;<a href="#LocalesMixin-query_abs_dirs">query_abs_dirs</a>()</tt></dd></dl>
+
+<dl><dt><a name="LocalesMixin-list_locales"><strong>list_locales</strong></a>(self)</dt><dd><tt>Stub&nbsp;action&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="LocalesMixin-parse_locales_file"><strong>parse_locales_file</strong></a>(self, locales_file)</dt></dl>
+
+<dl><dt><a name="LocalesMixin-pull_locale_source"><strong>pull_locale_source</strong></a>(self, hg_l10n_base<font color="#909090">=None</font>, parent_dir<font color="#909090">=None</font>, vcs<font color="#909090">='hg'</font>)</dt><dd><tt>#&nbsp;This&nbsp;requires&nbsp;self&nbsp;to&nbsp;inherit&nbsp;a&nbsp;VCSMixin.</tt></dd></dl>
+
+<dl><dt><a name="LocalesMixin-query_abs_dirs"><strong>query_abs_dirs</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LocalesMixin-query_locales"><strong>query_locales</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LocalesMixin-run_compare_locales"><strong>run_compare_locales</strong></a>(self, locale, halt_on_failure<font color="#909090">=False</font>)</dt></dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.parallel.html#ChunkingMixin">mozharness.base.parallel.ChunkingMixin</a>:<br>
+<dl><dt><a name="LocalesMixin-query_chunked_list"><strong>query_chunked_list</strong></a>(self, possible_list, this_chunk, total_chunks, sort<font color="#909090">=False</font>)</dt><dd><tt>Split&nbsp;a&nbsp;list&nbsp;of&nbsp;items&nbsp;into&nbsp;a&nbsp;certain&nbsp;number&nbsp;of&nbsp;chunks&nbsp;and<br>
+return&nbsp;the&nbsp;subset&nbsp;of&nbsp;that&nbsp;will&nbsp;occur&nbsp;in&nbsp;this&nbsp;chunk.<br>
+&nbsp;<br>
+Ported&nbsp;from&nbsp;build.l10n.getLocalesForChunk&nbsp;in&nbsp;build/tools.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mozharness.base.parallel.html#ChunkingMixin">mozharness.base.parallel.ChunkingMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>PythonErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'warning', 'regex': &lt;_sre.SRE_Pattern object at 0xb7f7ec98&gt;}, {'level': 'error', 'substr': 'Traceback (most recent call last)'}, {'level': 'error', 'substr': 'SyntaxError: '}, {'level': 'error', 'substr': 'TypeError: '}, {'level': 'error', 'substr': 'NameError: '}, {'level': 'error', 'substr': 'ZeroDivisionError: '}, {'level': 'critical', 'regex': &lt;_sre.SRE_Pattern object at 0xb7e807b0&gt;}, {'level': 'critical', 'regex': &lt;_sre.SRE_Pattern object at 0x8285980&gt;}]</td></tr></table>
+</body></html>

@@ -1,0 +1,389 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module b2g_branch_repos</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>b2g_branch_repos</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/scripts/merge_day/b2g_branch_repos.py">/home/aki/wrk/git-mozharness-ro/scripts/merge_day/b2g_branch_repos.py</a></font></td></tr></table>
+    <p><tt>b2g_branch_repos.py<br>
+&nbsp;<br>
+Branch&nbsp;the&nbsp;b2g&nbsp;git&nbsp;repos&nbsp;for&nbsp;merge&nbsp;day,&nbsp;and&nbsp;lock&nbsp;down&nbsp;the&nbsp;3rd&nbsp;party&nbsp;repos<br>
+in&nbsp;b2g-manifest&nbsp;to&nbsp;a&nbsp;revision.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="glob.html">glob</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="pprint.html">pprint</a><br>
+<a href="mozharness.mozilla.repo_manifest.html">mozharness.mozilla.repo_manifest</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="time.html">time</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="mozharness.base.transfer.html#TransferMixin">mozharness.base.transfer.TransferMixin</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="b2g_branch_repos.html#B2GBranch">B2GBranch</a>(<a href="mozharness.base.transfer.html#TransferMixin">mozharness.base.transfer.TransferMixin</a>, <a href="mozharness.base.vcs.vcsbase.html#VCSScript">mozharness.base.vcs.vcsbase.VCSScript</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="mozharness.base.vcs.vcsbase.html#VCSScript">mozharness.base.vcs.vcsbase.VCSScript</a>(<a href="mozharness.base.vcs.vcsbase.html#VCSMixin">mozharness.base.vcs.vcsbase.VCSMixin</a>, <a href="mozharness.base.script.html#BaseScript">mozharness.base.script.BaseScript</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="b2g_branch_repos.html#B2GBranch">B2GBranch</a>(<a href="mozharness.base.transfer.html#TransferMixin">mozharness.base.transfer.TransferMixin</a>, <a href="mozharness.base.vcs.vcsbase.html#VCSScript">mozharness.base.vcs.vcsbase.VCSScript</a>)
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="B2GBranch">class <strong>B2GBranch</strong></a>(<a href="mozharness.base.transfer.html#TransferMixin">mozharness.base.transfer.TransferMixin</a>, <a href="mozharness.base.vcs.vcsbase.html#VCSScript">mozharness.base.vcs.vcsbase.VCSScript</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>#&nbsp;<a href="#B2GBranch">B2GBranch</a>&nbsp;{{{1<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="b2g_branch_repos.html#B2GBranch">B2GBranch</a></dd>
+<dd><a href="mozharness.base.transfer.html#TransferMixin">mozharness.base.transfer.TransferMixin</a></dd>
+<dd><a href="mozharness.base.vcs.vcsbase.html#VCSScript">mozharness.base.vcs.vcsbase.VCSScript</a></dd>
+<dd><a href="mozharness.base.vcs.vcsbase.html#VCSMixin">mozharness.base.vcs.vcsbase.VCSMixin</a></dd>
+<dd><a href="mozharness.base.script.html#BaseScript">mozharness.base.script.BaseScript</a></dd>
+<dd><a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a></dd>
+<dd><a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="B2GBranch-__init__"><strong>__init__</strong></a>(self, require_config_file<font color="#909090">=True</font>)</dt></dl>
+
+<dl><dt><a name="B2GBranch-branch_repos"><strong>branch_repos</strong></a>(self)</dt><dd><tt>Branch&nbsp;the&nbsp;mozilla-b2g&nbsp;repos&nbsp;and&nbsp;update&nbsp;the&nbsp;manifests.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-check_existing_branch"><strong>check_existing_branch</strong></a>(self, new_branch, cwd, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Returns&nbsp;a&nbsp;tuple&nbsp;(local,&nbsp;remote)&nbsp;with&nbsp;the&nbsp;corresponding&nbsp;sha<br>
+of&nbsp;each&nbsp;branch&nbsp;if&nbsp;they&nbsp;exist,&nbsp;or&nbsp;None&nbsp;if&nbsp;not.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-clean_repos"><strong>clean_repos</strong></a>(self)</dt><dd><tt>Clean&nbsp;the&nbsp;existing&nbsp;branches.<br>
+This&nbsp;assumes&nbsp;the&nbsp;branches&nbsp;were&nbsp;created&nbsp;locally&nbsp;and&nbsp;not&nbsp;pushed&nbsp;remote&nbsp;yet.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-munge_manifests"><strong>munge_manifests</strong></a>(self)</dt><dd><tt>Switch&nbsp;the&nbsp;branched&nbsp;repos&nbsp;to&nbsp;the&nbsp;new&nbsp;branch;&nbsp;lock&nbsp;down&nbsp;third<br>
+party&nbsp;revisions.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-pull"><strong>pull</strong></a>(self)</dt><dd><tt>Pull&nbsp;action.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-pull_branch_repos"><strong>pull_branch_repos</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="B2GBranch-push"><strong>push</strong></a>(self)</dt><dd><tt>Push&nbsp;the&nbsp;repos.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-query_abs_dirs"><strong>query_abs_dirs</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="B2GBranch-query_branch_repos"><strong>query_branch_repos</strong></a>(self)</dt><dd><tt>Parse&nbsp;all&nbsp;manifests&nbsp;and&nbsp;build&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;repos&nbsp;with<br>
+expected&nbsp;revisions&nbsp;and/or&nbsp;branches.<br>
+&nbsp;<br>
+The&nbsp;format&nbsp;will&nbsp;be&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name:&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'revision':&nbsp;branch,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'fetch':&nbsp;git_url,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'branch_revisions':&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;revision:&nbsp;[manifest&nbsp;list]&nbsp;&nbsp;#&nbsp;This&nbsp;should&nbsp;only&nbsp;have&nbsp;one&nbsp;key/value&nbsp;pair<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'all_revisions':&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;revision:&nbsp;[manifest&nbsp;list]&nbsp;&nbsp;#&nbsp;This&nbsp;will&nbsp;have&nbsp;all&nbsp;key/value&nbsp;pairs<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br>
+}<br>
+&nbsp;<br>
+This&nbsp;depends&nbsp;on&nbsp;the&nbsp;pull&nbsp;action&nbsp;having&nbsp;run&nbsp;at&nbsp;least&nbsp;once.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-query_manifests"><strong>query_manifests</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="B2GBranch-run_sanity_check"><strong>run_sanity_check</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="B2GBranch-switch_manifest_branch"><strong>switch_manifest_branch</strong></a>(self)</dt><dd><tt>Switch&nbsp;b2g-manifest&nbsp;to&nbsp;the&nbsp;new&nbsp;branch.<br>
+This&nbsp;is&nbsp;in&nbsp;a&nbsp;separate&nbsp;action&nbsp;because&nbsp;we&nbsp;may&nbsp;not&nbsp;run&nbsp;--branch-repos<br>
+(e.g.&nbsp;if&nbsp;we're&nbsp;locking&nbsp;down&nbsp;revisions&nbsp;in&nbsp;a&nbsp;previously&nbsp;created&nbsp;branch)<br>
+and&nbsp;switching&nbsp;branches&nbsp;after&nbsp;making&nbsp;changes&nbsp;can&nbsp;be&nbsp;detrimental&nbsp;to<br>
+our&nbsp;previous&nbsp;changes.<br>
+&nbsp;<br>
+This&nbsp;action&nbsp;will&nbsp;die&nbsp;if&nbsp;there&nbsp;are&nbsp;uncommitted&nbsp;changes,&nbsp;currently<br>
+by&nbsp;design.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>branch_repo_dict</strong> = None</dl>
+
+<dl><dt><strong>config_options</strong> = [[['--branch-name'], {'action': 'store', 'dest': 'branch_name', 'help': 'Specify the branch name (e.g. v2.0).  REQUIRED', 'type': 'string'}], [['--branch-order'], {'action': 'extend', 'dest': 'branch_order', 'help': 'Comma separated list of branches in case manifes...cting references,<font color="#c040c0">\n</font>e.g. --branch-order v2.0,master', 'type': 'string'}], [['--manifest-repo-revision'], {'action': 'store', 'default': 'master', 'dest': 'manifest_repo_revision', 'help': 'Specify the b2g-manifest repo revision', 'type': 'string'}], [['--lock-manifest-revisions'], {'action': 'store_true', 'default': True, 'dest': 'lock_manifest_revisions', 'help': 'Lock 3rd party revisions in munge-manifests'}], [['--no-lock-manifest-revisions'], {'action': 'store_false', 'dest': 'lock_manifest_revisions', 'help': "Don't lock 3rd party revisions in munge-manifests"}], [['--branch-manifests'], {'action': 'store_true', 'default': True, 'dest': 'branch_manifests', 'help': 'branch b2g-manifest and xml files in munge-manifests'}], [['--no-branch-manifests'], {'action': 'store_false', 'dest': 'branch_manifests', 'help': "Don't branch b2g-manifest and xml files in munge-manifests"}], [['--delete-unused-manifests'], {'action': 'store_true', 'default': True, 'dest': 'delete_unused_manifests', 'help': 'Delete unused manifest files in munge-manifests'}], [['--no-delete-unused-manifests'], {'action': 'store_false', 'dest': 'delete_unused_manifests', 'help': "Don't delete unused manifest files in munge-manifests"}]]</dl>
+
+<dl><dt><strong>remote_branch_revisions</strong> = {}</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.transfer.html#TransferMixin">mozharness.base.transfer.TransferMixin</a>:<br>
+<dl><dt><a name="B2GBranch-load_json_from_url"><strong>load_json_from_url</strong></a>(self, url, timeout<font color="#909090">=30</font>, log_level<font color="#909090">='debug'</font>)</dt></dl>
+
+<dl><dt><a name="B2GBranch-rsync_download_directory"><strong>rsync_download_directory</strong></a>(self, ssh_key, ssh_user, remote_host, remote_path, local_path, rsync_options<font color="#909090">=None</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Create&nbsp;a&nbsp;remote&nbsp;directory&nbsp;and&nbsp;upload&nbsp;the&nbsp;contents&nbsp;of<br>
+a&nbsp;local&nbsp;directory&nbsp;to&nbsp;it&nbsp;via&nbsp;rsync+ssh.<br>
+&nbsp;<br>
+Return&nbsp;None&nbsp;on&nbsp;success,&nbsp;not&nbsp;None&nbsp;on&nbsp;failure.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-rsync_upload_directory"><strong>rsync_upload_directory</strong></a>(self, local_path, ssh_key, ssh_user, remote_host, remote_path, rsync_options<font color="#909090">=None</font>, error_level<font color="#909090">='error'</font>, create_remote_directory<font color="#909090">=True</font>)</dt><dd><tt>Create&nbsp;a&nbsp;remote&nbsp;directory&nbsp;and&nbsp;upload&nbsp;the&nbsp;contents&nbsp;of<br>
+a&nbsp;local&nbsp;directory&nbsp;to&nbsp;it&nbsp;via&nbsp;rsync+ssh.<br>
+&nbsp;<br>
+Return&nbsp;None&nbsp;on&nbsp;success,&nbsp;not&nbsp;None&nbsp;on&nbsp;failure.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mozharness.base.transfer.html#TransferMixin">mozharness.base.transfer.TransferMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="mozharness.base.vcs.vcsbase.html#VCSMixin">mozharness.base.vcs.vcsbase.VCSMixin</a>:<br>
+<dl><dt><a name="B2GBranch-query_dest"><strong>query_dest</strong></a>(self, kwargs)</dt></dl>
+
+<dl><dt><a name="B2GBranch-vcs_checkout"><strong>vcs_checkout</strong></a>(self, vcs<font color="#909090">=None</font>, error_level<font color="#909090">='fatal'</font>, **kwargs)</dt><dd><tt>Check&nbsp;out&nbsp;a&nbsp;single&nbsp;repo.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-vcs_checkout_repos"><strong>vcs_checkout_repos</strong></a>(self, repo_list, parent_dir<font color="#909090">=None</font>, tag_override<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Check&nbsp;out&nbsp;a&nbsp;list&nbsp;of&nbsp;repos.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.script.html#BaseScript">mozharness.base.script.BaseScript</a>:<br>
+<dl><dt><a name="B2GBranch-action_message"><strong>action_message</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="B2GBranch-add_failure"><strong>add_failure</strong></a>(self, key, message<font color="#909090">='%(key)s failed.'</font>, level<font color="#909090">='error'</font>, increment_return_code<font color="#909090">=True</font>)</dt></dl>
+
+<dl><dt><a name="B2GBranch-add_summary"><strong>add_summary</strong></a>(self, message, level<font color="#909090">='info'</font>)</dt></dl>
+
+<dl><dt><a name="B2GBranch-clobber"><strong>clobber</strong></a>(self)</dt><dd><tt>Delete&nbsp;the&nbsp;working&nbsp;directory</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-copy_logs_to_upload_dir"><strong>copy_logs_to_upload_dir</strong></a>(self)</dt><dd><tt>Copies&nbsp;logs&nbsp;to&nbsp;the&nbsp;upload&nbsp;directory</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-copy_to_upload_dir"><strong>copy_to_upload_dir</strong></a>(self, target, dest<font color="#909090">=None</font>, short_desc<font color="#909090">='unknown'</font>, long_desc<font color="#909090">='unknown'</font>, log_level<font color="#909090">='debug'</font>, error_level<font color="#909090">='error'</font>, max_backups<font color="#909090">=None</font>, compress<font color="#909090">=False</font>, upload_dir<font color="#909090">=None</font>)</dt><dd><tt>Copy&nbsp;target&nbsp;file&nbsp;to&nbsp;upload_dir/dest.<br>
+&nbsp;<br>
+Potentially&nbsp;update&nbsp;a&nbsp;manifest&nbsp;in&nbsp;the&nbsp;future&nbsp;if&nbsp;we&nbsp;go&nbsp;that&nbsp;route.<br>
+&nbsp;<br>
+Currently&nbsp;only&nbsp;copies&nbsp;a&nbsp;single&nbsp;file;&nbsp;would&nbsp;be&nbsp;nice&nbsp;to&nbsp;allow&nbsp;for<br>
+recursive&nbsp;copying;&nbsp;that&nbsp;would&nbsp;probably&nbsp;done&nbsp;by&nbsp;creating&nbsp;a&nbsp;helper<br>
+_copy_file_to_upload_dir().<br>
+&nbsp;<br>
+short_desc&nbsp;and&nbsp;long_desc&nbsp;are&nbsp;placeholders&nbsp;for&nbsp;if/when&nbsp;we&nbsp;add<br>
+upload_dir&nbsp;manifests.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-dump_config"><strong>dump_config</strong></a>(self, file_path<font color="#909090">=None</font>, config<font color="#909090">=None</font>, console_output<font color="#909090">=True</font>, exit_on_finish<font color="#909090">=False</font>)</dt><dd><tt>Dump&nbsp;self.<strong>config</strong>&nbsp;to&nbsp;localconfig.json</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-file_sha512sum"><strong>file_sha512sum</strong></a>(self, file_path)</dt></dl>
+
+<dl><dt><a name="B2GBranch-new_log_obj"><strong>new_log_obj</strong></a>(self, default_log_level<font color="#909090">='info'</font>)</dt><dd><tt>#&nbsp;logging&nbsp;{{{2</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-query_failure"><strong>query_failure</strong></a>(self, key)</dt></dl>
+
+<dl><dt><a name="B2GBranch-run"><strong>run</strong></a>(self)</dt><dd><tt>Default&nbsp;run&nbsp;method.<br>
+This&nbsp;is&nbsp;the&nbsp;"do&nbsp;everything"&nbsp;method,&nbsp;based&nbsp;on&nbsp;actions&nbsp;and&nbsp;all_actions.<br>
+&nbsp;<br>
+First&nbsp;run&nbsp;<a href="#B2GBranch-dump_config">dump_config</a>()&nbsp;if&nbsp;it&nbsp;exists.<br>
+Second,&nbsp;go&nbsp;through&nbsp;the&nbsp;list&nbsp;of&nbsp;all_actions.<br>
+If&nbsp;they're&nbsp;in&nbsp;the&nbsp;list&nbsp;of&nbsp;self.<strong>actions</strong>,&nbsp;try&nbsp;to&nbsp;run<br>
+preflight_ACTION(),&nbsp;ACTION(),&nbsp;and&nbsp;postflight_ACTION().<br>
+&nbsp;<br>
+Preflight&nbsp;is&nbsp;sanity&nbsp;checking&nbsp;before&nbsp;doing&nbsp;anything&nbsp;time&nbsp;consuming&nbsp;or<br>
+destructive.<br>
+&nbsp;<br>
+Postflight&nbsp;is&nbsp;quick&nbsp;testing&nbsp;for&nbsp;success&nbsp;after&nbsp;an&nbsp;action.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-run_action"><strong>run_action</strong></a>(self, action)</dt></dl>
+
+<dl><dt><a name="B2GBranch-run_and_exit"><strong>run_and_exit</strong></a>(self)</dt><dd><tt>Runs&nbsp;the&nbsp;script&nbsp;and&nbsp;exits&nbsp;the&nbsp;current&nbsp;interpreter.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-summarize_success_count"><strong>summarize_success_count</strong></a>(self, success_count, total_count, message<font color="#909090">='%d of %d successful.'</font>, level<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="B2GBranch-summary"><strong>summary</strong></a>(self)</dt><dd><tt>Print&nbsp;out&nbsp;all&nbsp;the&nbsp;summary&nbsp;lines&nbsp;added&nbsp;via&nbsp;<a href="#B2GBranch-add_summary">add_summary</a>()<br>
+throughout&nbsp;the&nbsp;script.<br>
+&nbsp;<br>
+I'd&nbsp;like&nbsp;to&nbsp;revisit&nbsp;how&nbsp;to&nbsp;do&nbsp;this&nbsp;in&nbsp;a&nbsp;prettier&nbsp;fashion.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><a name="B2GBranch-chdir"><strong>chdir</strong></a>(self, dir_name)</dt></dl>
+
+<dl><dt><a name="B2GBranch-chmod"><strong>chmod</strong></a>(self, path, mode)</dt></dl>
+
+<dl><dt><a name="B2GBranch-copyfile"><strong>copyfile</strong></a>(self, src, dest, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, copystat<font color="#909090">=False</font>, compress<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="B2GBranch-copytree"><strong>copytree</strong></a>(self, src, dest, overwrite<font color="#909090">='no_overwrite'</font>, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>an&nbsp;implementation&nbsp;of&nbsp;shutil.copytree&nbsp;however&nbsp;it&nbsp;allows&nbsp;for<br>
+dest&nbsp;to&nbsp;exist&nbsp;and&nbsp;implements&nbsp;different&nbsp;overwrite&nbsp;levels.<br>
+overwrite&nbsp;uses:<br>
+'no_overwrite'&nbsp;will&nbsp;keep&nbsp;all(any)&nbsp;existing&nbsp;files&nbsp;in&nbsp;destination&nbsp;tree<br>
+'overwrite_if_exists'&nbsp;will&nbsp;only&nbsp;overwrite&nbsp;destination&nbsp;paths&nbsp;that&nbsp;have<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;same&nbsp;path&nbsp;names&nbsp;relative&nbsp;to&nbsp;the&nbsp;root&nbsp;of&nbsp;the&nbsp;src&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;destination&nbsp;tree<br>
+'clobber'&nbsp;will&nbsp;replace&nbsp;the&nbsp;whole&nbsp;destination&nbsp;tree(clobber)&nbsp;if&nbsp;it&nbsp;exists</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-download_file"><strong>download_file</strong></a>(self, url, file_name<font color="#909090">=None</font>, parent_dir<font color="#909090">=None</font>, create_parent_dir<font color="#909090">=True</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=3</font>, retry_config<font color="#909090">=None</font>)</dt><dd><tt>Python&nbsp;wget.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-get_filename_from_url"><strong>get_filename_from_url</strong></a>(self, url)</dt></dl>
+
+<dl><dt><a name="B2GBranch-get_output_from_command"><strong>get_output_from_command</strong></a>(self, command, cwd<font color="#909090">=None</font>, halt_on_failure<font color="#909090">=False</font>, env<font color="#909090">=None</font>, silent<font color="#909090">=False</font>, log_level<font color="#909090">='info'</font>, tmpfile_base_path<font color="#909090">='tmpfile'</font>, return_type<font color="#909090">='output'</font>, save_tmpfiles<font color="#909090">=False</font>, throw_exception<font color="#909090">=False</font>, fatal_exit_code<font color="#909090">=2</font>, ignore_errors<font color="#909090">=False</font>, success_codes<font color="#909090">=None</font>)</dt><dd><tt>Similar&nbsp;to&nbsp;run_command,&nbsp;but&nbsp;where&nbsp;run_command&nbsp;is&nbsp;an<br>
+os.system(command)&nbsp;analog,&nbsp;get_output_from_command&nbsp;is&nbsp;a&nbsp;`command`<br>
+analog.<br>
+&nbsp;<br>
+Less&nbsp;error&nbsp;checking&nbsp;by&nbsp;design,&nbsp;though&nbsp;if&nbsp;we&nbsp;figure&nbsp;out&nbsp;how&nbsp;to<br>
+do&nbsp;it&nbsp;without&nbsp;borking&nbsp;the&nbsp;output,&nbsp;great.<br>
+&nbsp;<br>
+TODO:&nbsp;binary&nbsp;mode?&nbsp;silent&nbsp;is&nbsp;kinda&nbsp;like&nbsp;that.<br>
+TODO:&nbsp;since&nbsp;p.wait()&nbsp;can&nbsp;take&nbsp;a&nbsp;long&nbsp;time,&nbsp;optionally&nbsp;log&nbsp;something<br>
+every&nbsp;N&nbsp;seconds?<br>
+TODO:&nbsp;optionally&nbsp;only&nbsp;keep&nbsp;the&nbsp;first&nbsp;or&nbsp;last&nbsp;(N)&nbsp;line(s)&nbsp;of&nbsp;output?<br>
+TODO:&nbsp;optionally&nbsp;only&nbsp;return&nbsp;the&nbsp;tmp_stdout_filename?<br>
+&nbsp;<br>
+ignore_errors=True&nbsp;is&nbsp;for&nbsp;the&nbsp;case&nbsp;where&nbsp;a&nbsp;command&nbsp;might&nbsp;produce&nbsp;standard<br>
+error&nbsp;output,&nbsp;but&nbsp;you&nbsp;don't&nbsp;particularly&nbsp;care;&nbsp;setting&nbsp;to&nbsp;True&nbsp;will<br>
+cause&nbsp;standard&nbsp;error&nbsp;to&nbsp;be&nbsp;logged&nbsp;at&nbsp;DEBUG&nbsp;rather&nbsp;than&nbsp;ERROR</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-mkdir_p"><strong>mkdir_p</strong></a>(self, path, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Returns&nbsp;None&nbsp;for&nbsp;success,&nbsp;not&nbsp;None&nbsp;for&nbsp;failure</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-move"><strong>move</strong></a>(self, src, dest, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="B2GBranch-opened"><strong>opened</strong></a>(*args, **kwds)</dt><dd><tt>Returns&nbsp;an&nbsp;open&nbsp;file,&nbsp;error&nbsp;pair,&nbsp;for&nbsp;use&nbsp;in&nbsp;a&nbsp;'with'&nbsp;statement:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;<a href="#B2GBranch-opened">opened</a>("file.txt")&nbsp;as&nbsp;(fh,&nbsp;err):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;err:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#B2GBranch-log">log</a>("badness")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;line&nbsp;in&nbsp;fh:&nbsp;...</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-query_env"><strong>query_env</strong></a>(self, partial_env<font color="#909090">=None</font>, replace_dict<font color="#909090">=None</font>, purge_env<font color="#909090">=()</font>, set_self_env<font color="#909090">=None</font>, log_level<font color="#909090">='debug'</font>)</dt><dd><tt>Environment&nbsp;query/generation&nbsp;method.<br>
+&nbsp;<br>
+The&nbsp;default,&nbsp;<a href="#B2GBranch-query_env">query_env</a>(),&nbsp;will&nbsp;look&nbsp;for&nbsp;self.<strong>config</strong>['env']<br>
+and&nbsp;replace&nbsp;any&nbsp;special&nbsp;strings&nbsp;in&nbsp;there&nbsp;(&nbsp;%(PATH)s&nbsp;).<br>
+It&nbsp;will&nbsp;then&nbsp;store&nbsp;it&nbsp;as&nbsp;self.<strong>env</strong>&nbsp;for&nbsp;speeding&nbsp;things&nbsp;up&nbsp;later.<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;specify&nbsp;partial_env,&nbsp;partial_env&nbsp;will&nbsp;be&nbsp;used&nbsp;instead&nbsp;of<br>
+self.<strong>config</strong>['env'],&nbsp;and&nbsp;we&nbsp;don't&nbsp;save&nbsp;self.<strong>env</strong>&nbsp;as&nbsp;it's&nbsp;a&nbsp;one-off.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-query_exe"><strong>query_exe</strong></a>(self, exe_name, exe_dict<font color="#909090">='exes'</font>, default<font color="#909090">=None</font>, return_type<font color="#909090">=None</font>, error_level<font color="#909090">='fatal'</font>)</dt><dd><tt>One&nbsp;way&nbsp;to&nbsp;work&nbsp;around&nbsp;PATH&nbsp;rewrites.<br>
+&nbsp;<br>
+By&nbsp;default,&nbsp;return&nbsp;exe_name,&nbsp;and&nbsp;we'll&nbsp;fall&nbsp;through&nbsp;to&nbsp;searching<br>
+os.environ["PATH"].<br>
+However,&nbsp;if&nbsp;self.<strong>config</strong>[exe_dict][exe_name]&nbsp;exists,&nbsp;return&nbsp;that.<br>
+This&nbsp;lets&nbsp;us&nbsp;override&nbsp;exe&nbsp;paths&nbsp;via&nbsp;config&nbsp;file.<br>
+&nbsp;<br>
+'return_type'&nbsp;can&nbsp;be&nbsp;None&nbsp;(don't&nbsp;do&nbsp;anything&nbsp;to&nbsp;the&nbsp;value),<br>
+'list'&nbsp;(return&nbsp;a&nbsp;list),&nbsp;or&nbsp;'string'&nbsp;(return&nbsp;a&nbsp;string).<br>
+&nbsp;<br>
+If&nbsp;we&nbsp;need&nbsp;runtime&nbsp;setting,&nbsp;we&nbsp;can&nbsp;build&nbsp;in&nbsp;self.<strong>exes</strong>&nbsp;support&nbsp;later.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-query_msys_path"><strong>query_msys_path</strong></a>(self, path)</dt></dl>
+
+<dl><dt><a name="B2GBranch-read_from_file"><strong>read_from_file</strong></a>(self, file_path, verbose<font color="#909090">=True</font>, open_mode<font color="#909090">='r'</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Reads&nbsp;from&nbsp;file_path.<br>
+&nbsp;<br>
+Returns&nbsp;contents&nbsp;if&nbsp;successful,&nbsp;None&nbsp;if&nbsp;not.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-retry"><strong>retry</strong></a>(self, action, attempts<font color="#909090">=None</font>, sleeptime<font color="#909090">=60</font>, max_sleeptime<font color="#909090">=300</font>, retry_exceptions<font color="#909090">=(&lt;type 'exceptions.Exception'&gt;,)</font>, good_statuses<font color="#909090">=None</font>, cleanup<font color="#909090">=None</font>, error_level<font color="#909090">='error'</font>, error_message<font color="#909090">='%(action)s failed after %(attempts)d tries!'</font>, failure_status<font color="#909090">=-1</font>, log_level<font color="#909090">='info'</font>, args<font color="#909090">=()</font>, kwargs<font color="#909090">={}</font>)</dt><dd><tt>Generic&nbsp;retry&nbsp;command.<br>
+Ported&nbsp;from&nbsp;tools&nbsp;util.retry.<br>
+&nbsp;<br>
+Call&nbsp;`action'&nbsp;a&nbsp;maximum&nbsp;of&nbsp;`attempts'&nbsp;times&nbsp;until&nbsp;it&nbsp;succeeds,<br>
+defaulting&nbsp;to&nbsp;self.<strong>config</strong>.get('global_retries',&nbsp;5).<br>
+&nbsp;<br>
+`sleeptime'&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;seconds&nbsp;to&nbsp;wait&nbsp;between&nbsp;attempts,<br>
+defaulting&nbsp;to&nbsp;60&nbsp;and&nbsp;doubling&nbsp;each&nbsp;retry&nbsp;attempt,&nbsp;to&nbsp;a&nbsp;maximum&nbsp;of<br>
+`max_sleeptime'.<br>
+&nbsp;<br>
+`retry_exceptions'&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;Exceptions&nbsp;that&nbsp;should&nbsp;be&nbsp;caught.<br>
+If&nbsp;exceptions&nbsp;other&nbsp;than&nbsp;those&nbsp;listed&nbsp;in&nbsp;`retry_exceptions'&nbsp;are<br>
+raised&nbsp;from&nbsp;`action',&nbsp;they&nbsp;will&nbsp;be&nbsp;raised&nbsp;immediately.<br>
+&nbsp;<br>
+`good_statuses'&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;return&nbsp;values&nbsp;which,&nbsp;if&nbsp;specified,<br>
+will&nbsp;result&nbsp;in&nbsp;retrying&nbsp;if&nbsp;the&nbsp;return&nbsp;value&nbsp;isn't&nbsp;listed.<br>
+&nbsp;<br>
+If&nbsp;`cleanup'&nbsp;is&nbsp;provided&nbsp;and&nbsp;callable&nbsp;it&nbsp;will&nbsp;be&nbsp;called&nbsp;immediately<br>
+after&nbsp;an&nbsp;Exception&nbsp;is&nbsp;caught.&nbsp;&nbsp;No&nbsp;arguments&nbsp;will&nbsp;be&nbsp;passed&nbsp;to&nbsp;it.<br>
+If&nbsp;your&nbsp;cleanup&nbsp;function&nbsp;requires&nbsp;arguments&nbsp;it&nbsp;is&nbsp;recommended&nbsp;that<br>
+you&nbsp;wrap&nbsp;it&nbsp;in&nbsp;an&nbsp;argumentless&nbsp;function.<br>
+&nbsp;<br>
+`args'&nbsp;and&nbsp;`kwargs'&nbsp;are&nbsp;a&nbsp;tuple&nbsp;and&nbsp;dict&nbsp;of&nbsp;arguments&nbsp;to&nbsp;pass&nbsp;onto<br>
+to&nbsp;`callable'.</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-rmtree"><strong>rmtree</strong></a>(self, path, log_level<font color="#909090">='info'</font>, error_level<font color="#909090">='error'</font>, exit_code<font color="#909090">=-1</font>)</dt><dd><tt>Returns&nbsp;None&nbsp;for&nbsp;success,&nbsp;not&nbsp;None&nbsp;for&nbsp;failure</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-run_command"><strong>run_command</strong></a>(self, command, cwd<font color="#909090">=None</font>, error_list<font color="#909090">=None</font>, halt_on_failure<font color="#909090">=False</font>, success_codes<font color="#909090">=None</font>, env<font color="#909090">=None</font>, partial_env<font color="#909090">=None</font>, return_type<font color="#909090">='status'</font>, throw_exception<font color="#909090">=False</font>, output_parser<font color="#909090">=None</font>, output_timeout<font color="#909090">=None</font>, fatal_exit_code<font color="#909090">=2</font>, error_level<font color="#909090">='error'</font>, **kwargs)</dt><dd><tt>Run&nbsp;a&nbsp;command,&nbsp;with&nbsp;logging&nbsp;and&nbsp;error&nbsp;parsing.<br>
+&nbsp;<br>
+output_timeout&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;seconds&nbsp;without&nbsp;output&nbsp;before&nbsp;the&nbsp;process<br>
+is&nbsp;killed.<br>
+&nbsp;<br>
+TODO:&nbsp;context_lines<br>
+&nbsp;<br>
+output_parser&nbsp;lets&nbsp;you&nbsp;provide&nbsp;an&nbsp;instance&nbsp;of&nbsp;your&nbsp;own&nbsp;OutputParser<br>
+subclass,&nbsp;or&nbsp;pass&nbsp;None&nbsp;to&nbsp;use&nbsp;OutputParser.<br>
+&nbsp;<br>
+error_list&nbsp;example:<br>
+[{'regex':&nbsp;re.compile('^Error:&nbsp;LOL&nbsp;J/K'),&nbsp;level=IGNORE},<br>
+&nbsp;{'regex':&nbsp;re.compile('^Error:'),&nbsp;level=ERROR,&nbsp;contextLines='5:5'},<br>
+&nbsp;{'substr':&nbsp;'THE&nbsp;WORLD&nbsp;IS&nbsp;ENDING',&nbsp;level=FATAL,&nbsp;contextLines='20:'}<br>
+]<br>
+(context_lines&nbsp;isn't&nbsp;written&nbsp;yet)</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-unpack"><strong>unpack</strong></a>(self, filename, extract_to)</dt><dd><tt>This&nbsp;method&nbsp;allows&nbsp;us&nbsp;to&nbsp;extract&nbsp;a&nbsp;file&nbsp;regardless&nbsp;of&nbsp;its&nbsp;extension</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-which"><strong>which</strong></a>(self, program)</dt><dd><tt>OS&nbsp;independent&nbsp;implementation&nbsp;of&nbsp;Unix's&nbsp;which&nbsp;command<br>
+Takes&nbsp;in&nbsp;a&nbsp;program&nbsp;name<br>
+Returns&nbsp;path&nbsp;to&nbsp;executable&nbsp;or&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-write_to_file"><strong>write_to_file</strong></a>(self, file_path, contents, verbose<font color="#909090">=True</font>, open_mode<font color="#909090">='w'</font>, create_parent_dir<font color="#909090">=False</font>, error_level<font color="#909090">='error'</font>)</dt><dd><tt>Write&nbsp;contents&nbsp;to&nbsp;file_path.<br>
+&nbsp;<br>
+This&nbsp;doesn't&nbsp;currently&nbsp;create&nbsp;the&nbsp;parent_dir&nbsp;or&nbsp;translate&nbsp;into<br>
+abs_path;&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;done&nbsp;beforehand,&nbsp;since&nbsp;ScriptMixin&nbsp;doesn't<br>
+necessarily&nbsp;have&nbsp;access&nbsp;to&nbsp;<a href="#B2GBranch-query_abs_dirs">query_abs_dirs</a>().<br>
+&nbsp;<br>
+Returns&nbsp;file_path&nbsp;if&nbsp;successful,&nbsp;None&nbsp;if&nbsp;not.</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="mozharness.base.script.html#ScriptMixin">mozharness.base.script.ScriptMixin</a>:<br>
+<dl><dt><strong>env</strong> = None</dl>
+
+<dl><dt><strong>script_obj</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>:<br>
+<dl><dt><a name="B2GBranch-critical"><strong>critical</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="B2GBranch-debug"><strong>debug</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="B2GBranch-error"><strong>error</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="B2GBranch-exception"><strong>exception</strong></a>(self, message<font color="#909090">=None</font>, level<font color="#909090">='error'</font>)</dt><dd><tt>#&nbsp;Copying&nbsp;Bear's&nbsp;dumpException():<br>
+#&nbsp;https://hg.mozilla.org/build/tools/annotate/1485f23c38e0/sut_tools/sut_lib.py#l23</tt></dd></dl>
+
+<dl><dt><a name="B2GBranch-fatal"><strong>fatal</strong></a>(self, message, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="B2GBranch-info"><strong>info</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="B2GBranch-log"><strong>log</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="B2GBranch-warning"><strong>warning</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="B2GBranch-worst_level"><strong>worst_level</strong></a>(self, target_level, existing_level, levels<font color="#909090">=None</font>)</dt><dd><tt>returns&nbsp;either&nbsp;existing_level&nbsp;or&nbsp;target&nbsp;level.<br>
+This&nbsp;depends&nbsp;on&nbsp;which&nbsp;is&nbsp;closest&nbsp;to&nbsp;levels[0]<br>
+By&nbsp;default,&nbsp;levels&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;log&nbsp;levels</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ERROR</strong> = 'error'<br>
+<strong>GitErrorList</strong> = [{'level': 'error', 'substr': 'command not found'}, {'level': 'error', 'substr': 'Permission denied (publickey).'}, {'level': 'error', 'substr': 'fatal: The remote end hung up unexpectedly'}, {'level': 'error', 'substr': 'does not appear to be a git repository'}, {'level': 'error', 'substr': 'error: src refspec'}, {'level': 'error', 'substr': 'invalid author/committer line -'}, {'level': 'error', 'substr': 'remote: fatal: Error in object'}, {'level': 'error', 'substr': "fatal: sha1 file '&lt;stdout&gt;' write error: Broken pipe"}, {'level': 'error', 'substr': 'error: failed to push some refs to '}, {'level': 'error', 'substr': 'remote: error: denying non-fast-forward '}, {'level': 'error', 'substr': '! [remote rejected] '}, {'level': 'error', 'regex': &lt;_sre.SRE_Pattern object at 0xb7f6bb00&gt;}]</td></tr></table>
+</body></html>

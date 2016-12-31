@@ -1,0 +1,25 @@
+p, ul, ol, li, blockquote, td, body, table, h1, h5, dl, dt, dd, .sansserif, th
+{
+    font-family: courier,monospace;
+}
+
+li
+{
+    padding-top: .7em;
+    padding-bottom: .5em;
+}
+
+body
+{
+    padding: 5em;
+}
+
+ul
+{
+    list-style-type: circle;
+}
+
+li > ul
+{
+    list-style-type: disc;
+}

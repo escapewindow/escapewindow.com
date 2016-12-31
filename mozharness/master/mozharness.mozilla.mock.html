@@ -1,0 +1,114 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module mock</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>mock</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/mock.py">/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/mock.py</a></font></td></tr></table>
+    <p><tt>Code&nbsp;to&nbsp;integrate&nbsp;with&nbsp;mock</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="hashlib.html">hashlib</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="subprocess.html">subprocess</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="mock.html#MockMixin">MockMixin</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MockMixin">class <strong>MockMixin</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Provides&nbsp;methods&nbsp;to&nbsp;setup&nbsp;and&nbsp;interact&nbsp;with&nbsp;mock&nbsp;environments.<br>
+https://wiki.mozilla.org/ReleaseEngineering/Applications/Mock<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;dependent&nbsp;on&nbsp;ScriptMixin<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MockMixin-copy_mock_files"><strong>copy_mock_files</strong></a>(self, mock_target, files)</dt><dd><tt>Copy&nbsp;files&nbsp;into&nbsp;the&nbsp;mock&nbsp;environment&nbsp;`mock_target`.&nbsp;`files`&nbsp;should<br>
+be&nbsp;an&nbsp;iterable&nbsp;of&nbsp;2-tuples:&nbsp;(src,&nbsp;dst)</tt></dd></dl>
+
+<dl><dt><a name="MockMixin-delete_mock_files"><strong>delete_mock_files</strong></a>(self, mock_target, files)</dt><dd><tt>Delete&nbsp;files&nbsp;from&nbsp;the&nbsp;mock&nbsp;environment&nbsp;`mock_target`.&nbsp;`files`&nbsp;should<br>
+be&nbsp;an&nbsp;iterable&nbsp;of&nbsp;2-tuples:&nbsp;(src,&nbsp;dst).&nbsp;Only&nbsp;the&nbsp;dst&nbsp;component&nbsp;is<br>
+deleted.</tt></dd></dl>
+
+<dl><dt><a name="MockMixin-disable_mock"><strong>disable_mock</strong></a>(self)</dt><dd><tt>Restore&nbsp;self.<strong>run_command</strong>&nbsp;and&nbsp;self.<strong>get_output_from_command</strong>&nbsp;to&nbsp;their<br>
+original&nbsp;versions.&nbsp;This&nbsp;is&nbsp;the&nbsp;opposite&nbsp;of&nbsp;<a href="#MockMixin-enable_mock">enable_mock</a>()</tt></dd></dl>
+
+<dl><dt><a name="MockMixin-enable_mock"><strong>enable_mock</strong></a>(self)</dt><dd><tt>Wrap&nbsp;self.<strong>run_command</strong>&nbsp;and&nbsp;self.<strong>get_output_from_command</strong>&nbsp;to&nbsp;run&nbsp;inside<br>
+the&nbsp;mock&nbsp;environment&nbsp;given&nbsp;by&nbsp;self.<strong>config</strong>['mock_target']</tt></dd></dl>
+
+<dl><dt><a name="MockMixin-get_mock_output_from_command"><strong>get_mock_output_from_command</strong></a>(self, mock_target, command, cwd<font color="#909090">=None</font>, env<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Same&nbsp;as&nbsp;ScriptMixin.get_output_from_command,&nbsp;except&nbsp;runs&nbsp;command<br>
+inside&nbsp;mock&nbsp;environment&nbsp;`mock_target`.</tt></dd></dl>
+
+<dl><dt><a name="MockMixin-get_mock_target"><strong>get_mock_target</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MockMixin-get_output_from_command_m"><strong>get_output_from_command_m</strong></a>(self, *args, **kwargs)</dt><dd><tt>Executes&nbsp;self.<strong>get_mock_output_from_command</strong>&nbsp;if&nbsp;we&nbsp;have&nbsp;a&nbsp;mock&nbsp;target<br>
+set,&nbsp;otherwise&nbsp;executes&nbsp;self.<strong>get_output_from_command</strong>.</tt></dd></dl>
+
+<dl><dt><a name="MockMixin-init_mock"><strong>init_mock</strong></a>(self, mock_target)</dt><dd><tt>Initialize&nbsp;mock&nbsp;environment&nbsp;defined&nbsp;by&nbsp;`mock_target`</tt></dd></dl>
+
+<dl><dt><a name="MockMixin-install_mock_packages"><strong>install_mock_packages</strong></a>(self, mock_target, packages)</dt><dd><tt>Install&nbsp;`packages`&nbsp;into&nbsp;mock&nbsp;environment&nbsp;`mock_target`</tt></dd></dl>
+
+<dl><dt><a name="MockMixin-reset_mock"><strong>reset_mock</strong></a>(self, mock_target<font color="#909090">=None</font>)</dt><dd><tt>rm&nbsp;mock&nbsp;lock&nbsp;and&nbsp;reset</tt></dd></dl>
+
+<dl><dt><a name="MockMixin-run_command_m"><strong>run_command_m</strong></a>(self, *args, **kwargs)</dt><dd><tt>Executes&nbsp;self.<strong>run_mock_command</strong>&nbsp;if&nbsp;we&nbsp;have&nbsp;a&nbsp;mock&nbsp;target&nbsp;set,<br>
+otherwise&nbsp;executes&nbsp;self.<strong>run_command</strong>.</tt></dd></dl>
+
+<dl><dt><a name="MockMixin-run_mock_command"><strong>run_mock_command</strong></a>(self, mock_target, command, cwd<font color="#909090">=None</font>, env<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Same&nbsp;as&nbsp;ScriptMixin.run_command,&nbsp;except&nbsp;runs&nbsp;command&nbsp;inside&nbsp;mock<br>
+environment&nbsp;`mock_target`.</tt></dd></dl>
+
+<dl><dt><a name="MockMixin-setup_mock"><strong>setup_mock</strong></a>(self, mock_target<font color="#909090">=None</font>, mock_packages<font color="#909090">=None</font>, mock_files<font color="#909090">=None</font>)</dt><dd><tt>Initializes&nbsp;and&nbsp;installs&nbsp;packages,&nbsp;copies&nbsp;files&nbsp;into&nbsp;mock<br>
+environment&nbsp;given&nbsp;by&nbsp;configuration&nbsp;in&nbsp;self.<strong>config</strong>.&nbsp;&nbsp;The&nbsp;mock<br>
+environment&nbsp;is&nbsp;given&nbsp;by&nbsp;self.<strong>config</strong>['mock_target'],&nbsp;the&nbsp;list&nbsp;of&nbsp;packges<br>
+to&nbsp;install&nbsp;given&nbsp;by&nbsp;self.<strong>config</strong>['mock_packages'],&nbsp;and&nbsp;the&nbsp;list&nbsp;of&nbsp;files<br>
+to&nbsp;copy&nbsp;in&nbsp;is&nbsp;self.<strong>config</strong>['mock_files'].</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>default_mock_target</strong> = None</dl>
+
+<dl><dt><strong>done_mock_setup</strong> = False</dl>
+
+<dl><dt><strong>mock_enabled</strong> = False</dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ERROR_MSGS</strong> = {'undetermined_buildroot_lock': 'buildroot_lock_path does not exist.Nothing to remove.'}</td></tr></table>
+</body></html>

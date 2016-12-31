@@ -1,0 +1,131 @@
+head	1.4;
+access;
+symbols;
+locks
+	asasaki:1.4; strict;
+comment	@# @;
+
+
+1.4
+date	2012.04.16.18.59.51;	author asasaki;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2012.04.14.02.24.29;	author asasaki;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2012.04.13.23.49.39;	author asasaki;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2012.04.13.20.44.45;	author asasaki;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@no foopies
+q&a
+
+easy to debug
+  logging
+  run only the affected portion
+
+
+Links
+=====
+what is mozharness? http://escapewindow.dreamwidth.org/223757.html
+
+
+
+Bare bones: A harness to write + run python scripts.
+Mozharness is a configuration-driven script harness with full logging that allows production infrastructure and individual developers to use the same scripts.
+overview
+* config
+* shared: in production + on developers' desks
+* make us less dependent on buildbot
+a lot of code can be shared
+learning curve
+* logging
+* actions
+configuration-driven
+script harness
+full logging
+sharing
+* how do you use it
+how to make a test harness use mozharness
+@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@a0 2
+* how do you use it
+how to make a test harness use mozharness
+a7 6
+what to go back over?
+=====================
+configuration-driven
+script harness
+full logging
+sharing
+d25 6
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@a0 3
+overview
+* what is it
+* why
+a5 8
+
+* shared: in production + on developers' desks
+* make us less dependent on buildbot
+
+* config
+* logging
+* actions
+
+a8 7
+easy to write
+  re-run action over and over
+  easy to override config
+  a lot of code can be shared
+  why not now?
+    learning curve
+    harness is still being written
+d25 8
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@a9 2
+Bare bones: A harness to write + run python scripts.
+Mozharness is a configuration-driven script harness with full logging that allows production infrastructure and individual developers to use the same scripts.
+d28 7
+d38 5
+@

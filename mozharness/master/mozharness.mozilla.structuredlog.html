@@ -1,0 +1,119 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module structuredlog</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>structuredlog</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/structuredlog.py">/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/structuredlog.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;*****&nbsp;BEGIN&nbsp;LICENSE&nbsp;BLOCK&nbsp;*****<br>
+#&nbsp;This&nbsp;Source&nbsp;Code&nbsp;Form&nbsp;is&nbsp;subject&nbsp;to&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;Mozilla&nbsp;Public<br>
+#&nbsp;License,&nbsp;v.&nbsp;2.0.&nbsp;If&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;MPL&nbsp;was&nbsp;not&nbsp;distributed&nbsp;with&nbsp;this&nbsp;file,<br>
+#&nbsp;You&nbsp;can&nbsp;obtain&nbsp;one&nbsp;at&nbsp;<a href="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</a>.<br>
+#&nbsp;*****&nbsp;END&nbsp;LICENSE&nbsp;BLOCK&nbsp;*****</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="json.html">json</a><br>
+</td><td width="25%" valign=top><a href="mozharness.base.log.html">mozharness.base.log</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="mozharness.base.log.html#OutputParser">mozharness.base.log.OutputParser</a>(<a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="structuredlog.html#StructuredOutputParser">StructuredOutputParser</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StructuredOutputParser">class <strong>StructuredOutputParser</strong></a>(<a href="mozharness.base.log.html#OutputParser">mozharness.base.log.OutputParser</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="structuredlog.html#StructuredOutputParser">StructuredOutputParser</a></dd>
+<dd><a href="mozharness.base.log.html#OutputParser">mozharness.base.log.OutputParser</a></dd>
+<dd><a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="StructuredOutputParser-__init__"><strong>__init__</strong></a>(self, **kwargs)</dt><dd><tt>Object&nbsp;that&nbsp;tracks&nbsp;the&nbsp;overall&nbsp;status&nbsp;of&nbsp;the&nbsp;test&nbsp;run</tt></dd></dl>
+
+<dl><dt><a name="StructuredOutputParser-append_tinderboxprint_line"><strong>append_tinderboxprint_line</strong></a>(self, suite_name)</dt></dl>
+
+<dl><dt><a name="StructuredOutputParser-evaluate_parser"><strong>evaluate_parser</strong></a>(self, return_code, success_codes<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="StructuredOutputParser-parse_single_line"><strong>parse_single_line</strong></a>(self, line)</dt><dd><tt>Parses&nbsp;a&nbsp;line&nbsp;of&nbsp;log&nbsp;output&nbsp;from&nbsp;the&nbsp;child&nbsp;process&nbsp;and&nbsp;passes<br>
+it&nbsp;to&nbsp;mozlog&nbsp;to&nbsp;update&nbsp;the&nbsp;overall&nbsp;status&nbsp;of&nbsp;the&nbsp;run.<br>
+Re-emits&nbsp;the&nbsp;logged&nbsp;line&nbsp;in&nbsp;human-readable&nbsp;format.</tt></dd></dl>
+
+<dl><dt><a name="StructuredOutputParser-print_summary"><strong>print_summary</strong></a>(self, suite_name)</dt></dl>
+
+<dl><dt><a name="StructuredOutputParser-update_levels"><strong>update_levels</strong></a>(self, tbpl_level, log_level)</dt></dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.log.html#OutputParser">mozharness.base.log.OutputParser</a>:<br>
+<dl><dt><a name="StructuredOutputParser-add_lines"><strong>add_lines</strong></a>(self, output)</dt></dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>:<br>
+<dl><dt><a name="StructuredOutputParser-critical"><strong>critical</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="StructuredOutputParser-debug"><strong>debug</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="StructuredOutputParser-error"><strong>error</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="StructuredOutputParser-exception"><strong>exception</strong></a>(self, message<font color="#909090">=None</font>, level<font color="#909090">='error'</font>)</dt><dd><tt>#&nbsp;Copying&nbsp;Bear's&nbsp;dumpException():<br>
+#&nbsp;https://hg.mozilla.org/build/tools/annotate/1485f23c38e0/sut_tools/sut_lib.py#l23</tt></dd></dl>
+
+<dl><dt><a name="StructuredOutputParser-fatal"><strong>fatal</strong></a>(self, message, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="StructuredOutputParser-info"><strong>info</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="StructuredOutputParser-log"><strong>log</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="StructuredOutputParser-warning"><strong>warning</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="StructuredOutputParser-worst_level"><strong>worst_level</strong></a>(self, target_level, existing_level, levels<font color="#909090">=None</font>)</dt><dd><tt>returns&nbsp;either&nbsp;existing_level&nbsp;or&nbsp;target&nbsp;level.<br>
+This&nbsp;depends&nbsp;on&nbsp;which&nbsp;is&nbsp;closest&nbsp;to&nbsp;levels[0]<br>
+By&nbsp;default,&nbsp;levels&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;log&nbsp;levels</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ERROR</strong> = 'error'<br>
+<strong>INFO</strong> = 'info'<br>
+<strong>TBPL_FAILURE</strong> = 'FAILURE'<br>
+<strong>TBPL_SUCCESS</strong> = 'SUCCESS'<br>
+<strong>TBPL_WARNING</strong> = 'WARNING'<br>
+<strong>TBPL_WORST_LEVEL_TUPLE</strong> = ('RETRY', 'EXCEPTION', 'FAILURE', 'WARNING', 'SUCCESS')<br>
+<strong>WARNING</strong> = 'warning'</td></tr></table>
+</body></html>

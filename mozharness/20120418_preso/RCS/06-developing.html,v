@@ -1,0 +1,164 @@
+head	1.3;
+access;
+symbols;
+locks
+	asasaki:1.3; strict;
+comment	@# @;
+
+
+1.3
+date	2012.04.16.23.30.14;	author asasaki;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2012.04.16.22.58.24;	author asasaki;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2012.04.16.18.59.47;	author asasaki;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@<html><head>
+<link rel="stylesheet" href="mh.css" type="text/css"/>
+</head><body>
+
+<ul>
+<h3>How to get a test harness running in Mozharness</h3>
+
+<div style="padding: 1em; border: thin solid #990000;">
+<p>
+<b>Scenario 1</b>: Everything needed is already on disk + installed.
+</p><p>
+Actions:
+</p>
+<ol><li class="monospace">
+run-tests : <code>self.run_command("run_my_tests.py", ...)</code>
+</li></ol>
+</div><br />
+
+<div style="padding: 1em; border: thin solid #009900;">
+<p>
+<b>Scenario 2</b>: Everything's set up but the virtualenv.
+</p><p>
+Actions:
+</p>
+<ol><li class="monospace">
+create-virtualenv : <code>virtualenv_modules = ['PyYAML', ...]</code><br />
+Available through <code>mozharness.base.python.VirtualenvMixin</code>
+</li><li>
+run-tests : <code>self.run_command("run_my_tests.py", ...)</code>
+</li></ol>
+</div><br />
+
+<div style="padding: 1em; border: thin solid #000099;">
+<p>
+<b>Scenario 3</b>: Nothing's set up, and you want to run in both buildbot and locally.
+</p><p>
+Actions:
+</p>
+<ol><li class="monospace">
+clobber<br />
+Available through <code>mozharness.base.script.BaseScript</code>
+</li><li>
+pull (optional)<br />
+Available through <code>mozharness.base.vcs.vcsbase.VCSMixin</code>
+</li><li>
+read-buildbot-config<br />
+Available through <code>mozharness.mozilla.buildbot.BuildbotMixin</code>
+</li><li>
+download-and-extract<br />
+Available through <code>mozharness.mozilla.testing.testbase.TestingMixin</code>
+</li><li>
+create-virtualenv : <code>virtualenv_modules = ['PyYAML', ...]</code><br />
+Available through <code>mozharness.base.python.VirtualenvMixin</code>
+</li><li>
+install<br />
+Available through <code>mozharness.mozilla.testing.testbase.TestingMixin</code>
+</li><li>
+run-tests : <code>self.run_command("run_my_tests.py", ...)</code>
+</li></ol>
+</div><br />
+
+<p>
+<a href="07-devicepool1.html">device pool now --&gt;</a><br />
+</p>
+
+</body></html>
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d63 1
+a63 1
+<a href="07-devicepool.html">device pool --&gt;</a><br />
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d9 3
+a11 7
+<p><b>
+Scenario 1
+</b></p><p>
+Assumptions:
+<ul>
+<li class="monospace">Everything needed is already on disk + installed.</li>
+</ul></p><p>
+d15 1
+a15 1
+run-tests &nbsp; <code>self.run_command("run_my_tests.py", ...)</code>
+d20 3
+a22 7
+<p><b>
+Scenario 2
+</b></p><p>
+Assumptions:
+<ul>
+<li class="monospace">Everything's set up but the virtualenv.</li>
+</ul></p><p>
+d26 1
+a26 1
+create-virtualenv &nbsp; <code>virtualenv_modules = ['PyYAML', ...]</code><br />
+d29 1
+a29 1
+run-tests &nbsp; <code>self.run_command("run_my_tests.py", ...)</code>
+d34 3
+a36 7
+<p><b>
+Scenario 3
+</b></p><p>
+Assumptions:
+<ul>
+<li class="monospace">Nothing's set up, and you want to run in both buildbot and locally.</li>
+</ul></p><p>
+d43 1
+a43 1
+pull<br />
+d52 1
+a52 1
+create-virtualenv &nbsp; <code>virtualenv_modules = ['PyYAML', ...]</code><br />
+d58 1
+a58 1
+run-tests &nbsp; <code>self.run_command("run_my_tests.py", ...)</code>
+@

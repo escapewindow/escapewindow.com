@@ -1,0 +1,33 @@
+<html><head>
+<link rel="stylesheet" href="mh.css" type="text/css"/>
+</head><body>
+
+<ul>
+<h3>A brief overview of the Tegras now</h3>
+
+<center><a href="1.jpg"><img src="1t.jpg"/></a></center>
+
+<ul><li>
+Buildbot slave is tied (hardcoded) to a single Tegra.
+</li><li>
+Buildbot master assigns jobs immediately to any free buildslave, without knowing about Tegra status.
+</li><li>
+Clientproxy, external scripts, and buildbot factory try to prevent broken Tegras from staying in production by creating flag files and killing buildbot.<br />
+Killing buildbot doesn't seem to work properly atm.
+</li><li>
+Clientproxy and external scripts attempt to prevent hung Tegras by rebooting unresponsive Tegras, clearing flag files, and putting Tegras back to work.<br />This happens outside the buildbot process, in parallel, and can break running processes or bring broken Tegras back online.
+</li><li>
+This is all happening via multiple processes, multiple scripts, which don't know about each other, or provide easily parsable or searchable history.
+</li><li>
+Any sort of timing mismatch will result in a lot of tree breakage.
+</li><li>
+Foopies hardly ever reboot, so we have to look for errant processes or files lying around from previous jobs.
+</li><li>
+There is a lot of room for improvement within this model, but I believe this model has inherent design flaws.
+</li></ul>
+
+<p>
+<a href="08-devicepool2.html">device pool future --&gt;</a><br />
+</p>
+
+</body></html>

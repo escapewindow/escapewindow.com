@@ -1,0 +1,101 @@
+head	1.3;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.3
+date	2011.10.12.00.00.47;	author asasaki;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2011.10.11.23.52.15;	author asasaki;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2011.10.11.19.37.53;	author asasaki;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@<p>
+<a href="http://escapewindow.dreamwidth.org/223757.html"><i>Mozharness is a configuration-driven script harness</i></a>
+</p><p>
+<b>How is configuration specified in Mozharness?</b>
+</p><ul style="list-style-type: circle"><li>
+A script can define an optional initial config, as a <a href="http://hg.mozilla.org/build/mozharness/file/e76fdabbca55/scripts/mozmill_updates.py#l114">dictionary</a> or a <a href="http://hg.mozilla.org/build/mozharness/file/e76fdabbca55/test/test_base_config.py#l37">config file</a>.
+</li><li>
+Next, if we specify <code>--config-file FILE</code> on the command line, that file's contents will be added to <code>self.config</code>.
+<li>
+Finally, command line options are added to <code>self.config</code>.
+</li></ul><p>
+If the same config key is specified in multiple locations, the command line takes precedence over the config file, which takes precedence over the initial config [file].
+<br />
+(<code>command line options &gt; config file &gt; initial config &gt; initial config file</code>)
+</p><br /><p>
+<b>How does a script add command line options?</b>
+</p><p>
+The command line options are all <a href="http://docs.python.org/library/optparse.html">optparse</a>-based.
+</p><p>
+Since there's a <a href="http://hg.mozilla.org/build/mozharness/file/e76fdabbca55/mozharness/base/config.py#l211">global list of command line arguments</a> for all mozharness scripts, I'm currently passing in an <a href="http://hg.mozilla.org/build/mozharness/file/e76fdabbca55/scripts/sourcetool.py#l90">additional list</a> from scripts to add to that global list.
+</p><br /><p>
+<b>What does a config file look like?</b>
+</p><p>
+Here's a <a href="http://hg.mozilla.org/build/mozharness/file/e76fdabbca55/configs/multi_locale/mozilla-central_linux-android.json">json</a> config file, and a WIP <a href="https://github.com/escapewindow/mozharness/blob/a0f12802c04dadf81232978f6284b5da6ad3a745/configs/users/aki/tablet1.py">python</a> config file.
+</p><p>
+We can currently specify anything here. I have a <a href="http://hg.mozilla.org/build/mozharness/file/e76fdabbca55/scripts/configtest.py">config file well-formedness checker</a>, but I'd love to test for misspellings or missing/extraneous config options as well.
+</p><br /><p>
+<b>How do we set the config to read-only?</b>
+</p><p>
+This is handled by <a href="http://hg.mozilla.org/build/mozharness/file/e76fdabbca55/mozharness/base/script.py#l475">locking</a> the <a href="http://hg.mozilla.org/build/mozharness/file/e76fdabbca55/mozharness/base/config.py#l97">ReadOnlyDict</a>.
+</p><p>
+I cover <i>why</i> <a href="http://escapewindow.dreamwidth.org/223757.html">here</a>.
+</p><br /><p>
+<b>What is the volatile config?</b>
+</p><p>
+After locking the read-only config, mozharness dumps a copy of the running config in a file called <code>localconfig.json</code>, which can be reused or inspected later.
+</p><p>
+If you specify set of <i>actions</i> to run, that information will currently be saved with the rest of your config.  The next time someone runs the script with that config file, that set of non-default actions might be unexpected and undesirable.
+</p><p>
+Previously, I discarded action config before dumping that file. In the <a href="https://github.com/escapewindow/mozharness/tree/talosrunner">talosrunner branch</a>, I'm now <a href="https://github.com/escapewindow/mozharness/blob/talosrunner/mozharness/base/config.py#L419">moving action-specific config</a> to self.config['volatile_config']; we'll have the choice whether to re-use that or ignore it in future runs.
+</p><p>
+If I ever fully support <code>--dry-run</code> / <code>--noop</code>, that will likely be another candidate for a volatile config option.
+</p>
+<br />
+<p>
+<a href="http://escapewindow.com/mozharness/">mozharness home</a>
+</p>
+@
+
+
+1.2
+log
+@*** empty log message ***
+@
+text
+@d16 6
+d38 1
+a38 1
+If you're using that file, and specify set of <i>actions</i> to run, that information will be saved.  The next time someone runs the script with that config file, they might run an unexpected set of actions.
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 41
+@

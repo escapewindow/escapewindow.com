@@ -1,0 +1,214 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module unittest</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>unittest</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/testing/unittest.py">/home/aki/wrk/git-mozharness-ro/mozharness/mozilla/testing/unittest.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;*****&nbsp;BEGIN&nbsp;LICENSE&nbsp;BLOCK&nbsp;*****<br>
+#&nbsp;This&nbsp;Source&nbsp;Code&nbsp;Form&nbsp;is&nbsp;subject&nbsp;to&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;Mozilla&nbsp;Public<br>
+#&nbsp;License,&nbsp;v.&nbsp;2.0.&nbsp;If&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;MPL&nbsp;was&nbsp;not&nbsp;distributed&nbsp;with&nbsp;this&nbsp;file,<br>
+#&nbsp;You&nbsp;can&nbsp;obtain&nbsp;one&nbsp;at&nbsp;<a href="http://mozilla.org/MPL/2.0/">http://mozilla.org/MPL/2.0/</a>.<br>
+#&nbsp;*****&nbsp;END&nbsp;LICENSE&nbsp;BLOCK&nbsp;*****</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="unittest.html#EmulatorMixin">EmulatorMixin</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="mozharness.base.log.html#OutputParser">mozharness.base.log.OutputParser</a>(<a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="unittest.html#DesktopUnittestOutputParser">DesktopUnittestOutputParser</a>
+</font></dt><dt><font face="helvetica, arial"><a href="unittest.html#TestSummaryOutputParserHelper">TestSummaryOutputParserHelper</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DesktopUnittestOutputParser">class <strong>DesktopUnittestOutputParser</strong></a>(<a href="mozharness.base.log.html#OutputParser">mozharness.base.log.OutputParser</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;class&nbsp;that&nbsp;extends&nbsp;<a href="mozharness.base.log.html#OutputParser">OutputParser</a>&nbsp;such&nbsp;that&nbsp;it&nbsp;can&nbsp;parse&nbsp;the&nbsp;number&nbsp;of<br>
+passed/failed/todo&nbsp;tests&nbsp;from&nbsp;the&nbsp;output.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="unittest.html#DesktopUnittestOutputParser">DesktopUnittestOutputParser</a></dd>
+<dd><a href="mozharness.base.log.html#OutputParser">mozharness.base.log.OutputParser</a></dd>
+<dd><a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="DesktopUnittestOutputParser-__init__"><strong>__init__</strong></a>(self, suite_category, **kwargs)</dt></dl>
+
+<dl><dt><a name="DesktopUnittestOutputParser-append_tinderboxprint_line"><strong>append_tinderboxprint_line</strong></a>(self, suite_name)</dt></dl>
+
+<dl><dt><a name="DesktopUnittestOutputParser-evaluate_parser"><strong>evaluate_parser</strong></a>(self, return_code, success_codes<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="DesktopUnittestOutputParser-parse_single_line"><strong>parse_single_line</strong></a>(self, line)</dt></dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.log.html#OutputParser">mozharness.base.log.OutputParser</a>:<br>
+<dl><dt><a name="DesktopUnittestOutputParser-add_lines"><strong>add_lines</strong></a>(self, output)</dt></dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>:<br>
+<dl><dt><a name="DesktopUnittestOutputParser-critical"><strong>critical</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="DesktopUnittestOutputParser-debug"><strong>debug</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="DesktopUnittestOutputParser-error"><strong>error</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="DesktopUnittestOutputParser-exception"><strong>exception</strong></a>(self, message<font color="#909090">=None</font>, level<font color="#909090">='error'</font>)</dt><dd><tt>#&nbsp;Copying&nbsp;Bear's&nbsp;dumpException():<br>
+#&nbsp;https://hg.mozilla.org/build/tools/annotate/1485f23c38e0/sut_tools/sut_lib.py#l23</tt></dd></dl>
+
+<dl><dt><a name="DesktopUnittestOutputParser-fatal"><strong>fatal</strong></a>(self, message, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="DesktopUnittestOutputParser-info"><strong>info</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="DesktopUnittestOutputParser-log"><strong>log</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="DesktopUnittestOutputParser-warning"><strong>warning</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="DesktopUnittestOutputParser-worst_level"><strong>worst_level</strong></a>(self, target_level, existing_level, levels<font color="#909090">=None</font>)</dt><dd><tt>returns&nbsp;either&nbsp;existing_level&nbsp;or&nbsp;target&nbsp;level.<br>
+This&nbsp;depends&nbsp;on&nbsp;which&nbsp;is&nbsp;closest&nbsp;to&nbsp;levels[0]<br>
+By&nbsp;default,&nbsp;levels&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;log&nbsp;levels</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="EmulatorMixin">class <strong>EmulatorMixin</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Currently&nbsp;dependent&nbsp;on&nbsp;both&nbsp;TooltoolMixin&nbsp;and&nbsp;TestingMixin)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="EmulatorMixin-install_emulator"><strong>install_emulator</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="EmulatorMixin-install_emulator_from_tooltool"><strong>install_emulator_from_tooltool</strong></a>(self, manifest_path)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="TestSummaryOutputParserHelper">class <strong>TestSummaryOutputParserHelper</strong></a>(<a href="mozharness.base.log.html#OutputParser">mozharness.base.log.OutputParser</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="unittest.html#TestSummaryOutputParserHelper">TestSummaryOutputParserHelper</a></dd>
+<dd><a href="mozharness.base.log.html#OutputParser">mozharness.base.log.OutputParser</a></dd>
+<dd><a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="TestSummaryOutputParserHelper-__init__"><strong>__init__</strong></a>(self, regex<font color="#909090">=&lt;_sre.SRE_Pattern object at 0xb7e419c0&gt;</font>, **kwargs)</dt></dl>
+
+<dl><dt><a name="TestSummaryOutputParserHelper-evaluate_parser"><strong>evaluate_parser</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TestSummaryOutputParserHelper-parse_single_line"><strong>parse_single_line</strong></a>(self, line)</dt></dl>
+
+<dl><dt><a name="TestSummaryOutputParserHelper-print_summary"><strong>print_summary</strong></a>(self, suite_name)</dt></dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.log.html#OutputParser">mozharness.base.log.OutputParser</a>:<br>
+<dl><dt><a name="TestSummaryOutputParserHelper-add_lines"><strong>add_lines</strong></a>(self, output)</dt></dl>
+
+<hr>
+Methods inherited from <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>:<br>
+<dl><dt><a name="TestSummaryOutputParserHelper-critical"><strong>critical</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="TestSummaryOutputParserHelper-debug"><strong>debug</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="TestSummaryOutputParserHelper-error"><strong>error</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="TestSummaryOutputParserHelper-exception"><strong>exception</strong></a>(self, message<font color="#909090">=None</font>, level<font color="#909090">='error'</font>)</dt><dd><tt>#&nbsp;Copying&nbsp;Bear's&nbsp;dumpException():<br>
+#&nbsp;https://hg.mozilla.org/build/tools/annotate/1485f23c38e0/sut_tools/sut_lib.py#l23</tt></dd></dl>
+
+<dl><dt><a name="TestSummaryOutputParserHelper-fatal"><strong>fatal</strong></a>(self, message, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="TestSummaryOutputParserHelper-info"><strong>info</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="TestSummaryOutputParserHelper-log"><strong>log</strong></a>(self, message, level<font color="#909090">='info'</font>, exit_code<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="TestSummaryOutputParserHelper-warning"><strong>warning</strong></a>(self, message)</dt></dl>
+
+<dl><dt><a name="TestSummaryOutputParserHelper-worst_level"><strong>worst_level</strong></a>(self, target_level, existing_level, levels<font color="#909090">=None</font>)</dt><dd><tt>returns&nbsp;either&nbsp;existing_level&nbsp;or&nbsp;target&nbsp;level.<br>
+This&nbsp;depends&nbsp;on&nbsp;which&nbsp;is&nbsp;closest&nbsp;to&nbsp;levels[0]<br>
+By&nbsp;default,&nbsp;levels&nbsp;is&nbsp;the&nbsp;list&nbsp;of&nbsp;log&nbsp;levels</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="mozharness.base.log.html#LogMixin">mozharness.base.log.LogMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-tbox_print_summary"><strong>tbox_print_summary</strong></a>(pass_count, fail_count, known_fail_count<font color="#909090">=None</font>, crashed<font color="#909090">=False</font>, leaked<font color="#909090">=False</font>)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>CRITICAL</strong> = 'critical'<br>
+<strong>INFO</strong> = 'info'<br>
+<strong>SUITE_CATEGORIES</strong> = ['mochitest', 'reftest', 'xpcshell']<br>
+<strong>TBPL_FAILURE</strong> = 'FAILURE'<br>
+<strong>TBPL_RETRY</strong> = 'RETRY'<br>
+<strong>TBPL_SUCCESS</strong> = 'SUCCESS'<br>
+<strong>TBPL_WARNING</strong> = 'WARNING'<br>
+<strong>TBPL_WORST_LEVEL_TUPLE</strong> = ('RETRY', 'EXCEPTION', 'FAILURE', 'WARNING', 'SUCCESS')<br>
+<strong>TinderBoxPrintRe</strong> = {'cppunittest_summary': {'fail_group': 'Failed', 'known_fail_group': None, 'pass_group': 'Passed', 'regex': &lt;_sre.SRE_Pattern object at 0x824bea8&gt;}, 'crashtest_summary': {'fail_group': 'Unexpected', 'known_fail_group': 'Known problems', 'pass_group': 'Successful', 'regex': &lt;_sre.SRE_Pattern object at 0x8255ec8&gt;}, 'harness_error': {'full_regex': &lt;_sre.SRE_Pattern object at 0x82568f0&gt;, 'minimum_regex': &lt;_sre.SRE_Pattern object at 0xb7e520f0&gt;, 'retry_regex': &lt;_sre.SRE_Pattern object at 0xb7ef3ef8&gt;}, 'instrumentation_summary': {'fail_group': 'Failed', 'known_fail_group': 'Todo', 'pass_group': 'Passed', 'regex': &lt;_sre.SRE_Pattern object at 0x82384a8&gt;}, 'jittest_summary': {'fail_group': 'Failed', 'known_fail_group': None, 'pass_group': 'Passed', 'regex': &lt;_sre.SRE_Pattern object at 0xb7f08e90&gt;}, 'jsreftest_summary': {'fail_group': 'Unexpected', 'known_fail_group': 'Known problems', 'pass_group': 'Successful', 'regex': &lt;_sre.SRE_Pattern object at 0x8255ec8&gt;}, 'mochitest-gl_summary': {'fail_group': 'Failed', 'known_fail_group': 'Todo', 'pass_group': 'Passed', 'regex': &lt;_sre.SRE_Pattern object at 0x82384a8&gt;}, 'mochitest_summary': {'fail_group': 'Failed', 'known_fail_group': 'Todo', 'pass_group': 'Passed', 'regex': &lt;_sre.SRE_Pattern object at 0x82384a8&gt;}, 'mozbase_summary': {'fail_group': 'FAILED', 'known_fail_group': None, 'pass_group': 'OK', 'regex': &lt;_sre.SRE_Pattern object at 0xb7e4a3b8&gt;}, 'reftest_summary': {'fail_group': 'Unexpected', 'known_fail_group': 'Known problems', 'pass_group': 'Successful', 'regex': &lt;_sre.SRE_Pattern object at 0x8255ec8&gt;}, ...}<br>
+<strong>WARNING</strong> = 'warning'</td></tr></table>
+</body></html>
